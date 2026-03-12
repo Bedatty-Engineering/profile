@@ -1,0 +1,61 @@
+---
+description: Patterns for Astro components, pages and layouts
+globs: src/**/*.astro
+alwaysApply: false
+---
+
+# Astro Component Patterns
+
+## Frontmatter
+Keep the `---` fence clean: imports at the top, then data fetching, then derived values.
+
+```astro
+---
+// ✅ GOOD — ordered, typed
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+const posts = await getCollection("blog");
+const sorted = posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+```
+
+## Props
+Always type component props explicitly:
+
+```astro
+---
+// ✅ GOOD
+interface Props {
+  title: string;
+  description?: string;
+}
+const { title, description = "" } = Astro.props;
+---
+
+---
+// ❌ BAD — untyped
+const { title, description } = Astro.props;
+---
+```
+
+## Page vs Component vs Layout
+- **Pages** live in `src/pages/` and export a full HTML shell via a Layout
+- **Layouts** live in `src/layouts/` and use `<slot />`
+- **Components** live in `src/components/` and are purely presentational
+
+## Dynamic Routes
+Use `getStaticPaths()` for `[slug].astro` pages. Always destructure from `Astro.params`.
+
+```astro
+---
+export async function getStaticPaths() {
+  const entries = await getCollection("blog");
+  return entries.map((entry) => ({ params: { slug: entry.id } }));
+}
+const { slug } = Astro.params;
+---
+```
+
+## Links
+Always use trailing slashes on internal links: `/projects/${id}/` not `/projects/${id}`.

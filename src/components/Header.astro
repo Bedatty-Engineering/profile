@@ -1,0 +1,39 @@
+---
+const navItems = [
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About" },
+  { href: "/projects", label: "Projects" },
+  { href: "/blog", label: "Blog" },
+  { href: "/contact", label: "Contact" }
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header id="site-header" class="site-header sticky top-0 z-40 border-b border-white/10 bg-ink/75 backdrop-blur-xl">
+  <div class="mx-auto flex max-w-6xl flex-col gap-3 px-6 py-4 sm:flex-row sm:items-center sm:justify-between lg:px-8">
+    <a href="/" class="flex items-center gap-2 font-mono text-xs font-semibold tracking-[0.08em] text-cloud sm:text-sm">
+      <span class="text-aurora">$</span>
+      <span>Lucas-Bedatty</span>
+      <span class="text-mist/60">~/</span>
+      <span class="cursor-blink text-cloud">_</span>
+    </a>
+
+    <nav aria-label="Primary navigation" class="-mx-1 flex w-full items-center gap-2 overflow-x-auto px-1 pb-1 text-xs sm:mx-0 sm:w-auto sm:gap-3 sm:px-0 sm:pb-0 sm:text-sm">
+      {
+        navItems.map((item) => (
+          <a
+            href={item.href}
+            aria-current={currentPath === item.href ? "page" : undefined}
+            class:list={[
+              "whitespace-nowrap rounded-md px-3 py-2 font-mono text-xs uppercase tracking-[0.2em] text-mist hover:bg-cloud/10 hover:text-cloud sm:text-sm",
+              currentPath === item.href && "bg-cloud/10 text-cloud"
+            ]}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+</header>

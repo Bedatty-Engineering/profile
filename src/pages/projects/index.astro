@@ -1,0 +1,64 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SectionIntro from "../../components/SectionIntro.astro";
+import { site } from "../../lib/site";
+---
+
+<BaseLayout title={`Projects | ${site.name}`} description="Selected cloud, platform and DevOps case studies are being prepared for publication.">
+  <section class="mx-auto max-w-6xl px-6 py-20 lg:px-8 lg:py-24">
+    <div class="reveal">
+      <SectionIntro
+        eyebrow="Projects"
+        title="Case studies are coming soon."
+        copy="Detailed write-ups covering architecture, automation and platform engineering work are being prepared for publication."
+      />
+    </div>
+
+    <div class="mt-12 grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
+      <article class="shell p-8 reveal reveal-delay-1">
+        <div class="flex flex-wrap items-center gap-3">
+          <p class="font-mono text-xs uppercase tracking-[0.25em] text-cloud">in progress</p>
+          <span class="tag-chip">coming soon</span>
+        </div>
+        <h2 class="mt-4 text-3xl font-semibold text-white">Selected project pages are being curated.</h2>
+        <p class="mt-4 max-w-2xl text-sm leading-7 text-mist">
+          This section will feature concise case studies on AWS platforms, infrastructure as code, governance, security and cost optimization.
+        </p>
+        <p class="mt-6 rounded-r-2xl border-l border-cloud/30 bg-white/[0.03] pl-4 text-sm leading-7 text-slate-300">
+          The goal is to publish technically relevant examples with clear context, architecture decisions and measurable outcomes.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a class="button-primary" href="/about">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4">
+              <path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Z"></path>
+              <path d="M3 21a9 9 0 0 1 18 0"></path>
+            </svg>
+            <span>View Profile</span>
+          </a>
+          <a class="button-secondary" href="/contact">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            <span>Get In Touch</span>
+          </a>
+        </div>
+      </article>
+
+      <aside class="terminal-window reveal reveal-delay-2">
+        <div class="terminal-toolbar">
+          <span class="terminal-dot bg-red-500"></span>
+          <span class="terminal-dot bg-amber-400"></span>
+          <span class="terminal-dot bg-emerald-500"></span>
+        </div>
+        <div class="space-y-1">
+          <p class="terminal-line"><span class="terminal-prompt">$</span><span class="terminal-command">cat projects/status.json</span></p>
+          <p class="terminal-line"><span class="terminal-output">state: "coming soon"</span></p>
+          <p class="terminal-line"><span class="terminal-output">focus: ["AWS", "IaC", "platform", "security"]</span></p>
+          <p class="terminal-line"><span class="terminal-output">format: "technical case studies"</span></p>
+          <p class="terminal-line"><span class="terminal-output">timeline: "in preparation"<span class="cursor-blink">_</span></span></p>
+        </div>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>

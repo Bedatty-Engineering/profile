@@ -1,0 +1,23 @@
+{
+  "name": "Lucas C. Bedatty",
+  "short_name": "LCB",
+  "description": "Senior DevOps Engineer focused on AWS, SRE and platform engineering.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#060816",
+  "theme_color": "#060816",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "64x64",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/apple-touch-icon.svg",
+      "sizes": "180x180",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

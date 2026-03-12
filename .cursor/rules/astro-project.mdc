@@ -1,0 +1,40 @@
+---
+description: Core conventions for this Astro portfolio project
+alwaysApply: true
+---
+
+# Astro Portfolio – Project Conventions
+
+## Stack
+- **Astro v5** with static output (`output: "static"`)
+- **Tailwind CSS v3** via `@astrojs/tailwind` (base styles disabled — use `src/styles/global.css`)
+- **MDX** for rich content; plain **Markdown** for blog/project entries
+- **TypeScript** throughout — no plain `.js` files except config roots
+
+## Design Tokens (Tailwind)
+Use custom tokens instead of arbitrary values:
+
+| Token | Usage |
+|-------|-------|
+| `ink` | Page background |
+| `mist` | Body copy / secondary text |
+| `cloud` | Primary accent (links, labels) |
+| `aurora` | Success / availability badge |
+| `steel` | Metadata / dates |
+| `line` | Border color |
+| `panel` | Card background |
+| `glow` | Box shadow on cards |
+| `grid` | Background grid pattern |
+
+## Utility Classes (global.css)
+Prefer these semantic classes over repeating Tailwind chains:
+- `shell` — card/panel with border + shadow
+- `section-title` — eyebrow label
+- `button-primary` / `button-secondary` — CTA buttons
+- `copy-muted` — muted paragraph text
+
+## Site Metadata
+All site-level constants live in `src/lib/site.ts`. Import from there — never hardcode name, URL, or social links.
+
+## Content Collections
+Collections are defined in `src/content.config.ts`. Always use `getCollection()` to fetch entries. Never read markdown files manually.

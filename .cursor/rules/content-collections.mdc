@@ -1,0 +1,45 @@
+---
+description: Frontmatter schema for blog posts and project entries
+globs: src/content/**/*.{md,mdx}
+alwaysApply: false
+---
+
+# Content Collections – Frontmatter Schemas
+
+## Blog Post (`src/content/blog/*.md`)
+
+```yaml
+---
+title: "Descriptive title"
+date: 2024-06-01          # ISO date — coerced to Date by Zod
+description: "One-sentence summary shown in cards and meta tags"
+tags: ["AWS", "Terraform"]
+---
+```
+
+- `date` must be a valid ISO date string
+- `tags` must be a non-empty array of strings
+- `description` should be ≤ 160 characters (used as meta description)
+
+## Project Entry (`src/content/projects/*.md`)
+
+```yaml
+---
+title: "Project Name"
+description: "What problem it solves and how"
+technologies: ["Terraform", "AWS", "Karpenter"]
+github_link: "https://github.com/..."   # Required, must be a valid URL
+demo_link: "https://..."                 # Optional
+architecture_notes: "Key design decisions and trade-offs"
+---
+```
+
+- `github_link` is required and validated as URL
+- `demo_link` is optional
+- `technologies` drives the card labels — keep entries short (e.g. "EKS", not "Amazon EKS")
+
+## Adding a New Collection
+1. Define schema in `src/content.config.ts` using `defineCollection` + `z`
+2. Export from `collections` object
+3. Create folder under `src/content/<name>/`
+4. Fetch with `getCollection("<name>")` in pages

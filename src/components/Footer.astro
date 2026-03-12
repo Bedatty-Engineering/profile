@@ -1,0 +1,19 @@
+---
+import { site } from "../lib/site";
+---
+
+<footer class="border-t border-white/10 bg-black/10">
+  <div class="mx-auto flex max-w-6xl flex-col gap-4 px-6 py-10 text-sm text-mist lg:flex-row lg:items-center lg:justify-between lg:px-8">
+    <div>
+      <p class="font-mono text-xs uppercase tracking-[0.24em] text-cloud">system.status</p>
+      <p class="mt-2">
+        {site.name} · {site.title}
+      </p>
+    </div>
+    <div class="flex gap-5">
+      <a href={site.linkedin} target="_blank" rel="noreferrer" aria-label="Open LinkedIn profile in a new tab" class="hover:text-white">LinkedIn</a>
+      <a href={`mailto:${site.email}`} class="hover:text-white">Email</a>
+      <a href={site.github} target="_blank" rel="noreferrer" aria-label="Open GitHub profile in a new tab" class="hover:text-white">GitHub</a>
+    </div>
+  </div>
+</footer>

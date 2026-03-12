@@ -1,0 +1,41 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SectionIntro from "../../components/SectionIntro.astro";
+import { site } from "../../lib/site";
+
+const posts = (await getCollection("blog")).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+
+<BaseLayout title={`Blog | ${site.name}`} description="Blog posts on AWS, DevOps, and platform engineering by Lucas Bedatty.">
+  <section class="mx-auto max-w-6xl px-6 py-20 lg:px-8 lg:py-24">
+    <div class="reveal">
+      <SectionIntro
+        eyebrow="Blog"
+        title="Operational notes on AWS, security, governance, and delivery pipelines."
+        copy="Writing focused on practical engineering decisions across AWS operations, governance, security and delivery workflows."
+      />
+    </div>
+    <div class="mt-12 space-y-6">
+      {
+        posts.map((post, index) => (
+          <a href={`/blog/${post.id}/`} class:list={["shell block p-8 hover:-translate-y-1 hover:border-cloud/30 reveal", index === 1 && "reveal-delay-1", index >= 2 && "reveal-delay-2"]}>
+            <div class="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.2em] text-steel">
+              <span>{post.data.date.toLocaleDateString("en-US", { dateStyle: "long" })}</span>
+              {post.data.tags.map((tag) => <span class="rounded-md border border-cloud/20 bg-cloud/10 px-2 py-1">{tag}</span>)}
+            </div>
+            <h2 class="mt-5 text-3xl font-semibold text-white">{post.data.title}</h2>
+            <p class="mt-4 max-w-3xl text-sm leading-7 text-mist">{post.data.description}</p>
+            <p class="mt-6 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.22em] text-cloud">
+              <span>open entry</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4">
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg>
+            </p>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>
