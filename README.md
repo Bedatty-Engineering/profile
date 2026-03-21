@@ -1,6 +1,6 @@
 # Lucas C. Bedatty Portfolio
 
-Static developer portfolio built with Astro, TypeScript, TailwindCSS, and markdown content collections. The site is designed for a Cloud / DevOps engineer profile and optimized for static hosting.
+Static developer portfolio built with Astro, TypeScript, TailwindCSS, and markdown content collections. The site is designed for a Cloud / DevOps engineer profile and is deployed as static output served by a Cloudflare Worker.
 
 ## Stack
 
@@ -34,6 +34,8 @@ npm run build
 ```bash
 npm run preview
 ```
+
+`npm run build` also generates the social preview image used by Open Graph and Twitter cards.
 
 ## Content management
 
@@ -73,20 +75,25 @@ tags:
 
 The markdown body is rendered into the blog article page automatically.
 
+## Validation
+
+Pull requests targeting `main` run two GitHub Actions workflows:
+
+- `Validation`: installs dependencies, runs `npm run build`, validates `wrangler deploy --dry-run`, and checks required build artifacts
+- `Secrets Scan`: runs Gitleaks against the repository history
+
 ## Deployment
 
-The Astro config is set to `output: "static"`, so deployment is straightforward.
+The Astro config is set to `output: "static"` and the Cloudflare Worker serves the generated `dist` directory.
 
-### GitHub
+### Cloudflare Worker
 
-- Build with `npm run build`
-- Publish the generated [`/dist`](/home/b3da/personal/projects/Bedatty-Engineering/profile/dist) directory through your preferred GitHub workflow or GitHub Pages pipeline
+- Build command: `npm run build`
+- Deploy command: `npx wrangler deploy`
+- Version command: `npx wrangler versions upload`
+- Root directory: `/`
 
-### Cloudflare
-
-- Use the same `npm run build` command
-- Deploy the generated `dist` directory to Cloudflare Pages or serve it through a Cloudflare Worker/CDN static asset workflow
-- Set the production URL in [`astro.config.mjs`](/home/b3da/personal/projects/Bedatty-Engineering/profile/astro.config.mjs) if the final domain changes
+Worker configuration lives in [`wrangler.jsonc`](/home/b3da/personal/projects/Bedatty-Engineering/profile/wrangler.jsonc).
 
 ## Notes
 

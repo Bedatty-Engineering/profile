@@ -18,8 +18,8 @@ tags: ["AWS", "Terraform"]
 ```
 
 - `date` must be a valid ISO date string
-- `tags` must be a non-empty array of strings
-- `description` should be ≤ 160 characters (used as meta description)
+- `tags` is currently validated as an array of strings
+- `description` should stay concise because it is reused in meta descriptions and cards
 
 ## Project Entry (`src/content/projects/*.md`)
 
@@ -36,6 +36,7 @@ architecture_notes: "Key design decisions and trade-offs"
 
 - `github_link` is required and validated as URL
 - `demo_link` is optional
+- `architecture_notes` is required in the current schema
 - `technologies` drives the card labels — keep entries short (e.g. "EKS", not "Amazon EKS")
 
 ## Adding a New Collection

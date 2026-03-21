@@ -45,17 +45,21 @@ const { title, description } = Astro.props;
 - **Components** live in `src/components/` and are purely presentational
 
 ## Dynamic Routes
-Use `getStaticPaths()` for `[slug].astro` pages. Always destructure from `Astro.params`.
+Use `getStaticPaths()` for `[slug].astro` pages. In this repo, the current pattern is to pass the resolved entry through `props` and render from `Astro.props`.
 
 ```astro
 ---
 export async function getStaticPaths() {
   const entries = await getCollection("blog");
-  return entries.map((entry) => ({ params: { slug: entry.id } }));
+  return entries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry }
+  }));
 }
-const { slug } = Astro.params;
+const { entry } = Astro.props;
 ---
 ```
 
 ## Links
-Always use trailing slashes on internal links: `/projects/${id}/` not `/projects/${id}`.
+For dynamic content links and feed items, use trailing slashes: `/projects/${id}/`.
+For top-level nav and static page links, follow the existing project pattern already in use.

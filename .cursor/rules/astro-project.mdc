@@ -8,8 +8,8 @@ alwaysApply: true
 ## Stack
 - **Astro v5** with static output (`output: "static"`)
 - **Tailwind CSS v3** via `@astrojs/tailwind` (base styles disabled — use `src/styles/global.css`)
-- **MDX** for rich content; plain **Markdown** for blog/project entries
-- **TypeScript** throughout — no plain `.js` files except config roots
+- **MDX** integration is installed; current content collections use plain **Markdown**
+- **TypeScript** for logic by default; `src/pages/rss.xml.js` is an intentional exception in the current codebase
 
 ## Design Tokens (Tailwind)
 Use custom tokens instead of arbitrary values:
@@ -30,11 +30,20 @@ Use custom tokens instead of arbitrary values:
 Prefer these semantic classes over repeating Tailwind chains:
 - `shell` — card/panel with border + shadow
 - `section-title` — eyebrow label
+- `section-heading` — large section heading
 - `button-primary` / `button-secondary` — CTA buttons
 - `copy-muted` — muted paragraph text
+- `prose-cloud` — rich text styling for content pages
+- `panel-card` / `tag-chip` / `terminal-*` — recurring UI patterns already defined in the project
 
 ## Site Metadata
-All site-level constants live in `src/lib/site.ts`. Import from there — never hardcode name, URL, or social links.
+All site-level constants live in `src/lib/site.ts`. Import from there — never hardcode name, URL, social links, or OG image metadata.
 
 ## Content Collections
 Collections are defined in `src/content.config.ts`. Always use `getCollection()` to fetch entries. Never read markdown files manually.
+
+## Build And Deploy
+- `npm run build` is the acceptance gate; it generates `public/og-image.png` and then runs `astro build`
+- Static output is written to `dist/`
+- Cloudflare Worker config lives in `wrangler.jsonc` and serves `./dist`
+- GitHub Actions validation should focus on install, build, Wrangler dry-run, and generated output
