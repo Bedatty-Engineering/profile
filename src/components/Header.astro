@@ -1,10 +1,21 @@
 ---
+import { getLocaleContent, getOtherLocale, type Locale } from "../lib/i18n";
+
+interface Props {
+  locale: Locale;
+  switchPath: string;
+}
+
+const { locale, switchPath } = Astro.props;
+const copy = getLocaleContent(locale);
+const targetLocale = getOtherLocale(locale);
+
 const navItems = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/projects", label: "Projects" },
-  { href: "/blog", label: "Blog" },
-  { href: "/contact", label: "Contact" }
+  { href: locale === "en" ? "/" : "/pt", label: copy.nav.home },
+  { href: locale === "en" ? "/about" : "/pt/about", label: copy.nav.about },
+  { href: locale === "en" ? "/projects" : "/pt/projects", label: copy.nav.projects },
+  { href: locale === "en" ? "/blog" : "/pt/blog", label: copy.nav.blog },
+  { href: locale === "en" ? "/contact" : "/pt/contact", label: copy.nav.contact }
 ];
 
 const currentPath = Astro.url.pathname;
@@ -12,21 +23,80 @@ const currentPath = Astro.url.pathname;
 
 <header id="site-header" class="site-header sticky top-0 z-40 border-b border-white/10 bg-ink/75 backdrop-blur-xl">
   <div class="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
-    <a href="/" class="flex items-center gap-2 font-mono text-xs font-semibold tracking-[0.08em] text-cloud sm:text-sm">
-      <span class="text-aurora">$</span>
-      <span>Lucas-Bedatty</span>
-      <span class="text-mist/60">~/</span>
-      <span class="cursor-blink text-cloud">_</span>
-    </a>
+    <div class="flex items-center justify-between gap-3">
+      <a href={locale === "en" ? "/" : "/pt"} class="flex items-center gap-2 font-mono text-xs font-semibold tracking-[0.08em] text-cloud sm:text-sm">
+        <span class="text-aurora">$</span>
+        <span>Lucas-Bedatty</span>
+        <span class="text-mist/60">~/</span>
+        <span class="cursor-blink text-cloud">_</span>
+      </a>
 
-    <nav aria-label="Primary navigation" class="grid w-full grid-cols-2 gap-2 text-xs sm:flex sm:w-auto sm:items-center sm:gap-3 sm:text-sm">
+      <div class="flex items-center gap-2 sm:hidden">
+        <a
+          href={switchPath}
+          class="mobile-language-toggle"
+          data-locale-switch={targetLocale}
+          aria-label={`Switch language to ${targetLocale.toUpperCase()}`}
+        ></a>
+        <button
+          id="mobile-nav-toggle"
+          type="button"
+          class="mobile-nav-toggle sm:hidden"
+          aria-expanded="false"
+          aria-controls="mobile-nav"
+          aria-label={copy.common.openNavigation}
+          data-close-label={copy.common.closeNavigation}
+        >
+          <span class="sr-only">{copy.common.toggleNavigation}</span>
+          <span class="mobile-nav-icon" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <div class="hidden items-center gap-3 sm:flex">
+      <nav aria-label="Primary navigation" class="flex items-center gap-3 text-sm">
+        {
+          navItems.map((item) => (
+            <a
+              href={item.href}
+              aria-current={currentPath === item.href ? "page" : undefined}
+              class:list={[
+                "rounded-md px-3 py-2 font-mono text-xs uppercase tracking-[0.2em] text-mist hover:bg-cloud/10 hover:text-cloud sm:whitespace-nowrap sm:text-sm",
+                currentPath === item.href && "bg-cloud/10 text-cloud"
+              ]}
+            >
+              {item.label}
+            </a>
+          ))
+        }
+      </nav>
+
+      <a
+        href={switchPath}
+        class="language-toggle"
+        data-locale-switch={targetLocale}
+        aria-label={`Switch language to ${targetLocale.toUpperCase()}`}
+      ></a>
+    </div>
+  </div>
+
+  <nav
+    id="mobile-nav"
+    aria-label="Mobile navigation"
+    class="mobile-nav-panel sm:hidden"
+  >
+    <div class="mx-auto grid max-w-6xl gap-2 pt-4">
       {
         navItems.map((item) => (
           <a
             href={item.href}
             aria-current={currentPath === item.href ? "page" : undefined}
             class:list={[
-              "flex min-h-[2.75rem] items-center justify-center rounded-md px-3 py-2 text-center font-mono text-xs uppercase tracking-[0.2em] text-mist hover:bg-cloud/10 hover:text-cloud sm:min-h-0 sm:whitespace-nowrap sm:text-sm",
+              "mobile-nav-link",
               currentPath === item.href && "bg-cloud/10 text-cloud"
             ]}
           >
@@ -34,6 +104,67 @@ const currentPath = Astro.url.pathname;
           </a>
         ))
       }
-    </nav>
-  </div>
+    </div>
+  </nav>
 </header>
+
+<script is:inline>
+  const mobileNavToggle = document.getElementById("mobile-nav-toggle");
+  const mobileNav = document.getElementById("mobile-nav");
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const localeSwitchLinks = document.querySelectorAll("[data-locale-switch]");
+
+  localeSwitchLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      const targetLocale = link.getAttribute("data-locale-switch");
+      if (targetLocale) {
+        window.localStorage.setItem("preferred-locale", targetLocale);
+      }
+    });
+  });
+
+  if (mobileNavToggle instanceof HTMLButtonElement && mobileNav) {
+    const openLabel = mobileNavToggle.getAttribute("aria-label") ?? "Open navigation menu";
+    const closeLabel = mobileNavToggle.dataset.closeLabel ?? "Close navigation menu";
+
+    const syncMobileNav = (isOpen) => {
+      mobileNav.classList.toggle("is-open", isOpen);
+      mobileNavToggle.classList.toggle("is-open", isOpen);
+      mobileNavToggle.setAttribute("aria-expanded", String(isOpen));
+      mobileNavToggle.setAttribute("aria-label", isOpen ? closeLabel : openLabel);
+    };
+
+    const closeMobileNav = () => {
+      syncMobileNav(false);
+    };
+
+    mobileNavToggle.addEventListener("click", () => {
+      const isOpen = mobileNav.classList.contains("is-open");
+      syncMobileNav(!isOpen);
+    });
+
+    mobileNav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", (event) => {
+        const href = link.getAttribute("href");
+        if (!href || href.startsWith("#") || prefersReducedMotion) {
+          closeMobileNav();
+          return;
+        }
+
+        event.preventDefault();
+        closeMobileNav();
+        window.setTimeout(() => {
+          window.location.href = href;
+        }, 180);
+      });
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth >= 640) {
+        closeMobileNav();
+      }
+    });
+
+    syncMobileNav(false);
+  }
+</script>

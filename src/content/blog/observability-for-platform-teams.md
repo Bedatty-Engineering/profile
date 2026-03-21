@@ -1,4 +1,7 @@
 ---
+locale: en
+translationKey: observability-platform-teams
+pathSlug: observability-for-platform-teams
 title: "Observability for Platform Teams"
 date: 2025-12-08
 description: "Metrics, logs, and alarms that help platform teams act before infrastructure issues become product outages."

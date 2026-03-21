@@ -1,4 +1,7 @@
 ---
+locale: en
+translationKey: aws-network-foundations
+pathSlug: designing-aws-network-foundations
 title: "Designing AWS Network Foundations for Scale"
 date: 2026-02-14
 description: "A practical approach to VPC segmentation, endpoint strategy, and transit patterns for growing AWS environments."

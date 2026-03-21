@@ -1,4 +1,7 @@
 ---
+locale: en
+translationKey: aws-governance-automation
+pathSlug: aws-governance-automation
 title: "AWS Governance Automation with Control Tower and Config"
 description: "A governance baseline for multi-account AWS environments using preventive controls, detective rules, and automated remediation workflows."
 technologies:

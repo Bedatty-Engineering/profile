@@ -1,4 +1,7 @@
 ---
+locale: en
+translationKey: terraform-cdk-together
+pathSlug: terraform-and-cdk-together
 title: "Using Terraform and AWS CDK Together"
 date: 2026-01-30
 description: "Where a mixed IaC approach makes sense and how to keep ownership boundaries clear."

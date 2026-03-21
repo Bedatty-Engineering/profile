@@ -1,12 +1,12 @@
 ---
 import { getCollection } from "astro:content";
-import BlogListPage from "../../components/pages/BlogListPage.astro";
-import { getCollectionByLocale } from "../../lib/i18n";
+import BlogListPage from "../../../components/pages/BlogListPage.astro";
+import { getCollectionByLocale } from "../../../lib/i18n";
 
 const posts = getCollectionByLocale(
   (await getCollection("blog")).sort((a, b) => b.data.date.getTime() - a.data.date.getTime()),
-  "en"
+  "pt"
 );
 ---
 
-<BlogListPage locale="en" posts={posts} />
+<BlogListPage locale="pt" posts={posts} />
