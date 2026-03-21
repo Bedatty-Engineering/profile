@@ -1,0 +1,40 @@
+name: Validation
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  validation:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build site
+        run: npm run build
+
+      - name: Validate Cloudflare deploy config
+        run: |
+          mkdir -p .tmp/xdg
+          XDG_CONFIG_HOME="$PWD/.tmp/xdg" npx wrangler deploy --dry-run
+
+      - name: Verify build artifacts
+        run: |
+          test -f dist/index.html
+          test -f dist/og-image.png
+          test -f dist/sitemap-index.xml
