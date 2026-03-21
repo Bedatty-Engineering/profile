@@ -5,7 +5,7 @@ import { site } from "../lib/site";
 ---
 
 <BaseLayout title={`Contact | ${site.name}`} description="Contact Lucas Bedatty for cloud platform and DevOps opportunities.">
-  <section class="mx-auto max-w-6xl px-6 py-20 lg:px-8 lg:py-24">
+  <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
     <div class="reveal">
       <SectionIntro
         eyebrow="Contact"
@@ -31,7 +31,7 @@ import { site } from "../lib/site";
                 <polyline points="22,6 12,13 2,6"></polyline>
               </svg>
             </span>
-            <span class="flex min-w-0 flex-1 items-center justify-between gap-3">
+            <span class="flex min-w-0 flex-1 flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
               <span class="contact-link-text">{site.email}</span>
               <span
                 class="rounded-md border border-cloud/20 bg-cloud/10 px-2 py-1 font-mono text-[0.65rem] uppercase tracking-[0.18em] text-cloud"
@@ -66,7 +66,7 @@ import { site } from "../lib/site";
           <span class="terminal-dot bg-amber-400"></span>
           <span class="terminal-dot bg-emerald-500"></span>
         </div>
-        <div class="space-y-1 font-mono text-[0.8rem] leading-7 text-mist sm:text-sm">
+        <div class="space-y-1 overflow-x-auto font-mono text-[0.78rem] leading-7 text-mist sm:text-sm">
           <p class="text-mist/60">// contact.json</p>
           <p>{`{`}</p>
           <p>&nbsp;&nbsp;<span class="text-steel">"name"</span>: <span class="text-aurora">"{site.name}"</span>,</p>

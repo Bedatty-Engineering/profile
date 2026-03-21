@@ -5,7 +5,7 @@ import { certificationItems, educationItems, experienceTimeline, site, skillGrou
 ---
 
 <BaseLayout title={`About | ${site.name}`} description={site.description}>
-  <section class="mx-auto max-w-6xl px-6 py-20 lg:px-8 lg:py-24">
+  <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
     <div class="reveal">
       <SectionIntro
         eyebrow="About"
@@ -24,8 +24,8 @@ import { certificationItems, educationItems, experienceTimeline, site, skillGrou
       </a>
     </div>
 
-    <div class="mt-12 grid gap-8 lg:grid-cols-[1.15fr_0.85fr]">
-      <div class="shell reveal p-8">
+    <div class="mt-12 grid gap-6 sm:gap-8 lg:grid-cols-[1.15fr_0.85fr]">
+      <div class="shell reveal p-6 sm:p-8">
         <div class="terminal-toolbar">
           <span class="terminal-dot bg-red-500"></span>
           <span class="terminal-dot bg-amber-400"></span>
@@ -52,7 +52,7 @@ import { certificationItems, educationItems, experienceTimeline, site, skillGrou
       </div>
 
       <div class="space-y-6">
-        <div class="shell reveal reveal-delay-1 p-6">
+        <div class="shell reveal reveal-delay-1 p-5 sm:p-6">
           <p class="font-mono text-xs uppercase tracking-[0.25em] text-cloud">Profile</p>
           <dl class="mt-5 space-y-4 text-sm text-mist">
             <div>
@@ -69,7 +69,7 @@ import { certificationItems, educationItems, experienceTimeline, site, skillGrou
             </div>
           </dl>
         </div>
-        <div class="grid grid-cols-2 gap-4 reveal reveal-delay-2">
+        <div class="grid gap-4 reveal reveal-delay-2 sm:grid-cols-2">
           <div class="stat-card">
             <div class="stat-number">4+</div>
             <div class="stat-label">Years in Cloud & DevOps</div>
@@ -133,7 +133,7 @@ import { certificationItems, educationItems, experienceTimeline, site, skillGrou
               <div class="timeline-card shell">
                 <div class="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
                   <div>
-                    <p class="text-2xl font-semibold text-white">{item.role}</p>
+                    <p class="text-xl font-semibold text-white sm:text-2xl">{item.role}</p>
                     <p class="mt-2 font-mono text-sm uppercase tracking-[0.22em] text-cloud">{item.company}</p>
                     <p class="mt-3 text-sm text-mist">{item.location}</p>
                   </div>
@@ -156,7 +156,7 @@ import { certificationItems, educationItems, experienceTimeline, site, skillGrou
       </div>
     </div>
 
-    <div class="mt-20 grid gap-16 lg:grid-cols-[0.9fr_1.1fr]">
+    <div class="mt-20 grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
       <div>
         <div class="reveal">
           <SectionIntro
