@@ -1,0 +1,45 @@
+---
+import type { CollectionEntry } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SectionIntro from "../SectionIntro.astro";
+import { formatDate, getLocaleContent, getOtherLocale, localizePath, type Locale } from "../../lib/i18n";
+import { site } from "../../lib/site";
+
+interface Props {
+  locale: Locale;
+  posts: CollectionEntry<"blog">[];
+}
+
+const { locale, posts } = Astro.props;
+const copy = getLocaleContent(locale);
+const switchPath = localizePath("/blog", getOtherLocale(locale));
+---
+
+<BaseLayout title={`${copy.blog.title} | ${site.name}`} description={copy.blog.description} locale={locale} switchPath={switchPath}>
+  <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+    <div class="reveal">
+      <SectionIntro eyebrow={copy.blog.eyebrow} title={copy.blog.heading} copy={copy.blog.copy} />
+    </div>
+    <div class="mt-12 space-y-6">
+      {
+        posts.map((post, index) => (
+          <a href={localizePath(`/blog/${post.data.pathSlug}`, locale)} class:list={["shell block p-6 sm:p-8 hover:-translate-y-1 hover:border-cloud/30 reveal", index === 1 && "reveal-delay-1", index >= 2 && "reveal-delay-2"]}>
+            <div class="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.2em] text-steel">
+              <span>{formatDate(post.data.date, locale)}</span>
+              {post.data.tags.map((tag) => <span class="rounded-md border border-cloud/20 bg-cloud/10 px-2 py-1">{tag}</span>)}
+            </div>
+            <h2 class="mt-5 text-2xl font-semibold text-white sm:text-3xl">{post.data.title}</h2>
+            <p class="mt-4 max-w-3xl text-sm leading-7 text-mist">{post.data.description}</p>
+            <p class="mt-6 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.22em] text-cloud">
+              <span>{copy.common.openEntry}</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4">
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg>
+            </p>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>

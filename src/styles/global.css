@@ -220,6 +220,109 @@
     @apply border-white/15 bg-ink/90 shadow-[0_18px_60px_rgba(2,6,23,0.45)];
   }
 
+  .language-toggle,
+  .mobile-language-toggle {
+    @apply relative inline-flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-lg border transition duration-300 active:scale-95;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    isolation: isolate;
+  }
+
+  .language-toggle::before,
+  .mobile-language-toggle::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.4;
+    z-index: -1;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: saturate(1.05);
+  }
+
+  .language-toggle::after,
+  .mobile-language-toggle::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(5, 8, 22, 0.18), rgba(5, 8, 22, 0.3));
+    z-index: -1;
+  }
+
+  .mobile-nav-toggle {
+    @apply inline-flex h-11 w-11 items-center justify-center rounded-lg border border-cloud/20 bg-cloud/10 text-cloud transition duration-300 hover:border-cloud/40 hover:bg-cloud/15 active:scale-95;
+  }
+
+  .mobile-nav-icon {
+    @apply relative block h-4 w-5;
+  }
+
+  .mobile-nav-icon span {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    border-radius: 9999px;
+    background: currentColor;
+    transform-origin: center;
+    transition:
+      transform 0.28s ease,
+      opacity 0.2s ease,
+      top 0.28s ease;
+  }
+
+  .mobile-nav-icon span:nth-child(1) {
+    top: 0;
+  }
+
+  .mobile-nav-icon span:nth-child(2) {
+    top: 6px;
+  }
+
+  .mobile-nav-icon span:nth-child(3) {
+    top: 12px;
+  }
+
+  .mobile-nav-toggle.is-open .mobile-nav-icon span:nth-child(1) {
+    top: 6px;
+    transform: rotate(45deg);
+  }
+
+  .mobile-nav-toggle.is-open .mobile-nav-icon span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .mobile-nav-toggle.is-open .mobile-nav-icon span:nth-child(3) {
+    top: 6px;
+    transform: rotate(-45deg);
+  }
+
+  .mobile-nav-panel {
+    @apply overflow-hidden border-t border-white/10 px-4;
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-12px);
+    pointer-events: none;
+    transition:
+      max-height 0.32s ease,
+      opacity 0.24s ease,
+      transform 0.24s ease,
+      padding-bottom 0.24s ease;
+  }
+
+  .mobile-nav-panel.is-open {
+    @apply pb-4;
+    max-height: 24rem;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .mobile-nav-link {
+    @apply flex min-h-[2.75rem] items-center justify-center rounded-md px-3 py-2 text-center font-mono text-xs uppercase tracking-[0.2em] text-mist transition duration-300 hover:bg-cloud/10 hover:text-cloud active:scale-[0.985];
+  }
+
   .reveal {
     opacity: 0;
     transform: translateY(24px);
@@ -231,6 +334,56 @@
   .reveal.is-visible {
     opacity: 1;
     transform: translateY(0);
+  }
+
+  body:lang(pt-BR) .language-toggle,
+  body:lang(pt-BR) .mobile-language-toggle {
+    border-color: rgba(191, 219, 254, 0.42);
+    background: rgba(7, 18, 36, 0.55);
+    color: #eff6ff;
+  }
+
+  body:lang(pt-BR) .language-toggle::before,
+  body:lang(pt-BR) .mobile-language-toggle::before {
+    background-image: url("/flag-us.svg");
+  }
+
+  body:lang(pt-BR) .language-toggle:hover,
+  body:lang(pt-BR) .mobile-language-toggle:hover {
+    border-color: rgba(219, 234, 254, 0.62);
+    color: #fff;
+    box-shadow: 0 10px 28px rgba(37, 99, 235, 0.18);
+  }
+
+  body:lang(pt-BR) .language-toggle:hover::before,
+  body:lang(pt-BR) .mobile-language-toggle:hover::before {
+    transform: scale(1.03);
+    opacity: 1;
+  }
+
+  body:lang(en) .language-toggle,
+  body:lang(en) .mobile-language-toggle {
+    border-color: rgba(187, 247, 208, 0.4);
+    background: rgba(6, 24, 16, 0.55);
+    color: #f0fdf4;
+  }
+
+  body:lang(en) .language-toggle::before,
+  body:lang(en) .mobile-language-toggle::before {
+    background-image: url("/flag-br.svg");
+  }
+
+  body:lang(en) .language-toggle:hover,
+  body:lang(en) .mobile-language-toggle:hover {
+    border-color: rgba(220, 252, 231, 0.6);
+    color: #fff;
+    box-shadow: 0 10px 28px rgba(34, 197, 94, 0.18);
+  }
+
+  body:lang(en) .language-toggle:hover::before,
+  body:lang(en) .mobile-language-toggle:hover::before {
+    transform: scale(1.03);
+    opacity: 1;
   }
 
   .reveal-delay-1 {

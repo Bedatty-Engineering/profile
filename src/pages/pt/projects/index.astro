@@ -1,0 +1,9 @@
+---
+import { getCollection } from "astro:content";
+import ProjectsListPage from "../../../components/pages/ProjectsListPage.astro";
+import { getCollectionByLocale } from "../../../lib/i18n";
+
+const projects = getCollectionByLocale(await getCollection("projects"), "pt");
+---
+
+<ProjectsListPage locale="pt" projects={projects} />

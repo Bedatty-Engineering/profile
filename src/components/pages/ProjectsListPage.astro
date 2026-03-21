@@ -1,0 +1,71 @@
+---
+import type { CollectionEntry } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SectionIntro from "../SectionIntro.astro";
+import { getLocaleContent, getOtherLocale, localizePath, type Locale } from "../../lib/i18n";
+import { site } from "../../lib/site";
+
+interface Props {
+  locale: Locale;
+  projects: CollectionEntry<"projects">[];
+}
+
+const { locale, projects } = Astro.props;
+const copy = getLocaleContent(locale);
+const switchPath = localizePath("/projects", getOtherLocale(locale));
+---
+
+<BaseLayout title={`${copy.projects.title} | ${site.name}`} description={copy.projects.description} locale={locale} switchPath={switchPath}>
+  <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+    <div class="reveal">
+      <SectionIntro eyebrow={copy.projects.eyebrow} title={copy.projects.heading} copy={copy.projects.copy} />
+    </div>
+
+    <div class="mt-12 grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
+      <article class="shell p-6 reveal reveal-delay-1 sm:p-8">
+        <div class="flex flex-wrap items-center gap-3">
+          <p class="font-mono text-xs uppercase tracking-[0.25em] text-cloud">{copy.projects.status}</p>
+          <span class="tag-chip">{copy.projects.statusChip}</span>
+        </div>
+        <h2 class="mt-4 text-2xl font-semibold text-white sm:text-3xl">{copy.projects.lead}</h2>
+        <p class="mt-4 max-w-2xl text-sm leading-7 text-mist">
+          {copy.projects.body}
+        </p>
+        <p class="mt-6 rounded-r-2xl border-l border-cloud/30 bg-white/[0.03] pl-4 text-sm leading-7 text-slate-300">
+          {copy.projects.note}
+        </p>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a class="button-primary" href={localizePath("/about", locale)}>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4">
+              <path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Z"></path>
+              <path d="M3 21a9 9 0 0 1 18 0"></path>
+            </svg>
+            <span>{copy.projects.ctas.profile}</span>
+          </a>
+          <a class="button-secondary" href={localizePath("/contact", locale)}>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            <span>{copy.projects.ctas.contact}</span>
+          </a>
+        </div>
+      </article>
+
+      <aside class="terminal-window reveal reveal-delay-2">
+        <div class="terminal-toolbar">
+          <span class="terminal-dot bg-red-500"></span>
+          <span class="terminal-dot bg-amber-400"></span>
+          <span class="terminal-dot bg-emerald-500"></span>
+        </div>
+        <div class="space-y-1">
+          <p class="terminal-line"><span class="terminal-prompt">$</span><span class="terminal-command">{copy.projects.terminal.command}</span></p>
+          <p class="terminal-line"><span class="terminal-output">{copy.projects.terminal.state}</span></p>
+          <p class="terminal-line"><span class="terminal-output">{copy.projects.terminal.focus}</span></p>
+          <p class="terminal-line"><span class="terminal-output">{copy.projects.terminal.format}</span></p>
+          <p class="terminal-line"><span class="terminal-output">{copy.projects.terminal.timeline}<span class="cursor-blink">_</span></span></p>
+        </div>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>

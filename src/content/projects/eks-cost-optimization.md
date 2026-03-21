@@ -1,4 +1,7 @@
 ---
+locale: en
+translationKey: eks-cost-optimization
+pathSlug: eks-cost-optimization
 title: "EKS Cost Optimization with Karpenter and Spot"
 description: "A Kubernetes platform strategy focused on reducing compute spend while keeping workloads resilient and autoscaling behavior predictable."
 technologies:

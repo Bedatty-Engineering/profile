@@ -1,10 +1,10 @@
 ---
 import { getCollection, render } from "astro:content";
-import PostLayout from "../../layouts/PostLayout.astro";
-import { findTranslatedEntry, getLocaleContent, getSectionPath } from "../../lib/i18n";
+import PostLayout from "../../../layouts/PostLayout.astro";
+import { findTranslatedEntry, getLocaleContent, getSectionPath } from "../../../lib/i18n";
 
 export async function getStaticPaths() {
-  const projects = await getCollection("projects", ({ data }) => data.locale === "en");
+  const projects = await getCollection("projects", ({ data }) => data.locale === "pt");
 
   return projects.map((project) => ({
     params: { slug: project.data.pathSlug },
@@ -12,15 +12,15 @@ export async function getStaticPaths() {
   }));
 }
 
-const copy = getLocaleContent("en");
+const copy = getLocaleContent("pt");
 const allProjects = await getCollection("projects");
 const { project } = Astro.props;
-const translatedProject = findTranslatedEntry(allProjects, project.data.translationKey, "pt");
-const switchPath = translatedProject ? `/pt/projects/${translatedProject.data.pathSlug}` : getSectionPath("projects", "pt");
+const translatedProject = findTranslatedEntry(allProjects, project.data.translationKey, "en");
+const switchPath = translatedProject ? `/projects/${translatedProject.data.pathSlug}` : getSectionPath("projects", "en");
 const { Content } = await render(project);
 ---
 
-<PostLayout title={project.data.title} description={project.data.description} locale="en" switchPath={switchPath} tags={project.data.technologies}>
+<PostLayout title={project.data.title} description={project.data.description} locale="pt" switchPath={switchPath} tags={project.data.technologies}>
   <div class="mb-8 grid gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-6 text-sm text-mist sm:grid-cols-2">
     <div>
       <p class="font-mono text-xs uppercase tracking-[0.2em] text-cloud">{copy.common.github}</p>

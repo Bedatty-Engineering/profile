@@ -1,4 +1,7 @@
 ---
+locale: en
+translationKey: secure-serverless-api
+pathSlug: secure-serverless-api
 title: "Secure Serverless API on AWS"
 description: "A serverless backend pattern using API Gateway, Lambda, IAM, and KMS with strong defaults for encryption, logging, and least-privilege access."
 technologies:

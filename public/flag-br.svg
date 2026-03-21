@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 40" role="img" aria-label="Brazil flag">
+  <rect width="64" height="40" fill="#15803d"/>
+  <polygon points="32,5 54,20 32,35 10,20" fill="#facc15"/>
+  <circle cx="32" cy="20" r="8.5" fill="#2563eb"/>
+  <path d="M22.5 18.5c3.3-2.4 7-3.6 11-3.6c3.5 0 6.8 0.9 9.7 2.6" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"/>
+</svg>

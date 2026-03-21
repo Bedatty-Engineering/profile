@@ -1,0 +1,96 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getLocaleContent, getOtherLocale, localizePath, type Locale } from "../../lib/i18n";
+import { site } from "../../lib/site";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const copy = getLocaleContent(locale);
+const switchPath = localizePath("/", getOtherLocale(locale));
+---
+
+<BaseLayout title={`${site.name} | ${copy.home.title}`} description={copy.description} locale={locale} switchPath={switchPath}>
+  <section class="relative overflow-hidden px-4 pb-16 pt-12 sm:px-6 sm:pb-20 sm:pt-16 lg:px-8 lg:pb-28 lg:pt-24">
+    <div class="absolute inset-0 -z-10">
+      <div class="absolute inset-0 bg-grid bg-[size:60px_60px] opacity-[0.06]"></div>
+      <div class="absolute left-[8%] top-[14%] h-72 w-72 rounded-full bg-cloud/10 blur-3xl"></div>
+      <div class="absolute right-[10%] top-[8%] h-64 w-64 rounded-full bg-steel/10 blur-3xl"></div>
+      <div class="absolute bottom-[8%] left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-aurora/10 blur-3xl"></div>
+    </div>
+
+    <div class="mx-auto grid max-w-6xl gap-8 sm:gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:items-center">
+      <div class="reveal space-y-6 sm:space-y-8">
+        <div class="inline-flex flex-wrap items-center gap-3 rounded-full border border-cloud/20 bg-cloud/10 px-4 py-2 font-mono text-[0.68rem] uppercase tracking-[0.2em] text-cloud sm:text-xs sm:tracking-[0.25em]">
+          {copy.home.badge[0]}
+          <span class="h-2 w-2 rounded-full bg-aurora"></span>
+          {copy.home.badge[1]}
+        </div>
+
+        <div>
+          <h1 class="mt-5 max-w-4xl bg-[linear-gradient(135deg,#78E6FF_0%,#C7D2FE_55%,#6EE7B7_100%)] bg-clip-text text-3xl font-semibold tracking-[-0.04em] text-transparent sm:text-6xl lg:text-7xl">
+            {site.name}
+          </h1>
+          <p class="mt-4 max-w-3xl font-mono text-xs uppercase tracking-[0.18em] text-slate-300 sm:text-base sm:tracking-[0.24em]">
+            {copy.home.kicker}
+          </p>
+          <p class="copy-muted mt-6 max-w-2xl">
+            {copy.home.intro}
+          </p>
+        </div>
+
+        <div class="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
+          <a class="button-primary" href={localizePath("/about", locale)}>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4">
+              <path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Z"></path>
+              <path d="M3 21a9 9 0 0 1 18 0"></path>
+            </svg>
+            <span>{copy.home.ctas.about}</span>
+          </a>
+          <a class="button-secondary" href={localizePath("/projects", locale)}>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4">
+              <path d="M3 7h18"></path>
+              <path d="M6 12h12"></path>
+              <path d="M10 17h4"></path>
+            </svg>
+            <span>{copy.home.ctas.projects}</span>
+          </a>
+          <a class="button-secondary" href={localizePath("/contact", locale)}>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            <span>{copy.home.ctas.contact}</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="terminal-window reveal reveal-delay-1">
+        <div class="terminal-toolbar">
+          <span class="terminal-dot bg-red-500"></span>
+          <span class="terminal-dot bg-amber-400"></span>
+          <span class="terminal-dot bg-emerald-500"></span>
+        </div>
+        <div class="space-y-1">
+          <p class="terminal-line"><span class="terminal-prompt">$</span><span class="terminal-command">whoami</span></p>
+          <p class="terminal-line"><span class="terminal-output">{site.name}</span></p>
+          <p class="terminal-line"><span class="terminal-prompt">$</span><span class="terminal-command">cat role.yaml</span></p>
+          <p class="terminal-line"><span class="terminal-output">title: {copy.home.terminal.title}</span></p>
+          <p class="terminal-line"><span class="terminal-output">focus: [{copy.home.terminal.focus}]</span></p>
+          <p class="terminal-line"><span class="terminal-output">architecture: {copy.home.terminal.architecture}<span class="cursor-blink">_</span></span></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-8 flex justify-center sm:mt-10 lg:mt-16">
+      <a href={localizePath("/about", locale)} class="scroll-cue">
+        <span>{copy.common.explore}</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4">
+          <path d="m6 9 6 6 6-6"></path>
+        </svg>
+      </a>
+    </div>
+  </section>
+</BaseLayout>

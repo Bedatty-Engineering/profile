@@ -1,22 +1,33 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
+import { formatDate, getLocaleContent, type Locale } from "../lib/i18n";
+import { site } from "../lib/site";
 
 interface Props {
   title: string;
   description: string;
+  locale: Locale;
+  switchPath: string;
   date?: Date;
   tags?: string[];
 }
 
-const { title, description, date, tags = [] } = Astro.props;
+const { title, description, locale, switchPath, date, tags = [] } = Astro.props;
+const copy = getLocaleContent(locale);
 ---
 
-<BaseLayout title={`${title} | Lucas C. Bedatty`} description={description} type="article">
+<BaseLayout
+  title={`${title} | ${site.name}`}
+  description={description}
+  locale={locale}
+  type="article"
+  switchPath={switchPath}
+>
   <section class="mx-auto max-w-4xl px-6 py-20 lg:px-8 lg:py-24">
     <div class="shell p-8 sm:p-10">
-      <p class="section-kicker">Detail View</p>
+      <p class="section-kicker">{copy.common.detailView}</p>
       <div class="mb-8 mt-6 flex flex-wrap items-center gap-4 text-sm text-mist">
-        {date && <span>{date.toLocaleDateString("en-US", { dateStyle: "long" })}</span>}
+        {date && <span>{formatDate(date, locale)}</span>}
         {
           tags.map((tag) => (
             <span class="rounded-md border border-cloud/20 bg-cloud/10 px-3 py-1 font-mono text-xs uppercase tracking-[0.2em] text-steel">
