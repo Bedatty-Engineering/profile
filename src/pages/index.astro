@@ -4,7 +4,7 @@ import { site } from "../lib/site";
 ---
 
 <BaseLayout title={`${site.name} | DevOps Portfolio`} description={site.description}>
-  <section class="relative overflow-hidden px-6 pb-20 pt-16 lg:px-8 lg:pb-28 lg:pt-24">
+  <section class="relative overflow-hidden px-4 pb-16 pt-12 sm:px-6 sm:pb-20 sm:pt-16 lg:px-8 lg:pb-28 lg:pt-24">
     <div class="absolute inset-0 -z-10">
       <div class="absolute inset-0 bg-grid bg-[size:60px_60px] opacity-[0.06]"></div>
       <div class="absolute left-[8%] top-[14%] h-72 w-72 rounded-full bg-cloud/10 blur-3xl"></div>
@@ -12,19 +12,19 @@ import { site } from "../lib/site";
       <div class="absolute bottom-[8%] left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-aurora/10 blur-3xl"></div>
     </div>
 
-    <div class="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:items-center">
-      <div class="reveal space-y-8">
-        <div class="inline-flex flex-wrap items-center gap-3 rounded-full border border-cloud/20 bg-cloud/10 px-4 py-2 font-mono text-[0.7rem] uppercase tracking-[0.22em] text-cloud sm:text-xs sm:tracking-[0.25em]">
+    <div class="mx-auto grid max-w-6xl gap-8 sm:gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:items-center">
+      <div class="reveal space-y-6 sm:space-y-8">
+        <div class="inline-flex flex-wrap items-center gap-3 rounded-full border border-cloud/20 bg-cloud/10 px-4 py-2 font-mono text-[0.68rem] uppercase tracking-[0.2em] text-cloud sm:text-xs sm:tracking-[0.25em]">
           AWS Certified
           <span class="h-2 w-2 rounded-full bg-aurora"></span>
           Senior DevOps Engineer
         </div>
 
         <div>
-          <h1 class="mt-5 max-w-4xl bg-[linear-gradient(135deg,#78E6FF_0%,#C7D2FE_55%,#6EE7B7_100%)] bg-clip-text text-4xl font-semibold tracking-[-0.04em] text-transparent sm:text-6xl lg:text-7xl">
+          <h1 class="mt-5 max-w-4xl bg-[linear-gradient(135deg,#78E6FF_0%,#C7D2FE_55%,#6EE7B7_100%)] bg-clip-text text-3xl font-semibold tracking-[-0.04em] text-transparent sm:text-6xl lg:text-7xl">
             {site.name}
           </h1>
-          <p class="mt-4 max-w-3xl font-mono text-sm uppercase tracking-[0.24em] text-slate-300 sm:text-base">
+          <p class="mt-4 max-w-3xl font-mono text-xs uppercase tracking-[0.18em] text-slate-300 sm:text-base sm:tracking-[0.24em]">
             Cloud Engineer | DevOps & SRE | Platform Engineer
           </p>
           <p class="copy-muted mt-6 max-w-2xl">
@@ -75,7 +75,7 @@ import { site } from "../lib/site";
       </div>
     </div>
 
-    <div class="mt-10 flex justify-center lg:mt-16">
+    <div class="mt-8 flex justify-center sm:mt-10 lg:mt-16">
       <a href="/about" class="scroll-cue">
         <span>Explore</span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4">

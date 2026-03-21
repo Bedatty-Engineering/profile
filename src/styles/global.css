@@ -102,15 +102,15 @@
   }
 
   .copy-muted {
-    @apply text-base leading-7 text-mist;
+    @apply text-sm leading-7 text-mist sm:text-base;
   }
 
   .button-primary {
-    @apply inline-flex min-h-[3rem] items-center justify-center gap-2 rounded-lg border border-cloud/60 bg-cloud px-4 py-3 text-center font-mono text-xs font-semibold uppercase tracking-[0.18em] text-ink transition duration-300 hover:-translate-y-0.5 hover:border-cloud hover:bg-[#8cecff] sm:px-5 sm:text-sm;
+    @apply inline-flex min-h-[3rem] w-full items-center justify-center gap-2 rounded-lg border border-cloud/60 bg-cloud px-4 py-3 text-center font-mono text-xs font-semibold uppercase tracking-[0.18em] text-ink transition duration-300 hover:-translate-y-0.5 hover:border-cloud hover:bg-[#8cecff] sm:w-auto sm:px-5 sm:text-sm;
   }
 
   .button-secondary {
-    @apply inline-flex min-h-[3rem] items-center justify-center gap-2 rounded-lg border border-cloud/30 bg-cloud/5 px-4 py-3 text-center font-mono text-xs uppercase tracking-[0.18em] text-cloud transition duration-300 hover:-translate-y-0.5 hover:border-cloud/70 hover:bg-cloud/10 sm:px-5 sm:text-sm;
+    @apply inline-flex min-h-[3rem] w-full items-center justify-center gap-2 rounded-lg border border-cloud/30 bg-cloud/5 px-4 py-3 text-center font-mono text-xs uppercase tracking-[0.18em] text-cloud transition duration-300 hover:-translate-y-0.5 hover:border-cloud/70 hover:bg-cloud/10 sm:w-auto sm:px-5 sm:text-sm;
   }
 
   .prose-cloud {
@@ -288,7 +288,7 @@
   }
 
   .stack-card {
-    @apply rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-6 transition duration-300 hover:-translate-y-1 hover:border-cloud/30 hover:bg-white/[0.05];
+    @apply rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-5 transition duration-300 hover:-translate-y-1 hover:border-cloud/30 hover:bg-white/[0.05] sm:p-6;
   }
 
   .stack-icon {
@@ -333,7 +333,7 @@
   }
 
   .timeline-card {
-    @apply rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-6 transition duration-300 hover:-translate-y-1 hover:border-cloud/30 hover:bg-white/[0.05];
+    @apply rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-5 transition duration-300 hover:-translate-y-1 hover:border-cloud/30 hover:bg-white/[0.05] sm:p-6;
   }
 
   .timeline-period {
@@ -345,7 +345,7 @@
   }
 
   .edu-card {
-    @apply rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-6 transition duration-300 hover:-translate-y-1 hover:border-cloud/30 hover:bg-white/[0.05];
+    @apply rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-5 transition duration-300 hover:-translate-y-1 hover:border-cloud/30 hover:bg-white/[0.05] sm:p-6;
   }
 
   .edu-icon {
@@ -353,7 +353,7 @@
   }
 
   .cert-card {
-    @apply flex items-center gap-4 rounded-[1.5rem] border border-white/10 bg-white/[0.03] p-5 transition duration-300 hover:-translate-y-1 hover:border-cloud/30 hover:bg-white/[0.05];
+    @apply flex items-center gap-4 rounded-[1.5rem] border border-white/10 bg-white/[0.03] p-4 transition duration-300 hover:-translate-y-1 hover:border-cloud/30 hover:bg-white/[0.05] sm:p-5;
   }
 
   .cert-badge {
@@ -361,7 +361,7 @@
   }
 
   .contact-link {
-    @apply flex items-center gap-4 rounded-[1.25rem] border border-white/10 bg-white/[0.03] px-5 py-4 transition duration-300 hover:translate-x-1 hover:border-cloud/30 hover:bg-white/[0.05] hover:text-cloud;
+    @apply flex items-start gap-4 rounded-[1.25rem] border border-white/10 bg-white/[0.03] px-4 py-4 transition duration-300 hover:translate-x-1 hover:border-cloud/30 hover:bg-white/[0.05] hover:text-cloud sm:items-center sm:px-5;
   }
 
   .contact-link-icon {

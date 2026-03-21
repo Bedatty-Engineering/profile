@@ -6,7 +6,7 @@ Guidelines for AI agents working in this repository.
 
 ## Project Overview
 
-Static portfolio site for a Senior DevOps / Cloud Engineer. Built with **Astro v5**, **Tailwind CSS v3**, and **MDX**. Deployed as fully static output to `https://lucasbedatty.dev`.
+Static portfolio site for a Senior DevOps / Cloud Engineer. Built with **Astro v5**, **Tailwind CSS v3**, and markdown content collections. Deployed as static output served by a **Cloudflare Worker** for `https://bedatty.com`.
 
 ---
 
@@ -14,7 +14,8 @@ Static portfolio site for a Senior DevOps / Cloud Engineer. Built with **Astro v
 
 ```bash
 npm run dev      # local dev server (http://localhost:4321)
-npm run build    # production build → dist/
+npm run generate:og  # generate the social preview image PNG
+npm run build    # generate og-image.png + production build → dist/
 npm run preview  # preview the production build locally
 ```
 
@@ -82,7 +83,7 @@ Defined in `src/styles/global.css` — always prefer these over repeating Tailwi
 ## Conventions
 
 ### Site Metadata
-All personal data (name, email, GitHub, LinkedIn, description, skill groups) lives in `src/lib/site.ts`. **Never hardcode** these values in components or pages — always import from `site.ts`.
+All personal data and site metadata (name, email, GitHub, LinkedIn, descriptions, OG image metadata, skill groups) lives in `src/lib/site.ts`. **Never hardcode** these values in components or pages — always import from `site.ts`.
 
 ### Content Collections
 - Collections are declared in `src/content.config.ts` with Zod schemas.
@@ -94,10 +95,11 @@ All personal data (name, email, GitHub, LinkedIn, description, skill groups) liv
 - Type component props with `interface Props` in the frontmatter fence.
 - Frontmatter order: imports → data fetching → derived values.
 - Dynamic routes (`[slug].astro`) must export `getStaticPaths()`.
-- Internal links always use trailing slashes: `/blog/${post.id}/`.
+- Dynamic content links and feed links should use trailing slashes: `/blog/${post.id}/`.
+- Current static page navigation in the repo uses the existing top-level path style (`/about`, `/projects`, `/contact`).
 
 ### TypeScript
-- Use TypeScript for all logic files. No plain `.js` files under `src/`.
+- Use TypeScript for logic files by default. The current repo intentionally keeps `src/pages/rss.xml.js`.
 - `astro.config.mjs` and `tailwind.config.mjs` are intentionally `.mjs` — leave them as is.
 
 ### Styling
@@ -135,6 +137,20 @@ architecture_notes: "Key design decisions and trade-offs"
 
 ### Adding a New Page
 Create `src/pages/<name>.astro`. Wrap content with `<BaseLayout>` and pass `title` and `description` props.
+
+### Validation And CI
+- Pull requests to `main` run GitHub Actions from `.github/workflows/validation.yml` and `.github/workflows/secrets-scan.yml`.
+- `validation.yml` checks install, Astro build, Wrangler dry-run, and required build artifacts.
+- `secrets-scan.yml` runs Gitleaks against the repository history.
+
+### Deploy
+- Cloudflare deployment config lives in `wrangler.jsonc`.
+- The Worker serves static assets from `./dist`.
+- When Cloudflare Git integration is used, the expected commands are:
+```bash
+npm run build
+npx wrangler deploy
+```
 
 ---
 
