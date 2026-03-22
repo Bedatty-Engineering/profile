@@ -10,7 +10,7 @@ const { locale } = Astro.props;
 const copy = getLocaleContent(locale);
 ---
 
-<footer class="border-t border-white/10 bg-black/10">
+<footer class="site-footer border-t border-white/10">
   <div class="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-10 text-sm text-mist sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
     <div>
       <p class="font-mono text-xs uppercase tracking-[0.24em] text-cloud">{copy.footer.status}</p>

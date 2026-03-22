@@ -104,9 +104,43 @@ const structuredData = {
     <meta name="format-detection" content="telephone=no" />
     <script type="application/ld+json" set:html={JSON.stringify(structuredData)}></script>
     <script is:inline>
-      const preferredLocale = window.localStorage.getItem("preferred-locale");
-      if (preferredLocale === "pt" && window.location.pathname === "/") {
-        window.location.replace("/pt/");
+      const THEME_STORAGE_KEY = "preferred-theme";
+      const THEME_COLORS = {
+        default: "#060816",
+        mono: "#ffffff"
+      };
+
+      const setTheme = (theme) => {
+        const nextTheme = theme === "mono" ? "mono" : "default";
+        document.documentElement.dataset.theme = nextTheme;
+        document.documentElement.style.colorScheme = nextTheme === "mono" ? "light" : "dark";
+
+        const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+        metaThemeColor?.setAttribute("content", THEME_COLORS[nextTheme]);
+
+        try {
+          window.localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
+        } catch {}
+
+        window.dispatchEvent(new CustomEvent("themechange", { detail: { theme: nextTheme } }));
+      };
+
+      window.__setPreferredTheme = setTheme;
+      window.__getPreferredTheme = () => document.documentElement.dataset.theme || "default";
+
+      try {
+        const preferredLocale = window.localStorage.getItem("preferred-locale");
+        if (preferredLocale === "pt" && window.location.pathname === "/") {
+          window.location.replace("/pt/");
+        }
+      } catch {}
+
+      try {
+        const storedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
+        setTheme(storedTheme === "mono" ? "mono" : "default");
+      } catch {
+        document.documentElement.dataset.theme = "default";
+        document.documentElement.style.colorScheme = "dark";
       }
     </script>
   </head>

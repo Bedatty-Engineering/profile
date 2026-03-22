@@ -45,6 +45,8 @@ export const localizedSite = {
       toggleNavigation: "Toggle navigation",
       openNavigation: "Open navigation menu",
       closeNavigation: "Close navigation menu",
+      switchThemeToMono: "Switch to black and white theme",
+      switchThemeToColor: "Switch to color theme",
       skillGroup: "skill group",
       explore: "Explore"
     },
@@ -302,6 +304,8 @@ export const localizedSite = {
       toggleNavigation: "Alternar navegação",
       openNavigation: "Abrir menu de navegação",
       closeNavigation: "Fechar menu de navegação",
+      switchThemeToMono: "Mudar para o tema preto e branco",
+      switchThemeToColor: "Mudar para o tema colorido",
       skillGroup: "grupo de skills",
       explore: "Explorar"
     },

@@ -21,7 +21,7 @@ const navItems = [
 const currentPath = Astro.url.pathname;
 ---
 
-<header id="site-header" class="site-header sticky top-0 z-40 border-b border-white/10 bg-ink/75 backdrop-blur-xl">
+<header id="site-header" class="site-header sticky top-0 z-40 border-b border-white/10 backdrop-blur-xl">
   <div class="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
     <div class="flex items-center justify-between gap-3">
       <a href={locale === "en" ? "/" : "/pt"} class="flex items-center gap-2 font-mono text-xs font-semibold tracking-[0.08em] text-cloud sm:text-sm">
@@ -38,6 +38,19 @@ const currentPath = Astro.url.pathname;
           data-locale-switch={targetLocale}
           aria-label={`Switch language to ${targetLocale.toUpperCase()}`}
         ></a>
+        <button
+          type="button"
+          class="theme-toggle"
+          data-theme-toggle
+          aria-pressed="false"
+          aria-label={copy.common.switchThemeToMono}
+          title={copy.common.switchThemeToMono}
+          data-mono-label={copy.common.switchThemeToMono}
+          data-color-label={copy.common.switchThemeToColor}
+        >
+          <span class="sr-only">{copy.common.switchThemeToMono}</span>
+          <span class="theme-toggle-icon" aria-hidden="true"></span>
+        </button>
         <button
           id="mobile-nav-toggle"
           type="button"
@@ -75,6 +88,20 @@ const currentPath = Astro.url.pathname;
         }
       </nav>
 
+      <button
+        type="button"
+        class="theme-toggle"
+        data-theme-toggle
+        aria-pressed="false"
+        aria-label={copy.common.switchThemeToMono}
+        title={copy.common.switchThemeToMono}
+        data-mono-label={copy.common.switchThemeToMono}
+        data-color-label={copy.common.switchThemeToColor}
+      >
+        <span class="sr-only">{copy.common.switchThemeToMono}</span>
+        <span class="theme-toggle-icon" aria-hidden="true"></span>
+      </button>
+
       <a
         href={switchPath}
         class="language-toggle"
@@ -111,6 +138,7 @@ const currentPath = Astro.url.pathname;
 <script is:inline>
   const mobileNavToggle = document.getElementById("mobile-nav-toggle");
   const mobileNav = document.getElementById("mobile-nav");
+  const themeToggleButtons = document.querySelectorAll("[data-theme-toggle]");
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const localeSwitchLinks = document.querySelectorAll("[data-locale-switch]");
 
@@ -122,6 +150,47 @@ const currentPath = Astro.url.pathname;
       }
     });
   });
+
+  const syncThemeToggleButtons = () => {
+    const currentTheme = typeof window.__getPreferredTheme === "function"
+      ? window.__getPreferredTheme()
+      : document.documentElement.dataset.theme || "default";
+
+    themeToggleButtons.forEach((button) => {
+      if (!(button instanceof HTMLButtonElement)) return;
+
+      const monoLabel = button.dataset.monoLabel ?? "Switch to black and white theme";
+      const colorLabel = button.dataset.colorLabel ?? "Switch to color theme";
+      const nextLabel = currentTheme === "mono" ? colorLabel : monoLabel;
+
+      button.classList.toggle("is-mono", currentTheme === "mono");
+      button.setAttribute("aria-pressed", String(currentTheme === "mono"));
+      button.setAttribute("aria-label", nextLabel);
+      button.setAttribute("title", nextLabel);
+    });
+  };
+
+  themeToggleButtons.forEach((button) => {
+    if (!(button instanceof HTMLButtonElement)) return;
+
+    button.addEventListener("click", () => {
+      const currentTheme = typeof window.__getPreferredTheme === "function"
+        ? window.__getPreferredTheme()
+        : document.documentElement.dataset.theme || "default";
+      const nextTheme = currentTheme === "mono" ? "default" : "mono";
+
+      if (typeof window.__setPreferredTheme === "function") {
+        window.__setPreferredTheme(nextTheme);
+      } else {
+        document.documentElement.dataset.theme = nextTheme;
+      }
+
+      syncThemeToggleButtons();
+    });
+  });
+
+  window.addEventListener("themechange", syncThemeToggleButtons);
+  syncThemeToggleButtons();
 
   if (mobileNavToggle instanceof HTMLButtonElement && mobileNav) {
     const openLabel = mobileNavToggle.getAttribute("aria-label") ?? "Open navigation menu";
