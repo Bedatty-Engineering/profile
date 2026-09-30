@@ -1,4 +1,7 @@
-# Lucas C. Bedatty Portfolio
+<table><tr>
+<td><img src="https://github.com/Bedatty-Engineering.png" alt="Bedatty Engineering" width="80" /></td>
+<td><h1>Lucas C. Bedatty Portfolio</h1></td>
+</tr></table>
 
 Static developer portfolio built with Astro, TypeScript, TailwindCSS, and markdown content collections. The site is designed for a Cloud / DevOps engineer profile and is deployed as static output served by a Cloudflare Worker.
 

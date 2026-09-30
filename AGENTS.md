@@ -1,4 +1,7 @@
-# AGENTS.md — Lucas Bedatty Portfolio
+<table><tr>
+<td><img src="https://github.com/Bedatty-Engineering.png" alt="Bedatty Engineering" width="80" /></td>
+<td><h1>AGENTS.md — Lucas Bedatty Portfolio</h1></td>
+</tr></table>
 
 Guidelines for AI agents working in this repository.
 
