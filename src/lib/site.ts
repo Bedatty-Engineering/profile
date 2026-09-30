@@ -22,7 +22,6 @@ export const localizedSite = {
       home: "Home",
       about: "About",
       projects: "Projects",
-      blog: "Blog",
       contact: "Contact",
       switchTo: "PT"
     },
@@ -48,7 +47,7 @@ export const localizedSite = {
       switchThemeToMono: "Switch to black and white theme",
       switchThemeToColor: "Switch to color theme",
       skillGroup: "skill group",
-      explore: "Explore"
+      explore: "Click to explore"
     },
     home: {
       title: "DevOps Portfolio",
@@ -89,10 +88,14 @@ export const localizedSite = {
         focusValue: "AWS Platforms, SRE, DevOps"
       },
       stats: [
-        { number: "4+", label: "Years in Cloud & DevOps" },
-        { number: "Gov", label: "Security & Governance" },
-        { number: "IaC", label: "Terraform, CDK, CFN" },
-        { number: "K8s", label: "EKS & ECS Focus" }
+        { number: "6+", label: "Years of experience in Cloud & DevOps" },
+        { number: "Platform", label: "GitOps, CI/CD & Go tooling" },
+        { number: "K8s", label: "EKS, ECS & Karpenter" },
+        { number: "IaC", label: "Terraform, CDK & CloudFormation" },
+        { number: "SRE", label: "Reliability, observability & performance" },
+        { number: "Gov", label: "Control Tower, SCPs & multi-account AWS" },
+        { number: "DevSecOps", label: "Supply chain security & container hardening" },
+        { number: "FinOps", label: "EKS cost optimization with Karpenter & Spot" }
       ],
       stack: {
         eyebrow: "Tech Stack",
@@ -283,7 +286,6 @@ export const localizedSite = {
       home: "Início",
       about: "Sobre",
       projects: "Projetos",
-      blog: "Blog",
       contact: "Contato",
       switchTo: "EN"
     },
@@ -309,7 +311,7 @@ export const localizedSite = {
       switchThemeToMono: "Mudar para o tema preto e branco",
       switchThemeToColor: "Mudar para o tema colorido",
       skillGroup: "grupo de skills",
-      explore: "Explorar"
+      explore: "Clique para explorar"
     },
     home: {
       title: "Portfólio DevOps",
@@ -350,10 +352,14 @@ export const localizedSite = {
         focusValue: "Plataformas AWS, SRE, DevOps"
       },
       stats: [
-        { number: "4+", label: "Anos em Cloud & DevOps" },
-        { number: "Gov", label: "Segurança & Governança" },
-        { number: "IaC", label: "Terraform, CDK, CFN" },
-        { number: "K8s", label: "Foco em EKS & ECS" }
+        { number: "6+", label: "Anos de experiência em Cloud & DevOps" },
+        { number: "Platform", label: "GitOps, CI/CD e ferramentas em Go" },
+        { number: "K8s", label: "EKS, ECS e Karpenter" },
+        { number: "IaC", label: "Terraform, CDK e CloudFormation" },
+        { number: "SRE", label: "Confiabilidade, observabilidade e performance" },
+        { number: "Gov", label: "Control Tower, SCPs e AWS multi-account" },
+        { number: "DevSecOps", label: "Segurança de supply chain e hardening de containers" },
+        { number: "FinOps", label: "Otimização de custos em EKS com Karpenter e Spot" }
       ],
       stack: {
         eyebrow: "Stack",

@@ -507,8 +507,7 @@
   }
 
   .scroll-cue {
-    @apply inline-flex flex-col items-center gap-2 font-mono text-[0.7rem] uppercase tracking-[0.24em] text-mist;
-    animation: float-soft 2.8s ease-in-out infinite;
+    @apply inline-flex min-h-[3.25rem] items-center gap-3 rounded-xl border border-cloud/40 bg-cloud/10 px-7 py-3 font-mono text-xs font-semibold uppercase tracking-[0.18em] text-cloud transition duration-300 hover:-translate-y-0.5 hover:border-cloud/70 hover:bg-cloud/15 sm:text-sm;
   }
 
   .scroll-top-button {
@@ -534,7 +533,7 @@
   }
 
   .stat-card {
-    @apply rounded-[1.5rem] border border-white/10 bg-white/[0.03] p-5 text-center transition duration-300 hover:-translate-y-1 hover:border-cloud/30 hover:bg-white/[0.05];
+    @apply rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-center transition duration-300 hover:-translate-y-1 hover:border-cloud/30 hover:bg-white/[0.05];
   }
 
   .stat-number {
@@ -543,7 +542,7 @@
   }
 
   .stat-label {
-    @apply mt-2 text-sm text-mist;
+    @apply mt-2 min-h-10 text-sm leading-5 text-mist;
   }
 
   .stack-card {
