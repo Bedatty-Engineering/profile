@@ -11,6 +11,7 @@ interface Props {
 const { locale } = Astro.props;
 const copy = getLocaleContent(locale);
 const switchPath = localizePath("/about", getOtherLocale(locale));
+const resumeFile = locale === "pt" ? "PT-Curriculum-Lucas-Bedatty.pdf" : "EN-Curriculum-Lucas-Bedatty.pdf";
 ---
 
 <BaseLayout title={`${copy.about.eyebrow} | ${site.name}`} description={copy.description} locale={locale} switchPath={switchPath}>
@@ -19,7 +20,7 @@ const switchPath = localizePath("/about", getOtherLocale(locale));
       <SectionIntro eyebrow={copy.about.eyebrow} title={copy.about.title} copy={copy.about.copy} />
     </div>
     <div class="reveal reveal-delay-1 mt-8 flex flex-wrap gap-4">
-      <a class="button-primary" href="/lucas-bedatty-resume.pdf" download="lucas-bedatty-resume.pdf">
+      <a class="button-primary" href={`/${resumeFile}`} download={resumeFile}>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4">
           <path d="M12 3v12"></path>
           <path d="m7 10 5 5 5-5"></path>
@@ -142,6 +143,7 @@ const switchPath = localizePath("/about", getOtherLocale(locale));
                 </div>
                 <p class="text-xl font-semibold text-white">{item.institution}</p>
                 <p class="mt-2 text-sm leading-7 text-mist">{item.degree}</p>
+                {"focus" in item && <p class="mt-3 text-sm leading-7 text-mist">{item.focus}</p>}
                 <p class="mt-4 font-mono text-xs uppercase tracking-[0.22em] text-cloud">{item.period}</p>
               </div>
             ))
