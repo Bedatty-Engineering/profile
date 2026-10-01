@@ -22,7 +22,6 @@ export const localizedSite = {
       home: "Home",
       about: "About",
       projects: "Projects",
-      blog: "Blog",
       contact: "Contact",
       switchTo: "PT"
     },
@@ -48,7 +47,7 @@ export const localizedSite = {
       switchThemeToMono: "Switch to black and white theme",
       switchThemeToColor: "Switch to color theme",
       skillGroup: "skill group",
-      explore: "Explore"
+      explore: "Click to explore"
     },
     home: {
       title: "DevOps Portfolio",
@@ -89,10 +88,14 @@ export const localizedSite = {
         focusValue: "AWS Platforms, SRE, DevOps"
       },
       stats: [
-        { number: "4+", label: "Years in Cloud & DevOps" },
-        { number: "Gov", label: "Security & Governance" },
-        { number: "IaC", label: "Terraform, CDK, CFN" },
-        { number: "K8s", label: "EKS & ECS Focus" }
+        { number: "6+", label: "Years of experience in Cloud & DevOps" },
+        { number: "Platform", label: "GitOps, CI/CD & Go tooling" },
+        { number: "K8s", label: "EKS, ECS & Karpenter" },
+        { number: "IaC", label: "Terraform, CDK & CloudFormation" },
+        { number: "SRE", label: "Reliability, observability & performance" },
+        { number: "Gov", label: "Control Tower, SCPs & multi-account AWS" },
+        { number: "DevSecOps", label: "Supply chain security & container hardening" },
+        { number: "FinOps", label: "EKS cost optimization with Karpenter & Spot" }
       ],
       stack: {
         eyebrow: "Tech Stack",
@@ -202,8 +205,15 @@ export const localizedSite = {
         company: "Lerian",
         period: "Feb 2026 - Present",
         location: "SP, Brazil",
-        summary: [],
-        tags: ["DevOps", "SRE", "Platform Engineering"]
+        summary: [
+          "Design and evolve resilient, secure cloud-native platforms with Kubernetes, GitOps and infrastructure as code.",
+          "Build reusable CI/CD pipelines and platform automation with Terraform and Go.",
+          "Operate Kubernetes workloads with a focus on scheduling, high availability and capacity planning.",
+          "Apply SRE practices, performance testing, observability and chaos engineering to improve service resilience.",
+          "Strengthen DevSecOps, software supply chain security and container hardening; use AI in engineering workflows.",
+          "Support secure private connectivity with Tailscale and hybrid environments with Proxmox."
+        ],
+        tags: ["DevOps", "SRE", "Platform Engineering", "Kubernetes", "Terraform", "Go", "GitOps", "DevSecOps"]
       },
       {
         role: "Software Engineer II",
@@ -235,21 +245,15 @@ export const localizedSite = {
           "Managed IAM roles and policies using least-privilege principles."
         ],
         tags: ["EC2", "VPC", "Terraform", "Python", "IAM", "S3"]
-      },
-      {
-        role: "IT Assistant",
-        company: "Certta",
-        period: "Aug 2021 - Apr 2022",
-        location: "RS, Brazil",
-        summary: [
-          "Provided AWS support and Linux and Windows server administration.",
-          "Handled networking, security routines and hardware maintenance.",
-          "Supported IT operations, databases and helpdesk activities."
-        ],
-        tags: ["AWS", "Linux", "Windows Server", "Networking"]
       }
     ],
     educationItems: [
+      {
+        institution: "Centro Universitário Una",
+        degree: "Postgraduate Specialization in Cloud-Native Architecture and Platform Engineering",
+        period: "Sep 2026 - Dec 2027",
+        focus: "In progress. Developing deeper expertise in cloud-native architecture and platform engineering, connected to hands-on work with Kubernetes, Terraform, GitOps and SRE practices."
+      },
       {
         institution: "UNOPAR",
         degree: "Associate Degree in Systems Analysis and Development",
@@ -262,6 +266,7 @@ export const localizedSite = {
       }
     ],
     certificationItems: [
+      { name: "AWS Certified Solutions Architect", issuer: "Amazon Web Services" },
       { name: "AWS Cloud Practitioner", issuer: "Amazon Web Services" },
       { name: "AWS Expert", issuer: "AWS Training" },
       { name: "AWS Events and Workflows", issuer: "AWS Knowledge" },
@@ -281,7 +286,6 @@ export const localizedSite = {
       home: "Início",
       about: "Sobre",
       projects: "Projetos",
-      blog: "Blog",
       contact: "Contato",
       switchTo: "EN"
     },
@@ -307,7 +311,7 @@ export const localizedSite = {
       switchThemeToMono: "Mudar para o tema preto e branco",
       switchThemeToColor: "Mudar para o tema colorido",
       skillGroup: "grupo de skills",
-      explore: "Explorar"
+      explore: "Clique para explorar"
     },
     home: {
       title: "Portfólio DevOps",
@@ -348,10 +352,14 @@ export const localizedSite = {
         focusValue: "Plataformas AWS, SRE, DevOps"
       },
       stats: [
-        { number: "4+", label: "Anos em Cloud & DevOps" },
-        { number: "Gov", label: "Segurança & Governança" },
-        { number: "IaC", label: "Terraform, CDK, CFN" },
-        { number: "K8s", label: "Foco em EKS & ECS" }
+        { number: "6+", label: "Anos de experiência em Cloud & DevOps" },
+        { number: "Platform", label: "GitOps, CI/CD e ferramentas em Go" },
+        { number: "K8s", label: "EKS, ECS e Karpenter" },
+        { number: "IaC", label: "Terraform, CDK e CloudFormation" },
+        { number: "SRE", label: "Confiabilidade, observabilidade e performance" },
+        { number: "Gov", label: "Control Tower, SCPs e AWS multi-account" },
+        { number: "DevSecOps", label: "Segurança de supply chain e hardening de containers" },
+        { number: "FinOps", label: "Otimização de custos em EKS com Karpenter e Spot" }
       ],
       stack: {
         eyebrow: "Stack",
@@ -461,8 +469,15 @@ export const localizedSite = {
         company: "Lerian",
         period: "Fev 2026 - Atual",
         location: "SP, Brasil",
-        summary: [],
-        tags: ["DevOps", "SRE", "Platform Engineering"]
+        summary: [
+          "Projeto e evoluo plataformas cloud-native resilientes, seguras e escaláveis com Kubernetes, GitOps e infraestrutura como código.",
+          "Desenvolvo pipelines CI/CD reutilizáveis e automações de plataforma com Terraform e Go.",
+          "Atuo na operação de workloads Kubernetes, com foco em scheduling, alta disponibilidade e capacity planning.",
+          "Aplico práticas de SRE, testes de performance, observabilidade e engenharia de caos para fortalecer a resiliência dos serviços.",
+          "Fortaleço DevSecOps, segurança da supply chain e hardening de containers; integro IA aos fluxos de engenharia.",
+          "Trabalho com conectividade privada segura usando Tailscale e ambientes híbridos com Proxmox."
+        ],
+        tags: ["DevOps", "SRE", "Platform Engineering", "Kubernetes", "Terraform", "Go", "GitOps", "DevSecOps"]
       },
       {
         role: "Software Engineer II",
@@ -494,21 +509,15 @@ export const localizedSite = {
           "Gerenciei roles e policies IAM seguindo princípios de menor privilégio."
         ],
         tags: ["EC2", "VPC", "Terraform", "Python", "IAM", "S3"]
-      },
-      {
-        role: "Assistente de TI",
-        company: "Certta",
-        period: "Ago 2021 - Abr 2022",
-        location: "RS, Brasil",
-        summary: [
-          "Prestei suporte em AWS e administração de servidores Linux e Windows.",
-          "Atuei com rotinas de rede, segurança e manutenção de hardware.",
-          "Apoiei operações de TI, bancos de dados e atividades de helpdesk."
-        ],
-        tags: ["AWS", "Linux", "Windows Server", "Networking"]
       }
     ],
     educationItems: [
+      {
+        institution: "Centro Universitário Una",
+        degree: "Pós-Graduação Lato Sensu (Especialização) em Arquitetura Cloud-Native e Engenharia de Plataformas",
+        period: "Set 2026 - Dez 2027",
+        focus: "Em andamento. Aprofundamento em arquitetura cloud-native e engenharia de plataformas, conectado à prática com Kubernetes, Terraform, GitOps e SRE."
+      },
       {
         institution: "UNOPAR",
         degree: "Tecnólogo em Análise e Desenvolvimento de Sistemas",
@@ -521,6 +530,7 @@ export const localizedSite = {
       }
     ],
     certificationItems: [
+      { name: "AWS Certified Solutions Architect", issuer: "Amazon Web Services" },
       { name: "AWS Cloud Practitioner", issuer: "Amazon Web Services" },
       { name: "AWS Expert", issuer: "AWS Training" },
       { name: "AWS Events and Workflows", issuer: "AWS Knowledge" },
