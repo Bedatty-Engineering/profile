@@ -41,6 +41,12 @@ const { Content, headings } = await render(project);
             </svg>
             <span>{copy.projects.githubLinkLabel}</span>
           </a>
+          <a href={project.data.github_link} target="_blank" rel="noreferrer" aria-label={`${copy.projects.githubStarLabel} (${project.data.github_link})`} class="mt-3 ml-2 inline-flex items-center gap-2 rounded-xl border border-aurora/25 bg-aurora/[0.07] px-4 py-2.5 font-mono text-sm text-aurora transition-colors hover:border-aurora/50 hover:bg-aurora/[0.12] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aurora">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+              <path d="m12 3 2.78 5.63 6.22.9-4.5 4.39 1.06 6.2L12 17.2l-5.56 2.92 1.06-6.2L3 9.53l6.22-.9L12 3Z" />
+            </svg>
+            <span>{copy.projects.githubStarLabel}</span>
+          </a>
         </div>
       )}
       {project.data.demo_link && (
