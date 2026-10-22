@@ -21,51 +21,28 @@ const switchPath = localizePath("/projects", getOtherLocale(locale));
       <SectionIntro eyebrow={copy.projects.eyebrow} title={copy.projects.heading} copy={copy.projects.copy} />
     </div>
 
-    <div class="mt-12 grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
-      <article class="shell p-6 reveal reveal-delay-1 sm:p-8">
-        <div class="flex flex-wrap items-center gap-3">
-          <p class="font-mono text-xs uppercase tracking-[0.25em] text-cloud">{copy.projects.status}</p>
-          <span class="tag-chip">{copy.projects.statusChip}</span>
+    {
+      projects.length > 0 ? (
+        <div class="mt-12 grid gap-6 md:grid-cols-2">
+          {projects.map((project) => (
+            <a
+              href={localizePath(`/projects/${project.data.pathSlug}/`, locale)}
+              class="shell group flex h-full flex-col p-6 transition-colors hover:border-cloud/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cloud sm:p-8"
+            >
+              <h2 class="text-xl font-semibold text-white transition-colors group-hover:text-cloud sm:text-2xl">
+                {project.data.title}
+              </h2>
+              <p class="mt-4 text-sm leading-7 text-mist">{project.data.description}</p>
+              <div class="mt-6 flex flex-wrap gap-2">
+                {project.data.technologies.map((technology) => <span class="tag-chip">{technology}</span>)}
+              </div>
+              <span class="mt-7 text-sm font-semibold text-cloud">{copy.common.openProject}</span>
+            </a>
+          ))}
         </div>
-        <h2 class="mt-4 text-2xl font-semibold text-white sm:text-3xl">{copy.projects.lead}</h2>
-        <p class="mt-4 max-w-2xl text-sm leading-7 text-mist">
-          {copy.projects.body}
-        </p>
-        <p class="mt-6 rounded-r-2xl border-l border-cloud/30 bg-white/[0.03] pl-4 text-sm leading-7 text-slate-300">
-          {copy.projects.note}
-        </p>
-        <div class="mt-8 flex flex-wrap gap-4">
-          <a class="button-primary" href={localizePath("/about", locale)}>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4">
-              <path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Z"></path>
-              <path d="M3 21a9 9 0 0 1 18 0"></path>
-            </svg>
-            <span>{copy.projects.ctas.profile}</span>
-          </a>
-          <a class="button-secondary" href={localizePath("/contact", locale)}>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-              <polyline points="22,6 12,13 2,6"></polyline>
-            </svg>
-            <span>{copy.projects.ctas.contact}</span>
-          </a>
-        </div>
-      </article>
-
-      <aside class="terminal-window reveal reveal-delay-2">
-        <div class="terminal-toolbar">
-          <span class="terminal-dot bg-red-500"></span>
-          <span class="terminal-dot bg-amber-400"></span>
-          <span class="terminal-dot bg-emerald-500"></span>
-        </div>
-        <div class="space-y-1">
-          <p class="terminal-line"><span class="terminal-prompt">$</span><span class="terminal-command">{copy.projects.terminal.command}</span></p>
-          <p class="terminal-line"><span class="terminal-output">{copy.projects.terminal.state}</span></p>
-          <p class="terminal-line"><span class="terminal-output">{copy.projects.terminal.focus}</span></p>
-          <p class="terminal-line"><span class="terminal-output">{copy.projects.terminal.format}</span></p>
-          <p class="terminal-line"><span class="terminal-output">{copy.projects.terminal.timeline}<span class="cursor-blink">_</span></span></p>
-        </div>
-      </aside>
-    </div>
+      ) : (
+        <p class="copy-muted mt-12 rounded-2xl border border-line bg-panel p-6">{copy.projects.empty}</p>
+      )
+    }
   </section>
 </BaseLayout>
