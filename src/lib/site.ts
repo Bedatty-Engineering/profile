@@ -122,14 +122,6 @@ export const localizedSite = {
         copy: "Credentials covering cloud fundamentals, platform tooling and infrastructure operations."
       }
     },
-    blog: {
-      title: "Blog",
-      description: "Blog posts on AWS, DevOps, and platform engineering by Lucas Bedatty.",
-      eyebrow: "Blog",
-      heading: "Operational notes on AWS, security, governance, and delivery pipelines.",
-      copy:
-        "Writing focused on practical engineering decisions across AWS operations, governance, security and delivery workflows."
-    },
     projects: {
       title: "Projects",
       description: "Selected projects in cloud, platform engineering, and DevOps by Lucas Bedatty.",
@@ -160,10 +152,6 @@ export const localizedSite = {
         interests: ["Cloud Architecture", "Platform Engineering", "DevOps Culture", "Open Source"],
         focus: "AWS, automation and platform reliability"
       }
-    },
-    rss: {
-      title: "Lucas C. Bedatty Blog",
-      description: "AWS, platform engineering, and DevOps writing by Lucas Bedatty."
     },
     skillGroups: [
       {
@@ -237,10 +225,10 @@ export const localizedSite = {
     ],
     educationItems: [
       {
-        institution: "Centro Universitário Una",
-        degree: "Postgraduate Specialization in Cloud-Native Architecture and Platform Engineering",
-        period: "Sep 2026 - Dec 2027",
-        focus: "In progress. Developing deeper expertise in cloud-native architecture and platform engineering, connected to hands-on work with Kubernetes, Terraform, GitOps and SRE practices."
+        institution: "UNOPAR",
+        degree: "Postgraduate Specialization in DevOps Engineering",
+        period: "Sep 2026 - Feb 2027",
+        focus: "In progress. A practice-oriented program on integrating development and operations through DevOps, with a focus on delivery efficiency, quality, speed, information security and Brazil's LGPD data protection law."
       },
       {
         institution: "UNOPAR",
@@ -374,14 +362,6 @@ export const localizedSite = {
         copy: "Credenciais cobrindo fundamentos de cloud, ferramentas de plataforma e operações de infraestrutura."
       }
     },
-    blog: {
-      title: "Blog",
-      description: "Artigos sobre AWS, DevOps e engenharia de plataforma por Lucas Bedatty.",
-      eyebrow: "Blog",
-      heading: "Notas operacionais sobre AWS, segurança, governança e pipelines de entrega.",
-      copy:
-        "Conteúdo voltado a decisões práticas de engenharia em operações AWS, governança, segurança e fluxos de entrega."
-    },
     projects: {
       title: "Projetos",
       description: "Estudos de caso de cloud, plataforma e DevOps por Lucas Bedatty.",
@@ -412,10 +392,6 @@ export const localizedSite = {
         interests: ["Arquitetura Cloud", "Platform Engineering", "Cultura DevOps", "Open Source"],
         focus: "AWS, automação e confiabilidade de plataforma"
       }
-    },
-    rss: {
-      title: "Blog de Lucas C. Bedatty",
-      description: "Textos sobre AWS, engenharia de plataforma e DevOps por Lucas Bedatty."
     },
     skillGroups: [
       {
@@ -489,10 +465,10 @@ export const localizedSite = {
     ],
     educationItems: [
       {
-        institution: "Centro Universitário Una",
-        degree: "Pós-Graduação Lato Sensu (Especialização) em Arquitetura Cloud-Native e Engenharia de Plataformas",
-        period: "Set 2026 - Dez 2027",
-        focus: "Em andamento. Aprofundamento em arquitetura cloud-native e engenharia de plataformas, conectado à prática com Kubernetes, Terraform, GitOps e SRE."
+        institution: "UNOPAR",
+        degree: "Pós-Graduação em Engenharia de DevOps",
+        period: "Set 2026 - Fev 2027",
+        focus: "Em andamento. Formação que conecta teoria e prática na integração entre desenvolvimento e operações por meio de DevOps, com foco em eficiência, qualidade, velocidade de entrega, segurança da informação e LGPD."
       },
       {
         institution: "UNOPAR",

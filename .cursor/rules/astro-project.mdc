@@ -6,10 +6,10 @@ alwaysApply: true
 # Astro Portfolio – Project Conventions
 
 ## Stack
-- **Astro v5** with static output (`output: "static"`)
+- **Astro** with static output (`output: "static"`)
 - **Tailwind CSS v3** via `@astrojs/tailwind` (base styles disabled — use `src/styles/global.css`)
 - **MDX** integration is installed; current content collections use plain **Markdown**
-- **TypeScript** for logic by default; `src/pages/rss.xml.js` is an intentional exception in the current codebase
+- **TypeScript** for logic by default
 
 ## Design Tokens (Tailwind)
 Use custom tokens instead of arbitrary values:
