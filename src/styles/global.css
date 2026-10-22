@@ -224,6 +224,77 @@
     @apply rounded bg-white/5 px-1.5 py-1 font-mono text-sm text-steel;
   }
 
+  .prose-project {
+    @apply text-[0.98rem] leading-7;
+  }
+
+  .prose-project h2 {
+    @apply mt-12 border-t border-white/10 pt-7 text-2xl font-semibold tracking-tight;
+  }
+
+  .prose-project h2:first-of-type {
+    @apply mt-0 border-0 pt-0;
+  }
+
+  .prose-project h3 {
+    @apply mt-8 text-lg font-semibold;
+  }
+
+  .prose-project p,
+  .prose-project ul,
+  .prose-project ol {
+    @apply mt-4;
+  }
+
+  .prose-project ul {
+    @apply list-disc pl-5;
+  }
+
+  .prose-project ol {
+    @apply list-decimal pl-5;
+  }
+
+  .prose-project li {
+    @apply mt-2 pl-1;
+  }
+
+  .mermaid-diagram {
+    @apply my-7 max-w-full overflow-hidden rounded-2xl border border-white/10 bg-panel/60 p-4 sm:p-6;
+  }
+
+  .mermaid-diagram svg {
+    @apply mx-auto block h-auto w-full max-w-full;
+  }
+
+  .mermaid-diagram-source {
+    @apply overflow-x-auto rounded-2xl border border-white/10 bg-panel/60 p-4 sm:p-6;
+  }
+
+  .prose-project pre[data-language="mermaid"] {
+    @apply my-7 max-w-full overflow-hidden rounded-2xl border border-white/10 bg-panel/60 p-4 sm:p-6;
+  }
+
+  .technology-chip {
+    @apply inline-flex items-center gap-2 rounded-full border border-cloud/15 bg-cloud/[0.06] py-1.5 pl-1.5 pr-3 text-xs font-medium text-steel;
+  }
+
+  .technology-symbol {
+    @apply grid h-6 w-6 shrink-0 place-items-center rounded-full border border-cloud/20 bg-ink font-mono text-[0.65rem] font-semibold text-cloud;
+  }
+
+  [data-toc-link].is-active {
+    @apply font-semibold text-cloud;
+  }
+
+  [data-toc-link].is-active::before {
+    content: "";
+    @apply absolute -left-[1.0625rem] top-2 h-1.5 w-1.5 rounded-full bg-cloud;
+  }
+
+  [data-toc-link] {
+    @apply relative block;
+  }
+
   .theme-text-gradient {
     background: var(--theme-accent-gradient-strong);
     -webkit-background-clip: text;

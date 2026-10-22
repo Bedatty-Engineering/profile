@@ -3,7 +3,7 @@ locale: en
 translationKey: release-validation-platform
 pathSlug: release-validation-platform
 title: "Agentic and Non-Agentic Release Validation Platform"
-description: "A release validation platform combining deterministic tests, AI-assisted change analysis, and chaos engineering with auditable evidence."
+description: "A release validation platform combining deterministic suites, AI-assisted change analysis, and controlled chaos experiments with auditable evidence."
 technologies:
   - Go
   - k6
@@ -20,49 +20,95 @@ architecture_notes: "A Go orchestrator with a hexagonal domain coordinates chang
 
 ## Overview
 
-The platform validates releases for financial systems beyond a basic availability signal. It combines adaptive change analysis with deterministic suites and records a verdict alongside the evidence used to reach it.
+A financial release needs stronger evidence than a successful deployment or an HTTP 200 response. This platform combines change-aware analysis with repeatable test suites, then records a release verdict with the evidence behind it. Both validation modes run in the delivery pipeline while keeping their executions, artifacts, and verdicts independent.
+
+## Architecture and boundaries
+
+The Go orchestrator coordinates the release gate; it does not inject failures. Its hexagonal domain keeps decision logic independent from external systems through ports and adapters, with real and simulated adapters for integrations. Specialized AI agents run in isolated environments. A versioned experiment library, application catalog, and release history are managed as code through GitOps.
+
+```mermaid
+flowchart TB
+accTitle: Release validation platform architecture
+accDescr: A Go orchestrator coordinates isolated AI agents and deterministic suites. A validated plan can request one approved experiment from a dedicated chaos engine. Probes and suite artifacts flow into a versioned release dossier.
+  subgraph inputs["Release inputs"]
+    direction TB
+    release["📦 Version diff"]
+    catalog["🗂️ App catalog and<br/>experiment allowlist"]
+  end
+  subgraph coordination["Analysis and validation"]
+    direction TB
+    orchestrator["🎛️ Go orchestrator<br/>hexagonal domain"]
+    agents["🤖 Isolated AI agents<br/>impact and risk"]
+    validation{"🛡️ Validate proposed checks<br/>against app policy"}
+    plan["📝 Approved plan<br/>zero or one experiment"]
+  end
+  subgraph execution["Execution and evidence"]
+    direction TB
+    suites["🧪 Deterministic suites<br/>functional · smoke · k6 · fuzz"]
+    engine["⚡ Chaos engine<br/>isolated injection"]
+    probes["🔎 Probes<br/>availability · recovery · convergence"]
+    dossier["📋 Release dossier<br/>artifacts · verdict · report"]
+  end
+  release --> orchestrator
+  catalog --> orchestrator
+  orchestrator --> agents --> validation --> plan
+  orchestrator --> suites
+  plan --> engine --> probes --> dossier
+  suites --> dossier
+  plan --> dossier
+```
+
+The two modes are separate validation surfaces correlated by the same release. This keeps an agentic result from concealing a deterministic failure, or vice versa.
+
+## Release validation flow
+
+Each run follows a fixed sequence. Risk changes which authorized checks are selected; it does not change the execution contract.
+
+```mermaid
+flowchart TB
+accTitle: Release validation sequence
+accDescr: The pipeline analyzes a release diff, runs functional checks, and selects zero or one approved chaos experiment based on risk. When an experiment runs, probes observe the system before, during, and after injection. The gate records a verdict and evidence dossier.
+  diff["🔍 Version diff"] --> risk["⚖️ Assess risk"]
+  risk --> functional["✅ Functional checks"]
+  functional --> selection{"🎯 Zero or one<br/>approved experiment"}
+  selection -->|None| verdict["🧾 Verdict and dossier"]
+  selection -->|One| inject["⚡ Controlled injection<br/>in isolated environment"]
+  inject --> observe["📡 Probe availability,<br/>recovery, invariants"]
+  observe --> verdict
+```
+
+1. **Change analysis:** inspect the version diff, identify affected areas, and estimate risk.
+2. **Functional gate:** verify expected behavior before any failure is injected.
+3. **Scenario selection:** choose at most one approved experiment, proportional to assessed severity.
+4. **Controlled injection:** a dedicated chaos engine runs the experiment in an isolated environment while probes observe the system.
+5. **Verdict:** consolidate test results, resilience score, metadata, and readable evidence under the release.
 
 ## Two validation modes
 
-### Agentic
+### Agentic analysis
 
-Isolated agents analyze the diff between versions, estimate risk, and propose focused checks and a failure scenario suited to the assessed severity. They can select only from a closed, approved set, and their output is validated before execution.
+Isolated agents analyze the diff, estimate risk, and propose focused checks for impacted components. They may select only from the experiments approved for that application. The orchestrator validates their output before it can influence the execution plan, so flexible analysis stays inside a bounded release gate.
 
-### Non-agentic
+### Deterministic suites
 
-Human-reviewed suites provide a repeatable baseline. They cover functional checks, k6 load tests, malformed inputs, and chaos experiments defined as code.
+Human-authored and reviewed suites provide a repeatable baseline. They include smoke and functional checks, k6 load scenarios, malformed-input and fuzz testing, and chaos experiments defined as code. The same suite produces the same planned checks, making it a stable reference for comparing agentic runs.
 
-Each mode has its own run, verdict, and artifacts. The shared release correlates the results without allowing one mode to mask a failure in the other.
+Each mode has its own run, verdict, and artifacts. The release correlates the evidence without merging the results into a single opaque pass/fail signal.
 
-## Workflow and architecture
+## Risk controls and chaos execution
 
-1. Analyze the change to identify affected areas and estimate risk.
-2. Run functional checks to confirm expected behavior before injection.
-3. Use risk to select at most one authorized experiment for the run.
-4. A dedicated chaos engine injects the failure in an isolated environment while probes observe availability, recovery, or asynchronous convergence.
-5. Consolidate the results into a verdict, resilience score, and versioned report.
+The application catalog is an allowlist: it defines which experiments can run against each application and records ownership. The risk assessment determines the intensity of an eligible scenario, from a low-impact failure to a more severe disruption. A run can execute zero or one experiment, never an unbounded sequence selected by an agent.
 
-The Go orchestrator keeps the domain independent from integrations through ports and adapters, with real and simulated adapters. The agent layer runs in isolated environments; the versioned library holds LitmusChaos-style declarative experiments; and the per-application catalog defines what may run and preserves release history.
+Coordination and injection have separate responsibilities. The orchestrator selects and validates the plan; a dedicated chaos engine performs the fault. Experiments, catalog entries, and history are versioned in Git and reviewed with the same ownership conventions as application code. Isolated environments restrict where failure injection is permitted.
 
-## Controls and evidence
+## Probes, verdict, and audit trail
 
-- Closed list of experiments allowed per application, with at most one experiment per run.
-- Separate coordination from injection: the orchestrator selects; the dedicated engine executes.
-- Experiments, catalog, and history versioned in Git, with peer review and application owners.
-- Compare functional state before, during, and after failure, distinguishing tolerated unavailability from unacceptable conditions.
-- A release dossier with the validated plan, executed script, metadata, and readable report for later reconstruction.
-- Generate standard experiments from declarative configuration; address application-specific needs with manually written suites under the same conventions.
+Chaos results are meaningful only when the system is observed before, during, and after injection. Probes match the failure mode: continuous availability checks, recovery checks after the fault ends, and convergence checks for asynchronous flows. The gate distinguishes tolerated unavailability from conditions that must never occur, such as loss of functional integrity.
 
-## Design challenges
+Every release leaves a versioned dossier containing the validated plan, executed script, experiment metadata, and a readable report. That record makes it possible to reconstruct which version was tested, which checks ran, why an experiment was selected, and how the system responded.
 
-The main challenge is allowing analysis to adapt to the diff without making a release gate unpredictable. Separate modes, selection limits, and agent-output validation keep their evidence independent and comparable. Good probes are essential too: without observing recovery and integrity during failure, injection creates noise instead of an interpretable result.
+## Engineering trade-offs
 
-## Outcome
+The central design constraint is balancing adaptive analysis with the determinism required by a release gate. Isolated agent execution, allowlisted experiments, output validation, and a one-experiment limit constrain that flexibility. Keeping agentic and non-agentic runs distinct preserves attribution when one surface finds a regression and the other does not.
 
-The platform brings functional validation and resilience checks under the same release, with independent runs and evidence that can be reviewed later. This makes the gate more consistent and helps teams understand how the system behaves under failure without relying on scattered manual runbooks.
-
-## Next steps
-
-- Expand coverage across applications and test surfaces.
-- Give agents more context about the diff while keeping selection within approved limits.
-- Improve risk analysis and correlation between failures and impacted components.
+The platform also treats observability as part of the experiment contract: a fault without probes for availability, recovery, and functional invariants produces noise rather than useful resilience evidence. Declarative defaults reduce onboarding effort, while application-specific suites can add coverage under the same versioning, naming, and review conventions.

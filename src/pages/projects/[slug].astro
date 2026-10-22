@@ -1,5 +1,6 @@
 ---
 import { getCollection, render } from "astro:content";
+import MermaidDiagrams from "../../components/MermaidDiagrams.astro";
 import PostLayout from "../../layouts/PostLayout.astro";
 import { findTranslatedEntry, getLocaleContent, getSectionPath } from "../../lib/i18n";
 
@@ -17,10 +18,18 @@ const allProjects = await getCollection("projects");
 const { project } = Astro.props;
 const translatedProject = findTranslatedEntry(allProjects, project.data.translationKey, "pt");
 const switchPath = translatedProject ? `/pt/projects/${translatedProject.data.pathSlug}` : getSectionPath("projects", "pt");
-const { Content } = await render(project);
+const { Content, headings } = await render(project);
 ---
 
-<PostLayout title={project.data.title} description={project.data.description} locale="en" switchPath={switchPath} tags={project.data.technologies}>
+<PostLayout
+  title={project.data.title}
+  description={project.data.description}
+  locale="en"
+  switchPath={switchPath}
+  tags={project.data.technologies}
+  projectDetail
+  headings={headings}
+>
   {(project.data.github_link || project.data.demo_link) && (
     <div class="mb-8 grid gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-6 text-sm text-mist sm:grid-cols-2">
       {project.data.github_link && (
@@ -43,4 +52,5 @@ const { Content } = await render(project);
   )}
   <span hidden data-project-view-page={project.data.translationKey}></span>
   <Content />
+  <MermaidDiagrams />
 </PostLayout>

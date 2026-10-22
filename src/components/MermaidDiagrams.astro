@@ -1,0 +1,62 @@
+<script>
+  const codeBlocks = [...document.querySelectorAll<HTMLPreElement>('.prose-project pre[data-language="mermaid"]')];
+
+  if (codeBlocks.length > 0) {
+    const { default: mermaid } = await import("mermaid");
+    const monoTheme = document.documentElement.dataset.theme === "mono";
+
+    mermaid.initialize({
+      startOnLoad: false,
+      securityLevel: "strict",
+      theme: "base",
+      themeVariables: monoTheme
+        ? {
+            background: "#f9fafb",
+            primaryColor: "#ffffff",
+            primaryTextColor: "#0f172a",
+            primaryBorderColor: "#0284c7",
+            lineColor: "#0284c7",
+            secondaryColor: "#f1f5f9",
+            tertiaryColor: "#f8fafc",
+            textColor: "#0f172a",
+            mainBkg: "#ffffff",
+            nodeBorder: "#0284c7",
+            clusterBkg: "#f1f5f9",
+            clusterBorder: "#cbd5e1",
+            edgeLabelBackground: "#ffffff",
+            fontFamily: "Inter, sans-serif"
+          }
+        : {
+            background: "#060816",
+            primaryColor: "#10182a",
+            primaryTextColor: "#f1f5f9",
+            primaryBorderColor: "#78e6ff",
+            lineColor: "#78e6ff",
+            secondaryColor: "#151e32",
+            tertiaryColor: "#10182a",
+            textColor: "#f1f5f9",
+            mainBkg: "#10182a",
+            nodeBorder: "#78e6ff",
+            clusterBkg: "#080c1d",
+            clusterBorder: "#364152",
+            edgeLabelBackground: "#060816",
+            fontFamily: "Inter, sans-serif"
+          }
+    });
+
+    for (const [index, pre] of codeBlocks.entries()) {
+      const source = pre.textContent ?? "";
+
+      try {
+        const { svg } = await mermaid.render(`project-diagram-${index + 1}`, source);
+        const figure = document.createElement("figure");
+        figure.className = "mermaid-diagram";
+        figure.innerHTML = svg;
+        pre.replaceWith(figure);
+      } catch (error) {
+        pre.classList.add("mermaid-diagram-source");
+        console.error("Unable to render project diagram.", error);
+      }
+    }
+  }
+</script>

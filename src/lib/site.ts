@@ -137,6 +137,9 @@ export const localizedSite = {
       heading: "Projects in cloud and platform engineering.",
       copy: "Case studies on AWS platforms, release validation, automation, and operations.",
       empty: "No projects are published yet.",
+      backToProjects: "All projects",
+      contentsLabel: "On this page",
+      technologyTagsLabel: "Technologies and practices",
       readSingular: "read",
       readPlural: "reads"
     },
@@ -386,6 +389,9 @@ export const localizedSite = {
       heading: "Projetos de cloud e engenharia de plataforma.",
       copy: "Estudos de caso sobre plataformas AWS, validação de releases, automação e operações.",
       empty: "Ainda não há projetos publicados.",
+      backToProjects: "Todos os projetos",
+      contentsLabel: "Nesta página",
+      technologyTagsLabel: "Tecnologias e práticas",
       readSingular: "leitura",
       readPlural: "leituras"
     },
