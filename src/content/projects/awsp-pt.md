@@ -18,8 +18,6 @@ architecture_notes: "Uma CLI em Bash lê a configuração existente da AWS CLI s
 
 `awsp` facilita o trabalho com vários perfis configurados da AWS CLI pelo terminal. É possível escolher um perfil com `fzf` ou pelo nome, verificar o status de autenticação e iniciar ou encerrar sessões do AWS IAM Identity Center (SSO).
 
-[Acessar o repositório do awsp no GitHub](https://github.com/Bedatty-Engineering/awsp).
-
 ## Integração com o shell
 
 Um processo filho não pode alterar o ambiente do shell que o iniciou. O `awsp` resolve isso com uma função opcional de shell que avalia os comandos retornados pela CLI. Assim, a seleção de perfil, `awsp use`, `awsp clear` e o logout atualizam os valores de `AWS_PROFILE`, `AWS_REGION` e `AWS_DEFAULT_REGION` no terminal atual.

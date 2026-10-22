@@ -262,6 +262,33 @@
     @apply mt-2 pl-1;
   }
 
+  .project-code-block {
+    @apply my-7 overflow-hidden rounded-xl border border-line bg-ink/90;
+  }
+
+  .project-code-toolbar {
+    @apply flex min-h-12 items-center justify-between gap-4 border-b border-line bg-panel/70 px-4;
+  }
+
+  .project-code-language {
+    @apply font-mono text-xs lowercase tracking-wide text-mist;
+  }
+
+  .project-code-copy {
+    @apply inline-flex min-h-8 items-center gap-2 rounded-md border border-cloud/20 bg-cloud/5 px-3 font-mono text-xs text-cloud transition-colors hover:border-cloud/50 hover:bg-cloud/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cloud/70;
+  }
+
+  .project-code-block pre {
+    @apply m-0 max-h-[34rem] overflow-auto rounded-none border-0 p-5 font-mono text-[0.82rem] leading-6 sm:p-6;
+    background: rgb(var(--color-ink)) !important;
+    color: rgb(var(--color-text));
+    tab-size: 2;
+  }
+
+  .project-code-block pre code {
+    @apply rounded-none bg-transparent p-0 font-mono text-inherit;
+  }
+
   .mermaid-diagram {
     @apply my-7 max-w-full overflow-hidden rounded-2xl border border-white/10 bg-panel/60 p-4 sm:p-6;
   }

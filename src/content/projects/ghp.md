@@ -19,8 +19,6 @@ architecture_notes: "A standalone Bash executable manages accounts already authe
 
 `ghp` is a small account manager for [GitHub CLI](https://cli.github.com/). It switches between accounts already authenticated with `gh`, starts or ends login sessions, and can create or reuse an SSH signing key for an account.
 
-[View the ghp repository on GitHub](https://github.com/Bedatty-Engineering/ghp).
-
 ## Requirements
 
 `ghp` runs on Bash 3.2 or later and requires GitHub CLI. Authenticate accounts with `gh auth login` before switching between them. The interactive picker requires [`fzf`](https://github.com/junegunn/fzf); `ssh-keygen` is needed for signing-key setup, and `curl` is used by remote install, update, and uninstall scripts. Commands other than the interactive menu work without `fzf`.
