@@ -5,6 +5,7 @@ export const site = {
   email: "contato@bedatty.com",
   linkedin: "https://www.linkedin.com/in/lucas-bedatty",
   github: "https://github.com/bedatty",
+  engineeringOrg: "https://github.com/Bedatty-Engineering",
   ogImage: "/og-image.png",
   ogImageWidth: 1200,
   ogImageHeight: 630
@@ -131,7 +132,8 @@ export const localizedSite = {
       empty: "No projects are published yet.",
       backToProjects: "All projects",
       contentsLabel: "On this page",
-      technologyTagsLabel: "Technologies and practices",
+      technologyTagsLabel: "Focus areas",
+      githubLinkLabel: "Explore on GitHub",
       readSingular: "read",
       readPlural: "reads"
     },
@@ -146,6 +148,7 @@ export const localizedSite = {
         "Direct contact for architecture discussions, consulting work and platform engineering opportunities.",
       linkedInLabel: "Open LinkedIn profile in a new tab",
       githubLabel: "Open GitHub profile in a new tab",
+      engineeringOrgLabel: "Open Bedatty Engineering organization on GitHub",
       jsonComment: "// contact.json",
       json: {
         languages: ["Portuguese (Native)", "English (Working)"],
@@ -371,7 +374,8 @@ export const localizedSite = {
       empty: "Ainda não há projetos publicados.",
       backToProjects: "Todos os projetos",
       contentsLabel: "Nesta página",
-      technologyTagsLabel: "Tecnologias e práticas",
+      technologyTagsLabel: "Áreas de foco",
+      githubLinkLabel: "Explorar no GitHub",
       readSingular: "leitura",
       readPlural: "leituras"
     },
@@ -386,6 +390,7 @@ export const localizedSite = {
         "Contato direto para conversas sobre arquitetura, consultoria e oportunidades em engenharia de plataforma.",
       linkedInLabel: "Abrir perfil do LinkedIn em uma nova aba",
       githubLabel: "Abrir perfil do GitHub em uma nova aba",
+      engineeringOrgLabel: "Abrir organização Bedatty Engineering no GitHub",
       jsonComment: "// contato.json",
       json: {
         languages: ["Português (Nativo)", "Inglês (Profissional)"],
