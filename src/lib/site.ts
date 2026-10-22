@@ -27,7 +27,6 @@ export const localizedSite = {
     },
     footer: {
       status: "system.status",
-      pageViews: "Page views",
       email: "Email"
     },
     common: {
@@ -137,7 +136,9 @@ export const localizedSite = {
       eyebrow: "Projects",
       heading: "Projects in cloud and platform engineering.",
       copy: "Case studies on AWS platforms, release validation, automation, and operations.",
-      empty: "No projects are published yet."
+      empty: "No projects are published yet.",
+      readSingular: "read",
+      readPlural: "reads"
     },
     contact: {
       title: "Contact",
@@ -275,7 +276,6 @@ export const localizedSite = {
     },
     footer: {
       status: "status.do-sistema",
-      pageViews: "Visitas",
       email: "E-mail"
     },
     common: {
@@ -385,7 +385,9 @@ export const localizedSite = {
       eyebrow: "Projetos",
       heading: "Projetos de cloud e engenharia de plataforma.",
       copy: "Estudos de caso sobre plataformas AWS, validação de releases, automação e operações.",
-      empty: "Ainda não há projetos publicados."
+      empty: "Ainda não há projetos publicados.",
+      readSingular: "leitura",
+      readPlural: "leituras"
     },
     contact: {
       title: "Contato",

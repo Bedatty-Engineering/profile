@@ -10,8 +10,8 @@
     "directory": "./dist",
     "binding": "ASSETS",
     "run_worker_first": [
-      "/",
-      "/*/"
+      "/projects/*",
+      "/pt/projects/*"
     ]
   },
   "durable_objects": {
