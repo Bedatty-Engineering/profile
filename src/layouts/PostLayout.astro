@@ -1,7 +1,13 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
-import { formatDate, getLocaleContent, type Locale } from "../lib/i18n";
+import { formatDate, getLocaleContent, localizePath, type Locale } from "../lib/i18n";
 import { site } from "../lib/site";
+
+interface Heading {
+  depth: number;
+  slug: string;
+  text: string;
+}
 
 interface Props {
   title: string;
@@ -10,10 +16,25 @@ interface Props {
   switchPath: string;
   date?: Date;
   tags?: string[];
+  projectDetail?: boolean;
+  headings?: Heading[];
 }
 
-const { title, description, locale, switchPath, date, tags = [] } = Astro.props;
+const { title, description, locale, switchPath, date, tags = [], projectDetail = false, headings = [] } = Astro.props;
 const copy = getLocaleContent(locale);
+const contentHeadings = headings.filter((heading) => heading.depth === 2);
+const technologySymbols: Record<string, string> = {
+  Go: "Go",
+  k6: "k6",
+  LitmusChaos: "✳",
+  "Argo Workflows": "⌁",
+  GitOps: "⌘",
+  Python: "Py",
+  "AI Agents": "✦",
+  "Chaos Engineering": "ϟ",
+  "Hexagonal Architecture": "⬡",
+  "Release Validation": "✓",
+};
 ---
 
 <BaseLayout
@@ -23,26 +44,114 @@ const copy = getLocaleContent(locale);
   type="article"
   switchPath={switchPath}
 >
-  <section class="mx-auto max-w-4xl px-6 py-20 lg:px-8 lg:py-24">
-    <div class="shell p-8 sm:p-10">
-      <p class="section-kicker">{copy.common.detailView}</p>
-      <div class="mb-8 mt-6 flex flex-wrap items-center gap-4 text-sm text-mist">
-        {date && <span>{formatDate(date, locale)}</span>}
-        {
-          tags.map((tag) => (
-            <span class="rounded-md border border-cloud/20 bg-cloud/10 px-3 py-1 font-mono text-xs uppercase tracking-[0.2em] text-steel">
-              {tag}
-            </span>
-          ))
-        }
+  {projectDetail ? (
+    <section class="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
+      <header class="mx-auto mb-10 max-w-5xl">
+        <a href={localizePath("/projects", locale)} class="inline-flex items-center gap-2 text-sm text-mist transition-colors hover:text-cloud">
+          <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" class="h-4 w-4">
+            <path d="M12.5 4.5 7 10l5.5 5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          {copy.projects.backToProjects}
+        </a>
+        <p class="section-kicker mt-8">{copy.common.detailView}</p>
+        <h1 class="mt-4 max-w-4xl text-3xl font-semibold leading-tight tracking-tight text-white sm:text-5xl">
+          {title}
+        </h1>
+        <p class="mt-5 max-w-3xl text-base leading-7 text-mist sm:text-lg sm:leading-8">{description}</p>
+      </header>
+
+      <div class="mx-auto grid max-w-5xl gap-10 lg:grid-cols-[13rem_minmax(0,1fr)] lg:gap-14">
+        <aside class="h-fit lg:sticky lg:top-28">
+          {contentHeadings.length > 0 && (
+            <nav aria-label={copy.projects.contentsLabel} class="border-l border-white/10 pl-4">
+              <h2 class="text-sm font-semibold text-white">{copy.projects.contentsLabel}</h2>
+              <ul class="mt-4 space-y-3">
+                {contentHeadings.map((heading) => (
+                  <li>
+                    <a href={`#${heading.slug}`} data-toc-link class="text-sm leading-6 text-mist transition-colors hover:text-cloud">
+                      {heading.text}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          )}
+        </aside>
+
+        <div class="min-w-0">
+          <article class="prose-cloud prose-project min-w-0">
+            <slot />
+          </article>
+
+          {tags.length > 0 && (
+            <section aria-labelledby="project-technologies" class="mt-14 border-t border-white/10 pt-7">
+              <h2 id="project-technologies" class="text-sm font-semibold text-white">{copy.projects.technologyTagsLabel}</h2>
+              <ul class="mt-4 flex flex-wrap gap-2" aria-label={copy.projects.technologyTagsLabel}>
+                {tags.map((tag) => (
+                  <li class="technology-chip">
+                    <span class="technology-symbol" aria-hidden="true">{technologySymbols[tag] ?? "•"}</span>
+                    {tag}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+        </div>
       </div>
-      <h1 class="theme-text-gradient max-w-3xl text-4xl font-semibold tracking-tight sm:text-5xl">
-        {title}
-      </h1>
-      <p class="mt-4 max-w-2xl text-lg text-mist">{description}</p>
-      <article class="prose-cloud mt-10">
-        <slot />
-      </article>
-    </div>
-  </section>
+    </section>
+  ) : (
+    <section class="mx-auto max-w-4xl px-6 py-20 lg:px-8 lg:py-24">
+      <div class="shell p-8 sm:p-10">
+        <p class="section-kicker">{copy.common.detailView}</p>
+        <div class="mb-8 mt-6 flex flex-wrap items-center gap-4 text-sm text-mist">
+          {date && <span>{formatDate(date, locale)}</span>}
+          {
+            tags.map((tag) => (
+              <span class="rounded-md border border-cloud/20 bg-cloud/10 px-3 py-1 font-mono text-xs uppercase tracking-[0.2em] text-steel">
+                {tag}
+              </span>
+            ))
+          }
+        </div>
+        <h1 class="theme-text-gradient max-w-3xl text-4xl font-semibold tracking-tight sm:text-5xl">
+          {title}
+        </h1>
+        <p class="mt-4 max-w-2xl text-lg text-mist">{description}</p>
+        <article class="prose-cloud mt-10">
+          <slot />
+        </article>
+      </div>
+    </section>
+  )}
 </BaseLayout>
+
+{projectDetail && (
+  <script>
+    const tocLinks = [...document.querySelectorAll<HTMLAnchorElement>("[data-toc-link]")];
+    const headingTargets = tocLinks
+      .map((link) => document.getElementById(decodeURIComponent(link.hash.slice(1))))
+      .filter((heading): heading is HTMLElement => heading instanceof HTMLElement);
+
+    if ("IntersectionObserver" in window && headingTargets.length > 0) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          const visible = entries
+            .filter((entry) => entry.isIntersecting)
+            .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+
+          if (!visible) return;
+
+          for (const link of tocLinks) {
+            const active = link.hash === `#${visible.target.id}`;
+            link.classList.toggle("is-active", active);
+            if (active) link.setAttribute("aria-current", "location");
+            else link.removeAttribute("aria-current");
+          }
+        },
+        { rootMargin: "-18% 0px -68% 0px", threshold: 0 }
+      );
+
+      for (const heading of headingTargets) observer.observe(heading);
+    }
+  </script>
+)}
