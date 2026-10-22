@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
-import { formatDate, getLocaleContent, localizePath, type Locale } from "../lib/i18n";
+import { formatDate, getLocaleContent, localeHtmlLang, localizePath, toAbsoluteUrl, type Locale } from "../lib/i18n";
 import { site } from "../lib/site";
 
 interface Heading {
@@ -18,11 +18,56 @@ interface Props {
   tags?: string[];
   projectDetail?: boolean;
   headings?: Heading[];
+  seoTitle?: string;
+  seoDescription?: string;
+  schemaType?: "SoftwareSourceCode" | "Organization";
+  schemaName?: string;
+  codeRepository?: string;
 }
 
-const { title, description, locale, switchPath, date, tags = [], projectDetail = false, headings = [] } = Astro.props;
+const {
+  title,
+  description,
+  locale,
+  switchPath,
+  date,
+  tags = [],
+  projectDetail = false,
+  headings = [],
+  seoTitle,
+  seoDescription,
+  schemaType = "SoftwareSourceCode",
+  schemaName,
+  codeRepository
+} = Astro.props;
 const copy = getLocaleContent(locale);
 const contentHeadings = headings.filter((heading) => heading.depth === 2);
+const canonicalUrl = toAbsoluteUrl(Astro.url.pathname);
+const programmingLanguages = tags.filter((tag) => ["Bash", "Go", "Python", "PowerShell", "Windows PowerShell"].includes(tag));
+const projectSchema = projectDetail
+  ? [
+      {
+        "@type": schemaType,
+        "@id": `${canonicalUrl}#project`,
+        name: schemaName ?? title,
+        description: seoDescription ?? description,
+        mainEntityOfPage: canonicalUrl,
+        ...(schemaType === "SoftwareSourceCode"
+          ? {
+              url: canonicalUrl,
+              inLanguage: localeHtmlLang[locale],
+              keywords: tags,
+              creator: { "@id": `${site.domain}/#person` },
+              ...(programmingLanguages.length > 0 ? { programmingLanguage: programmingLanguages } : {}),
+              ...(codeRepository ? { codeRepository } : {})
+            }
+          : {
+              url: codeRepository ?? canonicalUrl,
+              founder: { "@id": `${site.domain}/#person` }
+            })
+      }
+    ]
+  : [];
 const technologySymbols: Record<string, string> = {
   Go: "Go",
   k6: "k6",
@@ -44,15 +89,22 @@ const technologySymbols: Record<string, string> = {
   Docker: "🐳",
   "Platform Engineering": "⬡",
   "Open Source": "⑂",
+  "Personal Projects": "✦",
+  Homelab: "⌂",
+  "Open Learning": "↗",
+  "Projetos Pessoais": "✦",
+  "Aprendizado Aberto": "↗",
+  "Código Aberto": "⑂",
 };
 ---
 
 <BaseLayout
-  title={`${title} | ${site.name}`}
-  description={description}
+  title={seoTitle ?? `${title} | ${site.name}`}
+  description={seoDescription ?? description}
   locale={locale}
-  type="article"
+  type="website"
   switchPath={switchPath}
+  structuredData={projectSchema}
 >
   {projectDetail ? (
     <section class="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
@@ -89,7 +141,15 @@ const technologySymbols: Record<string, string> = {
         </aside>
 
         <div class="min-w-0">
-          <article class="prose-cloud prose-project min-w-0">
+          <article
+            class="prose-cloud prose-project min-w-0"
+            data-copy-default={copy.common.copy}
+            data-copy-success={copy.common.copied}
+            data-copy-error={copy.common.copyFailed}
+            data-copy-label={copy.common.copyCode}
+            data-copy-status-success={copy.common.codeCopied}
+            data-copy-status-error={copy.common.codeCopyFailed}
+          >
             <slot />
           </article>
 
@@ -142,26 +202,115 @@ const technologySymbols: Record<string, string> = {
       .map((link) => document.getElementById(decodeURIComponent(link.hash.slice(1))))
       .filter((heading): heading is HTMLElement => heading instanceof HTMLElement);
 
-    if ("IntersectionObserver" in window && headingTargets.length > 0) {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          const visible = entries
-            .filter((entry) => entry.isIntersecting)
-            .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+    const setActiveHeading = (heading: HTMLElement) => {
+      for (const link of tocLinks) {
+        const active = link.hash === `#${heading.id}`;
+        link.classList.toggle("is-active", active);
+        if (active) link.setAttribute("aria-current", "location");
+        else link.removeAttribute("aria-current");
+      }
+    };
 
-          if (!visible) return;
+    const isAtPageEnd = () =>
+      Math.ceil(window.scrollY + window.innerHeight) >= document.documentElement.scrollHeight - 2;
 
-          for (const link of tocLinks) {
-            const active = link.hash === `#${visible.target.id}`;
-            link.classList.toggle("is-active", active);
-            if (active) link.setAttribute("aria-current", "location");
-            else link.removeAttribute("aria-current");
+    if (headingTargets.length > 0) {
+      const updateActiveHeading = () => {
+        const activationLine = window.innerHeight * 0.22;
+        const activeHeading = isAtPageEnd()
+          ? headingTargets[headingTargets.length - 1]
+          : [...headingTargets]
+              .reverse()
+              .find((heading) => heading.getBoundingClientRect().top <= activationLine) ?? headingTargets[0];
+
+        setActiveHeading(activeHeading);
+      };
+
+      window.addEventListener("scroll", updateActiveHeading, { passive: true });
+      window.addEventListener("resize", updateActiveHeading);
+      updateActiveHeading();
+    }
+
+    const projectArticle = document.querySelector<HTMLElement>(".prose-project");
+    const codeBlocks = [...document.querySelectorAll<HTMLPreElement>(
+      '.prose-project pre:not([data-language="mermaid"])'
+    )];
+
+    if (projectArticle && codeBlocks.length > 0) {
+      const labels = {
+        copy: projectArticle.dataset.copyDefault ?? "Copy",
+        copied: projectArticle.dataset.copySuccess ?? "Copied",
+        failed: projectArticle.dataset.copyError ?? "Failed",
+        copyCode: projectArticle.dataset.copyLabel ?? "Copy code",
+        copiedMessage: projectArticle.dataset.copyStatusSuccess ?? "Code copied to clipboard.",
+        failedMessage: projectArticle.dataset.copyStatusError ?? "Unable to copy code automatically."
+      };
+
+      for (const [index, pre] of codeBlocks.entries()) {
+        const wrapper = document.createElement("div");
+        wrapper.className = "project-code-block";
+        wrapper.dataset.codeBlock = String(index + 1);
+
+        const toolbar = document.createElement("div");
+        toolbar.className = "project-code-toolbar";
+
+        const language = document.createElement("span");
+        language.className = "project-code-language";
+        language.textContent = pre.dataset.language || "code";
+
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "project-code-copy";
+        button.setAttribute("aria-label", labels.copyCode);
+
+        const icon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        icon.setAttribute("viewBox", "0 0 20 20");
+        icon.setAttribute("fill", "none");
+        icon.setAttribute("aria-hidden", "true");
+        icon.classList.add("h-4", "w-4");
+        const iconPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        iconPath.setAttribute("d", "M7 6.5V4.75A1.75 1.75 0 0 1 8.75 3h6.5A1.75 1.75 0 0 1 17 4.75v8.5A1.75 1.75 0 0 1 15.25 15H13.5M4.75 6H11A1.75 1.75 0 0 1 12.75 7.75v8.5A1.75 1.75 0 0 1 11 18H4.75A1.75 1.75 0 0 1 3 16.25v-8.5A1.75 1.75 0 0 1 4.75 6Z");
+        iconPath.setAttribute("stroke", "currentColor");
+        iconPath.setAttribute("stroke-width", "1.5");
+        iconPath.setAttribute("stroke-linecap", "round");
+        iconPath.setAttribute("stroke-linejoin", "round");
+        icon.append(iconPath);
+
+        const buttonLabel = document.createElement("span");
+        buttonLabel.textContent = labels.copy;
+        button.append(icon, buttonLabel);
+
+        const status = document.createElement("span");
+        status.className = "sr-only";
+        status.setAttribute("aria-live", "polite");
+        status.setAttribute("aria-atomic", "true");
+
+        toolbar.append(language, button);
+        pre.before(wrapper);
+        wrapper.append(toolbar, pre, status);
+
+        let resetTimer = 0;
+        button.addEventListener("click", async () => {
+          const source = pre.querySelector("code")?.textContent ?? pre.textContent ?? "";
+
+          try {
+            await navigator.clipboard.writeText(source);
+            buttonLabel.textContent = labels.copied;
+            button.setAttribute("aria-label", labels.copied);
+            status.textContent = labels.copiedMessage;
+          } catch {
+            buttonLabel.textContent = labels.failed;
+            button.setAttribute("aria-label", labels.copyCode);
+            status.textContent = labels.failedMessage;
           }
-        },
-        { rootMargin: "-18% 0px -68% 0px", threshold: 0 }
-      );
 
-      for (const heading of headingTargets) observer.observe(heading);
+          window.clearTimeout(resetTimer);
+          resetTimer = window.setTimeout(() => {
+            buttonLabel.textContent = labels.copy;
+            button.setAttribute("aria-label", labels.copyCode);
+          }, 1800);
+        });
+      }
     }
   </script>
 )}

@@ -4,6 +4,8 @@ translationKey: release-validation-platform
 pathSlug: plataforma-validacao-releases
 title: "Plataforma de Testes Agênticos e Não Agênticos"
 description: "Uma plataforma de validação de releases que combina suítes determinísticas, análise de mudanças assistida por IA e experimentos de caos controlados com evidências auditáveis."
+seo_title: "Plataforma de Validação de Releases | Lucas Bedatty"
+seo_description: "Conheça uma plataforma Go para validar releases com verificações determinísticas, análise de mudanças assistida por IA e experimentos de caos controlados."
 technologies:
   - Go
   - k6

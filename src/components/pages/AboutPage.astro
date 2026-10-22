@@ -14,7 +14,7 @@ const switchPath = localizePath("/about", getOtherLocale(locale));
 const resumeFile = locale === "pt" ? "PT-Curriculum-Lucas-Bedatty.pdf" : "EN-Curriculum-Lucas-Bedatty.pdf";
 ---
 
-<BaseLayout title={`${copy.about.eyebrow} | ${site.name}`} description={copy.description} locale={locale} switchPath={switchPath}>
+<BaseLayout title={copy.about.seoTitle} description={copy.about.seoDescription} locale={locale} switchPath={switchPath}>
   <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
     <div class="reveal">
       <SectionIntro eyebrow={copy.about.eyebrow} title={copy.about.title} copy={copy.about.copy} />
