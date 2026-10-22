@@ -131,7 +131,8 @@ export const localizedSite = {
       empty: "No projects are published yet.",
       backToProjects: "All projects",
       contentsLabel: "On this page",
-      technologyTagsLabel: "Technologies and practices",
+      technologyTagsLabel: "Focus areas",
+      githubLinkLabel: "Explore on GitHub",
       readSingular: "read",
       readPlural: "reads"
     },
@@ -371,7 +372,8 @@ export const localizedSite = {
       empty: "Ainda não há projetos publicados.",
       backToProjects: "Todos os projetos",
       contentsLabel: "Nesta página",
-      technologyTagsLabel: "Tecnologias e práticas",
+      technologyTagsLabel: "Áreas de foco",
+      githubLinkLabel: "Explorar no GitHub",
       readSingular: "leitura",
       readPlural: "leituras"
     },
