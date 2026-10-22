@@ -76,15 +76,19 @@
   }
 
   body {
-    @apply bg-ink font-sans antialiased;
+    @apply flex min-h-screen flex-col bg-ink font-sans antialiased;
     color: rgb(var(--color-text));
     background-image:
       radial-gradient(circle at 18% 18%, rgb(var(--color-glow-1) / 0.16), transparent 24rem),
       radial-gradient(circle at 82% 12%, rgb(var(--color-glow-2) / 0.12), transparent 20rem),
       radial-gradient(circle at 50% 85%, rgb(var(--color-glow-3) / 0.1), transparent 28rem),
       linear-gradient(180deg, rgb(var(--color-body-top)) 0%, rgb(var(--color-ink)) 45%, rgb(var(--color-body-bottom)) 100%);
-    min-height: 100vh;
+    min-height: 100svh;
     overflow-x: hidden;
+  }
+
+  main {
+    flex: 1 0 auto;
   }
 
   * {
