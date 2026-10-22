@@ -15,7 +15,7 @@ const switchPath = localizePath("/", getOtherLocale(locale));
 <BaseLayout title={`${site.name} | ${copy.home.title}`} description={copy.description} locale={locale} switchPath={switchPath}>
   <section class="relative overflow-hidden px-4 pb-16 pt-12 sm:px-6 sm:pb-20 sm:pt-16 lg:px-8 lg:pb-28 lg:pt-24">
     <div class="absolute inset-0 -z-10">
-      <div class="absolute inset-0 bg-grid bg-[size:60px_60px] opacity-[0.06]"></div>
+      <div class="absolute inset-0 bg-grid bg-size-[60px_60px] opacity-[0.06]"></div>
       <div class="absolute left-[8%] top-[14%] h-72 w-72 rounded-full bg-cloud/10 blur-3xl"></div>
       <div class="absolute right-[10%] top-[8%] h-64 w-64 rounded-full bg-steel/10 blur-3xl"></div>
       <div class="absolute bottom-[8%] left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-aurora/10 blur-3xl"></div>
@@ -85,7 +85,7 @@ const switchPath = localizePath("/", getOtherLocale(locale));
     </div>
 
     <div class="mt-8 flex justify-center sm:mt-10 lg:mt-16">
-      <a href={localizePath("/about", locale)} class="scroll-cue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cloud">
+      <a href={localizePath("/about", locale)} class="scroll-cue focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cloud">
         <span>{copy.common.explore}</span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4">
           <path d="m6 9 6 6 6-6"></path>
