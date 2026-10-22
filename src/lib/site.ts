@@ -237,10 +237,10 @@ export const localizedSite = {
     ],
     educationItems: [
       {
-        institution: "Centro Universitário Una",
-        degree: "Postgraduate Specialization in Cloud-Native Architecture and Platform Engineering",
-        period: "Sep 2026 - Dec 2027",
-        focus: "In progress. Developing deeper expertise in cloud-native architecture and platform engineering, connected to hands-on work with Kubernetes, Terraform, GitOps and SRE practices."
+        institution: "UNOPAR",
+        degree: "Postgraduate Specialization in DevOps Engineering",
+        period: "Sep 2026 - Feb 2027",
+        focus: "In progress. A practice-oriented program on integrating development and operations through DevOps, with a focus on delivery efficiency, quality, speed, information security and Brazil's LGPD data protection law."
       },
       {
         institution: "UNOPAR",
@@ -489,10 +489,10 @@ export const localizedSite = {
     ],
     educationItems: [
       {
-        institution: "Centro Universitário Una",
-        degree: "Pós-Graduação Lato Sensu (Especialização) em Arquitetura Cloud-Native e Engenharia de Plataformas",
-        period: "Set 2026 - Dez 2027",
-        focus: "Em andamento. Aprofundamento em arquitetura cloud-native e engenharia de plataformas, conectado à prática com Kubernetes, Terraform, GitOps e SRE."
+        institution: "UNOPAR",
+        degree: "Pós-Graduação em Engenharia de DevOps",
+        period: "Set 2026 - Fev 2027",
+        focus: "Em andamento. Formação que conecta teoria e prática na integração entre desenvolvimento e operações por meio de DevOps, com foco em eficiência, qualidade, velocidade de entrega, segurança da informação e LGPD."
       },
       {
         institution: "UNOPAR",
