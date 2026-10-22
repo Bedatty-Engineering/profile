@@ -27,6 +27,7 @@ export const localizedSite = {
     },
     footer: {
       status: "system.status",
+      pageViews: "Page views",
       email: "Email"
     },
     common: {
@@ -274,6 +275,7 @@ export const localizedSite = {
     },
     footer: {
       status: "status.do-sistema",
+      pageViews: "Visitas",
       email: "E-mail"
     },
     common: {
