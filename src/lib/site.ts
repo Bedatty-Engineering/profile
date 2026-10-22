@@ -6,6 +6,7 @@ export const site = {
   linkedin: "https://www.linkedin.com/in/lucas-bedatty",
   github: "https://github.com/bedatty",
   engineeringOrg: "https://github.com/Bedatty-Engineering",
+  credly: "https://www.credly.com/users/lucas-bedatty/badges/credly",
   ogImage: "/og-image.png",
   ogImageWidth: 1200,
   ogImageHeight: 630
@@ -128,8 +129,16 @@ export const localizedSite = {
       },
       certifications: {
         eyebrow: "Certifications",
-        title: "Credentials focused on AWS, infrastructure and practical operations.",
-        copy: "Credentials covering cloud fundamentals, platform tooling and infrastructure operations."
+        title: "Credentials and skills verified by Credly.",
+        copy: "Public badges are synced from Credly whenever this site is built. Each credential links to its verification page.",
+        viewAll: "View all badges on Credly",
+        viewBadge: "Verify this badge on Credly",
+        issued: "Issued",
+        expires: "Valid until",
+        noExpiration: "No expiration",
+        skills: "Skills recognized by these badges",
+        evidenceCount: "badges",
+        refreshed: "Badge data refreshed"
       }
     },
     projects: {
@@ -262,15 +271,6 @@ export const localizedSite = {
         degree: "Technical High School in Information Technology",
         period: "Mar 2016 - Dec 2019"
       }
-    ],
-    certificationItems: [
-      { name: "AWS Certified Solutions Architect", issuer: "Amazon Web Services" },
-      { name: "AWS Cloud Practitioner", issuer: "Amazon Web Services" },
-      { name: "AWS Expert", issuer: "AWS Training" },
-      { name: "AWS Events and Workflows", issuer: "AWS Knowledge" },
-      { name: "Containers & Docker", issuer: "Professional Certification" },
-      { name: "DevOps Initiative - Terraform", issuer: "Professional Certification" },
-      { name: "Windows Server 2019 + AWS + Storage", issuer: "Professional Certification" }
     ]
   },
   pt: {
@@ -389,8 +389,16 @@ export const localizedSite = {
       },
       certifications: {
         eyebrow: "Certificações",
-        title: "Credenciais focadas em AWS, infraestrutura e operações práticas.",
-        copy: "Credenciais cobrindo fundamentos de cloud, ferramentas de plataforma e operações de infraestrutura."
+        title: "Credenciais e skills verificadas pela Credly.",
+        copy: "As badges públicas são sincronizadas da Credly sempre que o site é compilado. Cada credencial leva à sua página de verificação.",
+        viewAll: "Ver todas as badges na Credly",
+        viewBadge: "Verificar esta badge na Credly",
+        issued: "Emitida em",
+        expires: "Válida até",
+        noExpiration: "Sem validade",
+        skills: "Skills reconhecidas por estas badges",
+        evidenceCount: "badges",
+        refreshed: "Dados atualizados em"
       }
     },
     projects: {
@@ -523,15 +531,6 @@ export const localizedSite = {
         degree: "Ensino Médio Técnico em Informática",
         period: "Mar 2016 - Dez 2019"
       }
-    ],
-    certificationItems: [
-      { name: "AWS Certified Solutions Architect", issuer: "Amazon Web Services" },
-      { name: "AWS Cloud Practitioner", issuer: "Amazon Web Services" },
-      { name: "AWS Expert", issuer: "AWS Training" },
-      { name: "AWS Events and Workflows", issuer: "AWS Knowledge" },
-      { name: "Containers & Docker", issuer: "Certificação Profissional" },
-      { name: "DevOps Initiative - Terraform", issuer: "Certificação Profissional" },
-      { name: "Windows Server 2019 + AWS + Storage", issuer: "Certificação Profissional" }
     ]
   }
 } as const;

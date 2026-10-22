@@ -4,9 +4,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "astro dev",
+    "dev": "npm run sync:credly && astro dev",
     "generate:og": "node scripts/generate-og-image.mjs",
-    "build": "npm run generate:og && astro build",
+    "sync:credly": "node scripts/sync-credly-badges.mjs",
+    "build": "npm run generate:og && npm run sync:credly && astro build",
     "preview": "astro preview"
   },
   "dependencies": {
