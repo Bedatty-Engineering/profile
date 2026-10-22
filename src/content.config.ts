@@ -23,7 +23,7 @@ const projects = defineCollection({
     title: z.string(),
     description: z.string(),
     technologies: z.array(z.string()),
-    github_link: z.string().url(),
+    github_link: z.string().url().optional(),
     demo_link: z.string().url().optional(),
     architecture_notes: z.string()
   })
