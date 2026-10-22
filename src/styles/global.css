@@ -732,6 +732,22 @@
     @apply flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-cloud/20 bg-cloud/10 text-cloud;
   }
 
+  .credly-badge-card {
+    @apply flex min-w-0 items-center gap-4 rounded-[1.5rem] border border-white/10 bg-white/[0.03] p-4 transition duration-300 hover:-translate-y-1 hover:border-cloud/30 hover:bg-white/[0.05] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-cloud sm:p-5;
+  }
+
+  .credly-badge-image {
+    @apply flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-cloud/15 bg-cloud/[0.04] p-2;
+  }
+
+  .credly-badge-image img {
+    @apply h-full w-full object-contain;
+  }
+
+  .credly-skill-chip {
+    @apply inline-flex items-center rounded-full border border-cloud/20 bg-cloud/[0.06] px-3 py-1.5 text-xs leading-5 text-steel transition-colors hover:border-cloud/40 hover:text-white;
+  }
+
   .contact-link {
     @apply flex w-full items-center gap-4 rounded-[1.25rem] border border-white/10 bg-white/[0.03] px-4 py-4 transition duration-300 hover:translate-x-1 hover:border-cloud/30 hover:bg-white/[0.05] hover:text-cloud sm:px-5;
   }

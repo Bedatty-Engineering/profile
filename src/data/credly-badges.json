@@ -1,0 +1,397 @@
+{
+  "profileUrl": "https://www.credly.com/users/lucas-bedatty/badges/credly",
+  "fetchedAt": "2026-10-22T21:55:48.662Z",
+  "badges": [
+    {
+      "id": "ea5d1856-dfaa-4073-b5d5-1c8307f832ed",
+      "name": "AWS Certified Cloud Practitioner",
+      "issuer": "Amazon Web Services Training and Certification",
+      "description": "Earners of this certification have a fundamental understanding of IT services and their uses in the AWS Cloud. They demonstrated cloud fluency and foundational AWS knowledge. Badge owners are able to identify essential AWS services necessary to set up AWS-focused projects.",
+      "issuedAt": "2024-09-06",
+      "expiresAt": "2029-06-12",
+      "imageUrl": "https://images.credly.com/images/00634f82-b07f-4bbd-a6bb-53de397fc3a6/image.png",
+      "url": "https://www.credly.com/badges/ea5d1856-dfaa-4073-b5d5-1c8307f832ed",
+      "skills": [
+        {
+          "name": "AWS",
+          "slug": "aws"
+        },
+        {
+          "name": "AWS Certification",
+          "slug": "aws-certification"
+        },
+        {
+          "name": "AWS Cloud",
+          "slug": "aws-cloud"
+        },
+        {
+          "name": "Amazon Web Services",
+          "slug": "amazon-web-services"
+        },
+        {
+          "name": "Cloud Certification",
+          "slug": "cloud-certification"
+        },
+        {
+          "name": "Cloud Computing",
+          "slug": "cloud-computing"
+        },
+        {
+          "name": "Cloud Platform",
+          "slug": "cloud-platform"
+        },
+        {
+          "name": "Cloud Services",
+          "slug": "cloud-services"
+        }
+      ]
+    },
+    {
+      "id": "05bca211-330e-40a9-8360-da73f6780488",
+      "name": "AWS Certified Solutions Architect – Associate",
+      "issuer": "Amazon Web Services Training and Certification",
+      "description": "Earners of this certification have a comprehensive understanding of AWS services and technologies. They demonstrated the ability to build secure and robust solutions using architectural design principles based on customer requirements. Badge owners are able to strategically design well-architected distributed systems that are scalable, resilient, efficient, and fault-tolerant.",
+      "issuedAt": "2026-06-12",
+      "expiresAt": "2029-06-12",
+      "imageUrl": "https://images.credly.com/images/0e284c3f-5164-4b21-8660-0d84737941bc/image.png",
+      "url": "https://www.credly.com/badges/05bca211-330e-40a9-8360-da73f6780488",
+      "skills": [
+        {
+          "name": "AWS",
+          "slug": "aws"
+        },
+        {
+          "name": "AWS Certification",
+          "slug": "aws-certification"
+        },
+        {
+          "name": "AWS Cloud",
+          "slug": "aws-cloud"
+        },
+        {
+          "name": "Amazon Web Services",
+          "slug": "amazon-web-services"
+        },
+        {
+          "name": "Cloud Architecture",
+          "slug": "cloud-architecture"
+        },
+        {
+          "name": "Cloud Certification",
+          "slug": "cloud-certification"
+        },
+        {
+          "name": "Cloud Data",
+          "slug": "cloud-data"
+        },
+        {
+          "name": "Cloud Infrastructure",
+          "slug": "cloud-infrastructure"
+        },
+        {
+          "name": "Cloud Services",
+          "slug": "cloud-services"
+        }
+      ]
+    },
+    {
+      "id": "fadb02ed-2a9c-4cfb-b057-69f382056b0d",
+      "name": "AWS Cloud Quest: Cloud Practitioner - Training Badge",
+      "issuer": "Amazon Web Services Training and Certification",
+      "description": "Earners of this badge have demonstrated basic solution building knowledge using AWS services and have a fundamental understanding of AWS Cloud concepts. Badge earners have acquired hands-on experience with compute, networking, database and security services.",
+      "issuedAt": "2024-11-07",
+      "expiresAt": null,
+      "imageUrl": "https://images.credly.com/images/30816e43-2550-4e1c-be22-3f03c5573bb9/blob",
+      "url": "https://www.credly.com/badges/fadb02ed-2a9c-4cfb-b057-69f382056b0d",
+      "skills": [
+        {
+          "name": "AWS",
+          "slug": "aws"
+        },
+        {
+          "name": "AWS Cloud",
+          "slug": "aws-cloud"
+        },
+        {
+          "name": "AWS Cloud Computing",
+          "slug": "aws-cloud-computing"
+        },
+        {
+          "name": "AWS Cloud Foundations",
+          "slug": "aws-cloud-foundations"
+        },
+        {
+          "name": "Amazon Web Services (AWS)",
+          "slug": "amazon-web-services-aws"
+        },
+        {
+          "name": "Cloud Platform",
+          "slug": "cloud-platform"
+        }
+      ]
+    },
+    {
+      "id": "fac56e19-011b-4236-b089-119863f15293",
+      "name": "AWS Knowledge: Amazon Braket - Training Badge",
+      "issuer": "Amazon Web Services Training and Certification",
+      "description": "Earners of this badge have developed knowledge of Quantum Computing with a focus on Amazon Braket.",
+      "issuedAt": "2025-01-30",
+      "expiresAt": null,
+      "imageUrl": "https://images.credly.com/images/811c6414-b84e-4879-bc5c-863fa62be6aa/blob",
+      "url": "https://www.credly.com/badges/fac56e19-011b-4236-b089-119863f15293",
+      "skills": [
+        {
+          "name": "AWS",
+          "slug": "aws"
+        },
+        {
+          "name": "AWS Cloud",
+          "slug": "aws-cloud"
+        },
+        {
+          "name": "Amazon Braket",
+          "slug": "amazon-braket"
+        },
+        {
+          "name": "Amazon Web Services (AWS)",
+          "slug": "amazon-web-services-aws"
+        },
+        {
+          "name": "Quantum Computing",
+          "slug": "quantum-computing"
+        }
+      ]
+    },
+    {
+      "id": "89591a33-54e2-460f-9d39-4eaa587946a3",
+      "name": "AWS Knowledge: Amazon EKS - Training Badge",
+      "issuer": "Amazon Web Services Training and Certification",
+      "description": "Earners of this badge have developed knowledge of running microservices and container workloads with Amazon Elastic Kubernetes Service (Amazon EKS).",
+      "issuedAt": "2025-06-24",
+      "expiresAt": null,
+      "imageUrl": "https://images.credly.com/images/f5efafe6-ebdc-485c-9ffa-3a05533e634b/blob",
+      "url": "https://www.credly.com/badges/89591a33-54e2-460f-9d39-4eaa587946a3",
+      "skills": [
+        {
+          "name": "AWS",
+          "slug": "aws"
+        },
+        {
+          "name": "AWS Cloud",
+          "slug": "aws-cloud"
+        },
+        {
+          "name": "Amazon EKS",
+          "slug": "amazon-eks"
+        },
+        {
+          "name": "Amazon Elastic Kubernetes Service",
+          "slug": "amazon-elastic-kubernetes-service"
+        },
+        {
+          "name": "Amazon Web Services (AWS)",
+          "slug": "amazon-web-services-aws"
+        },
+        {
+          "name": "Containerization",
+          "slug": "containerization"
+        },
+        {
+          "name": "Kubernetes",
+          "slug": "kubernetes"
+        }
+      ]
+    },
+    {
+      "id": "3c58a95b-921c-47c8-886a-edd8ff3a57a4",
+      "name": "AWS Knowledge: Cloud Essentials - Training Badge",
+      "issuer": "Amazon Web Services Training and Certification",
+      "description": "Earners of this badge have developed knowledge of foundational AWS Cloud concepts with a focus on AWS Compute, Storage, Networking and Database services, security, architecture, pricing, and support.",
+      "issuedAt": "2025-01-15",
+      "expiresAt": null,
+      "imageUrl": "https://images.credly.com/images/7cf036b0-c609-4378-a7be-9969e1dea7ab/blob",
+      "url": "https://www.credly.com/badges/3c58a95b-921c-47c8-886a-edd8ff3a57a4",
+      "skills": [
+        {
+          "name": "AWS",
+          "slug": "aws"
+        },
+        {
+          "name": "AWS Cloud",
+          "slug": "aws-cloud"
+        },
+        {
+          "name": "AWS Compute",
+          "slug": "aws-compute"
+        },
+        {
+          "name": "AWS Databases",
+          "slug": "aws-databases"
+        },
+        {
+          "name": "AWS Networking",
+          "slug": "aws-networking"
+        },
+        {
+          "name": "AWS Security",
+          "slug": "aws-security"
+        },
+        {
+          "name": "AWS storage",
+          "slug": "aws-storage"
+        },
+        {
+          "name": "Amazon Web Services (AWS)",
+          "slug": "amazon-web-services-aws"
+        }
+      ]
+    },
+    {
+      "id": "877ab56a-bf1f-4602-834e-5a112d41fa15",
+      "name": "AWS Knowledge: Compute - Training Badge",
+      "issuer": "Amazon Web Services Training and Certification",
+      "description": "Earners of this badge have developed knowledge of AWS Compute concepts and services with a focus on Amazon EC2.",
+      "issuedAt": "2026-01-20",
+      "expiresAt": null,
+      "imageUrl": "https://images.credly.com/images/c2d44375-6567-495a-b868-d17828c62872/blob",
+      "url": "https://www.credly.com/badges/877ab56a-bf1f-4602-834e-5a112d41fa15",
+      "skills": [
+        {
+          "name": "AWS",
+          "slug": "aws"
+        },
+        {
+          "name": "AWS Cloud",
+          "slug": "aws-cloud"
+        },
+        {
+          "name": "AWS Compute",
+          "slug": "aws-compute"
+        },
+        {
+          "name": "Amazon Elastic Compute Cloud",
+          "slug": "amazon-elastic-compute-cloud"
+        },
+        {
+          "name": "Amazon Web Services (AWS)",
+          "slug": "amazon-web-services-aws"
+        }
+      ]
+    },
+    {
+      "id": "b53ae752-b34f-42f7-8b90-8d40d868e2c6",
+      "name": "AWS Knowledge: Events and Workflows - Training Badge",
+      "issuer": "Amazon Web Services Training and Certification",
+      "description": "Earners of this badge have developed knowledge of event-driven computing and AWS Serverless concepts with a focus on AWS Step Functions, Amazon EventBridge, Amazon SQS and Amazon SNS.",
+      "issuedAt": "2025-01-29",
+      "expiresAt": null,
+      "imageUrl": "https://images.credly.com/images/b6050277-c769-4d17-8c77-3fa963830231/blob",
+      "url": "https://www.credly.com/badges/b53ae752-b34f-42f7-8b90-8d40d868e2c6",
+      "skills": [
+        {
+          "name": "AWS",
+          "slug": "aws"
+        },
+        {
+          "name": "AWS Cloud",
+          "slug": "aws-cloud"
+        },
+        {
+          "name": "AWS Step Functions",
+          "slug": "aws-step-functions"
+        },
+        {
+          "name": "Amazon EventBridge",
+          "slug": "amazon-eventbridge"
+        },
+        {
+          "name": "Amazon Simple Notification Service (SNS)",
+          "slug": "amazon-simple-notification-service-sns"
+        },
+        {
+          "name": "Amazon Simple Queue Service (SQS)",
+          "slug": "amazon-simple-queue-service-sqs"
+        },
+        {
+          "name": "Amazon Web Services (AWS)",
+          "slug": "amazon-web-services-aws"
+        },
+        {
+          "name": "Event-driven architectures"
+        },
+        {
+          "name": "Serverless Computing",
+          "slug": "serverless-computing"
+        }
+      ]
+    },
+    {
+      "id": "0f93e816-bad3-4bf3-9cb0-dccbcd839d2b",
+      "name": "AWS Knowledge: Serverless - Training Badge",
+      "issuer": "Amazon Web Services Training and Certification",
+      "description": "Earners of this badge have developed technical skills and knowledge of AWS serverless concepts and services with a focus on AWS Lambda and Amazon API Gateway.",
+      "issuedAt": "2025-02-06",
+      "expiresAt": null,
+      "imageUrl": "https://images.credly.com/images/0c20a5b7-b4e9-4c2f-8b68-342e00a85e05/blob",
+      "url": "https://www.credly.com/badges/0f93e816-bad3-4bf3-9cb0-dccbcd839d2b",
+      "skills": [
+        {
+          "name": "AWS",
+          "slug": "aws"
+        },
+        {
+          "name": "AWS Cloud",
+          "slug": "aws-cloud"
+        },
+        {
+          "name": "AWS Lambda",
+          "slug": "aws-lambda"
+        },
+        {
+          "name": "Amazon API Gateway",
+          "slug": "amazon-api-gateway"
+        },
+        {
+          "name": "Amazon Web Services (AWS)",
+          "slug": "amazon-web-services-aws"
+        },
+        {
+          "name": "Serverless Computing",
+          "slug": "serverless-computing"
+        }
+      ]
+    },
+    {
+      "id": "5124ed7d-f17f-4446-a043-78d4b01d8073",
+      "name": "Introduction to Cybersecurity",
+      "issuer": "Cisco",
+      "description": "Cisco verifies the earner of this badge successfully completed the Introduction to Cybersecurity course. The holder of this student-level credential has introductory knowledge of cybersecurity, including the global implications of cyber threats on industries, and why cybersecurity is a growing profession. They understand vulnerabilities and threat detection and defense. They also have insight into opportunities available with pursuing cybersecurity certifications.",
+      "issuedAt": "2021-10-08",
+      "expiresAt": null,
+      "imageUrl": "https://images.credly.com/images/af8c6b4e-fc31-47c4-8dcb-eb7a2065dc5b/I2CS__1_.png",
+      "url": "https://www.credly.com/badges/5124ed7d-f17f-4446-a043-78d4b01d8073",
+      "skills": [
+        {
+          "name": "Cyber Best Practices",
+          "slug": "cyber-best-practices"
+        },
+        {
+          "name": "Cybersecurity",
+          "slug": "cybersecurity"
+        },
+        {
+          "name": "Network Vulnerabilities",
+          "slug": "network-vulnerabilities"
+        },
+        {
+          "name": "Privacy And Data Confidentiality",
+          "slug": "privacy-and-data-confidentiality"
+        },
+        {
+          "name": "Threat Detection",
+          "slug": "threat-detection"
+        }
+      ]
+    }
+  ]
+}

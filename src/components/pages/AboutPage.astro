@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import SectionIntro from "../SectionIntro.astro";
+import credlyData from "../../data/credly-badges.json";
 import { getLocaleContent, getOtherLocale, localizePath, type Locale } from "../../lib/i18n";
 import { site } from "../../lib/site";
 
@@ -12,6 +13,26 @@ const { locale } = Astro.props;
 const copy = getLocaleContent(locale);
 const switchPath = localizePath("/about", getOtherLocale(locale));
 const resumeFile = locale === "pt" ? "PT-Curriculum-Lucas-Bedatty.pdf" : "EN-Curriculum-Lucas-Bedatty.pdf";
+const dateLocale = locale === "pt" ? "pt-BR" : "en-US";
+const formatCredlyDate = (value: string) =>
+  new Intl.DateTimeFormat(dateLocale, { dateStyle: "medium", timeZone: "UTC" }).format(new Date(`${value}T00:00:00Z`));
+const skillEvidence = new Map<string, { count: number; slug?: string }>();
+
+for (const badge of credlyData.badges) {
+  for (const skill of badge.skills) {
+    const existing = skillEvidence.get(skill.name);
+    skillEvidence.set(skill.name, {
+      count: (existing?.count ?? 0) + 1,
+      slug: existing?.slug ?? skill.slug
+    });
+  }
+}
+
+const credlySkills = [...skillEvidence.entries()]
+  .map(([name, evidence]) => ({ name, ...evidence }))
+  .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
+const refreshedDate = new Intl.DateTimeFormat(dateLocale, { dateStyle: "medium", timeZone: "UTC" })
+  .format(new Date(credlyData.fetchedAt));
 ---
 
 <BaseLayout title={copy.about.seoTitle} description={copy.about.seoDescription} locale={locale} switchPath={switchPath}>
@@ -156,24 +177,69 @@ const resumeFile = locale === "pt" ? "PT-Curriculum-Lucas-Bedatty.pdf" : "EN-Cur
           <SectionIntro eyebrow={copy.about.certifications.eyebrow} title={copy.about.certifications.title} copy={copy.about.certifications.copy} />
         </div>
 
-        <div class="mt-10 grid gap-4 sm:grid-cols-2">
-          {
-            copy.certificationItems.map((item, index) => (
-              <div class:list={["cert-card reveal", index % 3 === 1 && "reveal-delay-1", index % 3 === 2 && "reveal-delay-2"]}>
-                <div class="cert-badge">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="h-6 w-6">
-                    <path d="M12 15l-2 5l1-3h2l1 3l-2-5z"></path>
-                    <circle cx="12" cy="9" r="6"></circle>
-                  </svg>
-                </div>
-                <div>
-                  <p class="text-sm font-semibold leading-6 text-white">{item.name}</p>
-                  <p class="mt-1 font-mono text-[0.7rem] uppercase tracking-[0.18em] text-mist">{item.issuer}</p>
-                </div>
-              </div>
-            ))
-          }
+        <div class="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <p class="text-sm text-mist">{copy.about.certifications.refreshed}: {refreshedDate}</p>
+          <a class="button-secondary" href={site.credly} target="_blank" rel="noreferrer">
+            <span>{copy.about.certifications.viewAll}</span>
+          </a>
         </div>
+
+        {credlyData.badges.length > 0 ? (
+          <div class="mt-6 grid gap-4 md:grid-cols-2">
+            {credlyData.badges.map((badge, index) => (
+              <a
+                class:list={["credly-badge-card reveal", index % 3 === 1 && "reveal-delay-1", index % 3 === 2 && "reveal-delay-2"]}
+                href={badge.url}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={`${badge.name} — ${copy.about.certifications.viewBadge}`}
+              >
+                <div class="credly-badge-image">
+                  {badge.imageUrl && <img src={badge.imageUrl} alt="" loading="lazy" width="80" height="80" />}
+                </div>
+                <div class="min-w-0">
+                  <p class="text-sm font-semibold leading-6 text-white">{badge.name}</p>
+                  <p class="mt-1 font-mono text-[0.68rem] uppercase tracking-[0.14em] text-mist">{badge.issuer}</p>
+                  <p class="mt-3 text-xs leading-5 text-mist">
+                    {badge.issuedAt && <span>{copy.about.certifications.issued} {formatCredlyDate(badge.issuedAt)}</span>}
+                    {badge.expiresAt ? (
+                      <span>{badge.issuedAt && " · "}{copy.about.certifications.expires} {formatCredlyDate(badge.expiresAt)}</span>
+                    ) : (
+                      <span>{badge.issuedAt && " · "}{copy.about.certifications.noExpiration}</span>
+                    )}
+                  </p>
+                </div>
+              </a>
+            ))}
+          </div>
+        ) : (
+          <p class="mt-6 text-sm text-mist">{copy.about.certifications.copy}</p>
+        )}
+
+        {credlySkills.length > 0 && (
+          <div class="mt-10 border-t border-white/10 pt-7">
+            <h3 class="text-sm font-semibold text-white">{copy.about.certifications.skills}</h3>
+            <ul class="mt-4 flex flex-wrap gap-2" aria-label={copy.about.certifications.skills}>
+              {credlySkills.map((skill) => (
+                <li>
+                  {skill.slug ? (
+                    <a
+                      class="credly-skill-chip"
+                      href={`https://www.credly.com/skills/${skill.slug}`}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={`${skill.name}, ${skill.count} ${copy.about.certifications.evidenceCount}`}
+                    >
+                      {skill.name}<span class="ml-2 text-cloud/75" aria-hidden="true">{skill.count}</span>
+                    </a>
+                  ) : (
+                    <span class="credly-skill-chip">{skill.name}<span class="ml-2 text-cloud/75" aria-hidden="true">{skill.count}</span></span>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </div>
   </section>
