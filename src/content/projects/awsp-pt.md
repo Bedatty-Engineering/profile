@@ -4,6 +4,8 @@ translationKey: awsp
 pathSlug: awsp
 title: "awsp: Seletor de Perfis da AWS CLI"
 description: "Uma ferramenta de linha de comando em Bash para alternar perfis da AWS CLI, gerenciar sessões SSO e aplicar regiões ao shell atual."
+seo_title: "AWSP: Seletor de Perfis AWS CLI | Lucas Bedatty"
+seo_description: "Alterne perfis da AWS CLI, verifique autenticação e gerencie sessões do AWS IAM Identity Center (SSO) com o awsp, uma ferramenta Bash open source."
 technologies:
   - Bash
   - AWS CLI v2

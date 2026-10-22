@@ -4,6 +4,8 @@ translationKey: wsl-ssh-setup
 pathSlug: wsl-ssh-setup
 title: "wsl-ssh-setup: SSH no WSL pela rede local"
 description: "Scripts em PowerShell para configurar e remover o acesso SSH a uma distribuição WSL 2 a partir de outro dispositivo na rede local."
+seo_title: "WSL SSH Setup: Acesso Remoto ao WSL 2 | Lucas Bedatty"
+seo_description: "Configure acesso SSH a uma distribuição Linux no WSL 2 pela rede local com scripts PowerShell para OpenSSH, Firewall do Windows e encaminhamento de portas."
 technologies:
   - Windows PowerShell
   - WSL 2

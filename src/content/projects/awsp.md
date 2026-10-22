@@ -4,6 +4,8 @@ translationKey: awsp
 pathSlug: awsp
 title: "awsp: AWS CLI Profile Switcher"
 description: "A Bash command-line tool for switching AWS CLI profiles, managing SSO sessions, and applying profile regions to the current shell."
+seo_title: "AWSP: AWS CLI Profile Switcher | Lucas Bedatty"
+seo_description: "Switch AWS CLI profiles, check authentication, and manage AWS IAM Identity Center (SSO) sessions with awsp, an open-source Bash tool."
 technologies:
   - Bash
   - AWS CLI v2

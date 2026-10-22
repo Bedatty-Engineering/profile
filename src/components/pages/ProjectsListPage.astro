@@ -3,7 +3,6 @@ import type { CollectionEntry } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import SectionIntro from "../SectionIntro.astro";
 import { getLocaleContent, getOtherLocale, localizePath, type Locale } from "../../lib/i18n";
-import { site } from "../../lib/site";
 
 interface Props {
   locale: Locale;
@@ -15,7 +14,7 @@ const copy = getLocaleContent(locale);
 const switchPath = localizePath("/projects", getOtherLocale(locale));
 ---
 
-<BaseLayout title={`${copy.projects.title} | ${site.name}`} description={copy.projects.description} locale={locale} switchPath={switchPath}>
+<BaseLayout title={copy.projects.seoTitle} description={copy.projects.seoDescription} locale={locale} switchPath={switchPath}>
   <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
     <div class="reveal">
       <SectionIntro eyebrow={copy.projects.eyebrow} title={copy.projects.heading} copy={copy.projects.copy} />

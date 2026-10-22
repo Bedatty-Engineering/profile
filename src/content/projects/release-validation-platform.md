@@ -4,6 +4,8 @@ translationKey: release-validation-platform
 pathSlug: release-validation-platform
 title: "Agentic and Non-Agentic Release Validation Platform"
 description: "A release validation platform combining deterministic suites, AI-assisted change analysis, and controlled chaos experiments with auditable evidence."
+seo_title: "Release Validation Platform | Lucas Bedatty"
+seo_description: "Explore a Go-based release validation platform for deterministic checks, AI-assisted change analysis, and controlled chaos experiments with auditable evidence."
 technologies:
   - Go
   - k6
