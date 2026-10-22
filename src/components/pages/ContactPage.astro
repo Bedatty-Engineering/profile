@@ -13,7 +13,7 @@ const copy = getLocaleContent(locale);
 const switchPath = localizePath("/contact", getOtherLocale(locale));
 ---
 
-<BaseLayout title={`${copy.contact.title} | ${site.name}`} description={copy.contact.description} locale={locale} switchPath={switchPath}>
+<BaseLayout title={copy.contact.seoTitle} description={copy.contact.seoDescription} locale={locale} switchPath={switchPath}>
   <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
     <div class="reveal">
       <SectionIntro eyebrow={copy.contact.eyebrow} title={copy.contact.heading} copy={copy.contact.copy} />

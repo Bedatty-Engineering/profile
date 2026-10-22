@@ -4,6 +4,10 @@ translationKey: bedatty-engineering
 pathSlug: bedatty-engineering
 title: "Bedatty Engineering: Espaço Pessoal de Engenharia"
 description: "Uma organização pessoal no GitHub para homelab, projetos paralelos, experimentos e aprendizado aberto."
+seo_title: "Bedatty Engineering | Projetos Open Source e Homelab"
+seo_description: "Conheça a Bedatty Engineering, um espaço pessoal no GitHub com ferramentas open source, projetos de homelab, experimentos de infraestrutura e aprendizado aberto."
+schema_type: Organization
+schema_name: "Bedatty Engineering"
 technologies:
   - Projetos Pessoais
   - Homelab

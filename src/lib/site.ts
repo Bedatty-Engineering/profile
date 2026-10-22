@@ -56,6 +56,9 @@ export const localizedSite = {
     },
     home: {
       title: "DevOps Portfolio",
+      seoTitle: "Senior DevOps Engineer & AWS Portfolio | Lucas Bedatty",
+      seoDescription:
+        "Lucas Bedatty is a Senior DevOps Engineer in Brazil focused on AWS platforms, Terraform, Kubernetes, SRE, infrastructure automation, and cloud security.",
       badge: ["AWS Certified", "Senior DevOps Engineer"],
       kicker: "Cloud Engineer | DevOps & SRE | Platform Engineer",
       intro:
@@ -73,6 +76,9 @@ export const localizedSite = {
     },
     about: {
       eyebrow: "About",
+      seoTitle: "About Lucas Bedatty | Senior DevOps Engineer",
+      seoDescription:
+        "Learn about Lucas Bedatty's experience building secure AWS platforms, Kubernetes operations, infrastructure automation, cloud governance, and DevOps systems.",
       title: "Cloud and platform engineer with hands-on AWS, automation and production operations experience.",
       copy:
         "Experience across AWS infrastructure, observability, governance and delivery workflows, with a focus on secure and reliable systems.",
@@ -128,6 +134,9 @@ export const localizedSite = {
     },
     projects: {
       title: "Projects",
+      seoTitle: "AWS, Cloud & DevOps Projects | Lucas Bedatty",
+      seoDescription:
+        "Explore open-source tools and engineering projects by Lucas Bedatty, including AWS CLI profile management, GitHub CLI account switching, WSL SSH setup, and release validation.",
       description: "Selected projects in cloud, platform engineering, and DevOps by Lucas Bedatty.",
       eyebrow: "Projects",
       heading: "Projects in cloud and platform engineering.",
@@ -146,6 +155,9 @@ export const localizedSite = {
     },
     contact: {
       title: "Contact",
+      seoTitle: "Contact Lucas Bedatty | Cloud & DevOps Engineer",
+      seoDescription:
+        "Contact Lucas Bedatty in Brazil about AWS cloud engineering, DevOps, SRE, platform engineering, infrastructure automation, or consulting opportunities.",
       description: "Contact Lucas Bedatty for cloud platform and DevOps opportunities.",
       eyebrow: "Contact",
       heading: "Cloud platform, DevOps and AWS infrastructure conversations.",
@@ -305,6 +317,9 @@ export const localizedSite = {
     },
     home: {
       title: "Portfólio DevOps",
+      seoTitle: "Lucas Bedatty | Engenheiro DevOps e AWS",
+      seoDescription:
+        "Lucas Bedatty é engenheiro DevOps sênior no Brasil, com foco em plataformas AWS, Terraform, Kubernetes, SRE, automação de infraestrutura e segurança em cloud.",
       badge: ["Certificado AWS", "Engenheiro DevOps Sênior"],
       kicker: "Engenheiro Cloud | DevOps & SRE | Platform Engineer",
       intro:
@@ -322,6 +337,9 @@ export const localizedSite = {
     },
     about: {
       eyebrow: "Sobre",
+      seoTitle: "Sobre Lucas Bedatty | Engenheiro DevOps Sênior",
+      seoDescription:
+        "Conheça a experiência de Lucas Bedatty em plataformas AWS seguras, operações Kubernetes, automação de infraestrutura, governança cloud e práticas DevOps.",
       title: "Engenheiro de cloud e plataforma com experiência prática em AWS, automação e operações de produção.",
       copy:
         "Experiência em infraestrutura AWS, observabilidade, governança e fluxos de entrega, com foco em sistemas seguros e confiáveis.",
@@ -377,6 +395,9 @@ export const localizedSite = {
     },
     projects: {
       title: "Projetos",
+      seoTitle: "Projetos AWS, Cloud e DevOps | Lucas Bedatty",
+      seoDescription:
+        "Explore ferramentas open source e projetos de engenharia de Lucas Bedatty, incluindo perfis AWS CLI, contas GitHub CLI, acesso SSH ao WSL e validação de releases.",
       description: "Estudos de caso de cloud, plataforma e DevOps por Lucas Bedatty.",
       eyebrow: "Projetos",
       heading: "Projetos de cloud e engenharia de plataforma.",
@@ -395,6 +416,9 @@ export const localizedSite = {
     },
     contact: {
       title: "Contato",
+      seoTitle: "Contato | Lucas Bedatty, Engenheiro DevOps e Cloud",
+      seoDescription:
+        "Fale com Lucas Bedatty sobre engenharia AWS, DevOps, SRE, engenharia de plataforma, automação de infraestrutura e oportunidades de consultoria.",
       description: "Entre em contato com Lucas Bedatty para oportunidades em cloud platform e DevOps.",
       eyebrow: "Contato",
       heading: "Conversas sobre cloud platform, DevOps e infraestrutura AWS.",

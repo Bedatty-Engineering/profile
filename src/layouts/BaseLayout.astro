@@ -24,9 +24,10 @@ interface Props {
   type?: "website" | "article";
   noindex?: boolean;
   switchPath?: string;
+  structuredData?: Record<string, unknown>[];
 }
 
-const { title, description, locale, image, imageAlt, canonical, type = "website", noindex = false, switchPath } = Astro.props;
+const { title, description, locale, image, imageAlt, canonical, type = "website", noindex = false, switchPath, structuredData = [] } = Astro.props;
 const copy = getLocaleContent(locale);
 const currentPath = Astro.url.pathname;
 const pathWithoutLocale = stripLocalePrefix(currentPath);
@@ -41,26 +42,48 @@ const socialImageType = socialImage.endsWith(".png")
   : socialImage.endsWith(".jpg") || socialImage.endsWith(".jpeg")
     ? "image/jpeg"
     : "image/svg+xml";
-const structuredData = {
+const personId = `${site.domain}/#person`;
+const websiteId = `${site.domain}/#website`;
+const pageStructuredData = {
   "@context": "https://schema.org",
-  "@type": type === "article" ? "Article" : "WebSite",
-  name: title,
-  description,
-  url: canonicalUrl,
-  inLanguage: localeHtmlLang[locale],
-  image: socialImage,
-  author: {
-    "@type": "Person",
-    name: site.name,
-    url: site.domain,
-    sameAs: [site.github, site.linkedin]
-  },
-  publisher: {
-    "@type": "Person",
-    name: site.name,
-    url: site.domain
-  }
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": websiteId,
+      url: site.domain,
+      name: site.name,
+      description: copy.description,
+      inLanguage: localeHtmlLang[locale],
+      publisher: { "@id": personId }
+    },
+    {
+      "@type": "Person",
+      "@id": personId,
+      name: site.name,
+      url: site.domain,
+      jobTitle: copy.title,
+      sameAs: [site.github, site.linkedin]
+    },
+    {
+      "@type": "WebPage",
+      "@id": `${canonicalUrl}#webpage`,
+      url: canonicalUrl,
+      name: title,
+      description,
+      inLanguage: localeHtmlLang[locale],
+      isPartOf: { "@id": websiteId },
+      about: { "@id": personId },
+      primaryImageOfPage: {
+        "@type": "ImageObject",
+        url: socialImage,
+        width: site.ogImageWidth,
+        height: site.ogImageHeight
+      }
+    },
+    ...structuredData
+  ]
 };
+const structuredDataJson = JSON.stringify(pageStructuredData).replace(/</g, "\\u003c");
 ---
 
 <!doctype html>
@@ -74,6 +97,7 @@ const structuredData = {
     <meta name="author" content={site.name} />
     <meta name="theme-color" content="#060816" />
     <link rel="canonical" href={canonicalUrl} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="alternate" hrefLang="en" href={toAbsoluteUrl(locale === "en" ? currentPath : alternatePath)} />
     <link rel="alternate" hrefLang="pt-BR" href={toAbsoluteUrl(locale === "pt" ? currentPath : alternatePath)} />
     <link rel="alternate" hrefLang="x-default" href={toAbsoluteUrl(locale === defaultLocale ? currentPath : englishPath)} />
@@ -87,6 +111,7 @@ const structuredData = {
     <meta property="og:type" content={type} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:locale" content={locale === "pt" ? "pt_BR" : "en_US"} />
+    <meta property="og:locale:alternate" content={locale === "pt" ? "en_US" : "pt_BR"} />
     <meta property="og:image" content={socialImage} />
     <meta property="og:image:secure_url" content={socialImage} />
     <meta property="og:image:type" content={socialImageType} />
@@ -100,9 +125,8 @@ const structuredData = {
     <meta name="twitter:image" content={socialImage} />
     <meta name="twitter:image:alt" content={socialImageAlt} />
     <meta name="twitter:url" content={canonicalUrl} />
-    <meta name="twitter:creator" content={site.name} />
     <meta name="format-detection" content="telephone=no" />
-    <script type="application/ld+json" set:html={JSON.stringify(structuredData)}></script>
+    <script type="application/ld+json" set:html={structuredDataJson}></script>
     <script is:inline>
       const THEME_STORAGE_KEY = "preferred-theme";
       const THEME_COLORS = {

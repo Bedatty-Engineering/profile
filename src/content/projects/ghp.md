@@ -4,6 +4,8 @@ translationKey: ghp
 pathSlug: ghp
 title: "ghp: GitHub CLI Account Manager"
 description: "A Bash command-line tool for switching authenticated GitHub CLI accounts, managing login sessions, and setting up SSH commit signing keys."
+seo_title: "GHP: GitHub CLI Account Manager | Lucas Bedatty"
+seo_description: "Manage GitHub CLI accounts, authentication sessions, and SSH commit-signing keys with ghp, a Bash tool that also supports GitHub Enterprise."
 technologies:
   - Bash
   - GitHub CLI

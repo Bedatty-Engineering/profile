@@ -4,6 +4,8 @@ translationKey: ghp
 pathSlug: ghp
 title: "ghp: Gerenciador de Contas do GitHub CLI"
 description: "Uma ferramenta de linha de comando em Bash para alternar entre contas autenticadas no GitHub CLI, gerenciar sessões e configurar chaves SSH para assinatura de commits."
+seo_title: "GHP: Gerenciador de Contas GitHub CLI | Lucas Bedatty"
+seo_description: "Gerencie contas do GitHub CLI, sessões de autenticação e chaves SSH para assinatura de commits com o ghp, ferramenta Bash compatível com GitHub Enterprise."
 technologies:
   - Bash
   - GitHub CLI

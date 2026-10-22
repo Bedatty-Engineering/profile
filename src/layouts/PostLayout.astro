@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
-import { formatDate, getLocaleContent, localizePath, type Locale } from "../lib/i18n";
+import { formatDate, getLocaleContent, localeHtmlLang, localizePath, toAbsoluteUrl, type Locale } from "../lib/i18n";
 import { site } from "../lib/site";
 
 interface Heading {
@@ -18,11 +18,56 @@ interface Props {
   tags?: string[];
   projectDetail?: boolean;
   headings?: Heading[];
+  seoTitle?: string;
+  seoDescription?: string;
+  schemaType?: "SoftwareSourceCode" | "Organization";
+  schemaName?: string;
+  codeRepository?: string;
 }
 
-const { title, description, locale, switchPath, date, tags = [], projectDetail = false, headings = [] } = Astro.props;
+const {
+  title,
+  description,
+  locale,
+  switchPath,
+  date,
+  tags = [],
+  projectDetail = false,
+  headings = [],
+  seoTitle,
+  seoDescription,
+  schemaType = "SoftwareSourceCode",
+  schemaName,
+  codeRepository
+} = Astro.props;
 const copy = getLocaleContent(locale);
 const contentHeadings = headings.filter((heading) => heading.depth === 2);
+const canonicalUrl = toAbsoluteUrl(Astro.url.pathname);
+const programmingLanguages = tags.filter((tag) => ["Bash", "Go", "Python", "PowerShell", "Windows PowerShell"].includes(tag));
+const projectSchema = projectDetail
+  ? [
+      {
+        "@type": schemaType,
+        "@id": `${canonicalUrl}#project`,
+        name: schemaName ?? title,
+        description: seoDescription ?? description,
+        mainEntityOfPage: canonicalUrl,
+        ...(schemaType === "SoftwareSourceCode"
+          ? {
+              url: canonicalUrl,
+              inLanguage: localeHtmlLang[locale],
+              keywords: tags,
+              creator: { "@id": `${site.domain}/#person` },
+              ...(programmingLanguages.length > 0 ? { programmingLanguage: programmingLanguages } : {}),
+              ...(codeRepository ? { codeRepository } : {})
+            }
+          : {
+              url: codeRepository ?? canonicalUrl,
+              founder: { "@id": `${site.domain}/#person` }
+            })
+      }
+    ]
+  : [];
 const technologySymbols: Record<string, string> = {
   Go: "Go",
   k6: "k6",
@@ -54,11 +99,12 @@ const technologySymbols: Record<string, string> = {
 ---
 
 <BaseLayout
-  title={`${title} | ${site.name}`}
-  description={description}
+  title={seoTitle ?? `${title} | ${site.name}`}
+  description={seoDescription ?? description}
   locale={locale}
-  type="article"
+  type="website"
   switchPath={switchPath}
+  structuredData={projectSchema}
 >
   {projectDetail ? (
     <section class="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">

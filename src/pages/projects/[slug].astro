@@ -24,6 +24,11 @@ const { Content, headings } = await render(project);
 <PostLayout
   title={project.data.title}
   description={project.data.description}
+  seoTitle={project.data.seo_title}
+  seoDescription={project.data.seo_description}
+  schemaType={project.data.schema_type}
+  schemaName={project.data.schema_name}
+  codeRepository={project.data.github_link}
   locale="en"
   switchPath={switchPath}
   tags={project.data.technologies}

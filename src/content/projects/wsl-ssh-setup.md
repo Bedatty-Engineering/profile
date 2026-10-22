@@ -4,6 +4,8 @@ translationKey: wsl-ssh-setup
 pathSlug: wsl-ssh-setup
 title: "wsl-ssh-setup: SSH into WSL over your LAN"
 description: "PowerShell scripts for setting up and removing SSH access to a WSL 2 distribution from another device on the local network."
+seo_title: "WSL SSH Setup: Remote Access to WSL 2 | Lucas Bedatty"
+seo_description: "Set up SSH access to a WSL 2 Linux distribution over your local network with PowerShell scripts for OpenSSH, Windows Firewall, and port forwarding."
 technologies:
   - Windows PowerShell
   - WSL 2
