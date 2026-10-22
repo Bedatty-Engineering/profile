@@ -148,26 +148,33 @@ const technologySymbols: Record<string, string> = {
       .map((link) => document.getElementById(decodeURIComponent(link.hash.slice(1))))
       .filter((heading): heading is HTMLElement => heading instanceof HTMLElement);
 
-    if ("IntersectionObserver" in window && headingTargets.length > 0) {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          const visible = entries
-            .filter((entry) => entry.isIntersecting)
-            .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+    const setActiveHeading = (heading: HTMLElement) => {
+      for (const link of tocLinks) {
+        const active = link.hash === `#${heading.id}`;
+        link.classList.toggle("is-active", active);
+        if (active) link.setAttribute("aria-current", "location");
+        else link.removeAttribute("aria-current");
+      }
+    };
 
-          if (!visible) return;
+    const isAtPageEnd = () =>
+      Math.ceil(window.scrollY + window.innerHeight) >= document.documentElement.scrollHeight - 2;
 
-          for (const link of tocLinks) {
-            const active = link.hash === `#${visible.target.id}`;
-            link.classList.toggle("is-active", active);
-            if (active) link.setAttribute("aria-current", "location");
-            else link.removeAttribute("aria-current");
-          }
-        },
-        { rootMargin: "-18% 0px -68% 0px", threshold: 0 }
-      );
+    if (headingTargets.length > 0) {
+      const updateActiveHeading = () => {
+        const activationLine = window.innerHeight * 0.22;
+        const activeHeading = isAtPageEnd()
+          ? headingTargets[headingTargets.length - 1]
+          : [...headingTargets]
+              .reverse()
+              .find((heading) => heading.getBoundingClientRect().top <= activationLine) ?? headingTargets[0];
 
-      for (const heading of headingTargets) observer.observe(heading);
+        setActiveHeading(activeHeading);
+      };
+
+      window.addEventListener("scroll", updateActiveHeading, { passive: true });
+      window.addEventListener("resize", updateActiveHeading);
+      updateActiveHeading();
     }
   </script>
 )}
