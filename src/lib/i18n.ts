@@ -47,14 +47,14 @@ export function toAbsoluteUrl(pathname: string) {
   return new URL(pathname, site.domain).toString();
 }
 
-export function getCollectionByLocale<T extends "blog" | "projects">(
+export function getCollectionByLocale<T extends "projects">(
   entries: CollectionEntry<T>[],
   locale: Locale
 ) {
   return entries.filter((entry) => entry.data.locale === locale);
 }
 
-export function findTranslatedEntry<T extends "blog" | "projects">(
+export function findTranslatedEntry<T extends "projects">(
   entries: CollectionEntry<T>[],
   translationKey: string,
   locale: Locale
@@ -62,6 +62,6 @@ export function findTranslatedEntry<T extends "blog" | "projects">(
   return entries.find((entry) => entry.data.translationKey === translationKey && entry.data.locale === locale);
 }
 
-export function getSectionPath(section: "blog" | "projects", locale: Locale) {
+export function getSectionPath(section: "projects", locale: Locale) {
   return localizePath(`/${section}`, locale);
 }

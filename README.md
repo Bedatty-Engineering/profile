@@ -44,7 +44,7 @@ npm run preview
 
 ### Add a project
 
-Create a markdown file in [`/src/content/projects`](/home/b3da/personal/projects/Bedatty-Engineering/profile/src/content/projects) with this frontmatter shape:
+Create a markdown file in `src/content/projects/` with this frontmatter shape:
 
 ```md
 ---
@@ -60,23 +60,6 @@ architecture_notes: "Short architectural summary"
 ```
 
 The body below the frontmatter becomes the project detail page.
-
-### Add a blog post
-
-Create a markdown file in [`/src/content/blog`](/home/b3da/personal/projects/Bedatty-Engineering/profile/src/content/blog) with this frontmatter shape:
-
-```md
----
-title: "Post title"
-date: 2026-03-09
-description: "Short description"
-tags:
-  - AWS
-  - DevOps
----
-```
-
-The markdown body is rendered into the blog article page automatically.
 
 ## Validation
 

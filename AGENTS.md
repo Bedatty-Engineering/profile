@@ -31,9 +31,7 @@ No test runner is configured. Validate changes by running `npm run build` — a 
 ```
 src/
   components/      # Reusable .astro UI components
-  content/
-    blog/          # Blog posts (.md)
-    projects/      # Project entries (.md)
+  content/projects/ # Project entries (.md)
   layouts/         # BaseLayout.astro, PostLayout.astro
   lib/
     site.ts        # All site-level constants (name, links, skills)
@@ -76,7 +74,7 @@ Defined in `src/styles/global.css` — always prefer these over repeating Tailwi
 | `.copy-muted`      | Muted body paragraph                         |
 | `.button-primary`  | Filled CTA button                            |
 | `.button-secondary`| Ghost CTA button                             |
-| `.prose-cloud`     | Rich text styles for blog/project content    |
+| `.prose-cloud`     | Rich text styles for project content          |
 | `.panel-card`      | Hover-animated content card                  |
 | `.tag-chip`        | Small pill label (technologies, tags)        |
 | `.terminal-*`      | Terminal UI component classes                |
@@ -90,19 +88,18 @@ All personal data and site metadata (name, email, GitHub, LinkedIn, descriptions
 
 ### Content Collections
 - Collections are declared in `src/content.config.ts` with Zod schemas.
-- Fetch entries with `getCollection("blog")` or `getCollection("projects")` — never read markdown files directly.
-- Blog schema requires: `title`, `date` (ISO string), `description`, `tags[]`.
+- Fetch project entries with `getCollection("projects")` — never read markdown files directly.
 - Projects schema requires: `title`, `description`, `technologies[]`, `github_link` (URL); `demo_link` is optional.
 
 ### Astro Components
 - Type component props with `interface Props` in the frontmatter fence.
 - Frontmatter order: imports → data fetching → derived values.
 - Dynamic routes (`[slug].astro`) must export `getStaticPaths()`.
-- Dynamic content links and feed links should use trailing slashes: `/blog/${post.id}/`.
+- Dynamic project links should use trailing slashes: `/projects/${project.id}/`.
 - Current static page navigation in the repo uses the existing top-level path style (`/about`, `/projects`, `/contact`).
 
 ### TypeScript
-- Use TypeScript for logic files by default. The current repo intentionally keeps `src/pages/rss.xml.js`.
+- Use TypeScript for logic files by default.
 - `astro.config.mjs` and `tailwind.config.mjs` are intentionally `.mjs` — leave them as is.
 
 ### Styling
@@ -114,17 +111,6 @@ All personal data and site metadata (name, email, GitHub, LinkedIn, descriptions
 ---
 
 ## Content Guidelines
-
-### Adding a Blog Post
-Create `src/content/blog/<slug>.md` with valid frontmatter:
-```yaml
----
-title: "Post Title"
-date: 2025-01-15
-description: "One-sentence summary (≤ 160 chars)"
-tags: ["AWS", "Terraform"]
----
-```
 
 ### Adding a Project
 Create `src/content/projects/<slug>.md` with valid frontmatter:
