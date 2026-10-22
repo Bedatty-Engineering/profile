@@ -32,6 +32,7 @@ export const localizedSite = {
     common: {
       detailView: "Detail View",
       openEntry: "open entry",
+      openProject: "View project",
       github: "GitHub",
       demo: "Demo",
       copy: "Copy",
@@ -131,29 +132,11 @@ export const localizedSite = {
     },
     projects: {
       title: "Projects",
-      description: "Selected cloud, platform, and DevOps case studies by Lucas Bedatty.",
+      description: "Selected projects in cloud, platform engineering, and DevOps by Lucas Bedatty.",
       eyebrow: "Projects",
-      heading: "Case studies are coming soon.",
-      copy:
-        "Detailed write-ups covering architecture, automation and platform engineering work are being prepared for publication.",
-      status: "in progress",
-      statusChip: "coming soon",
-      lead: "Selected project pages are being curated.",
-      body:
-        "This section will feature concise case studies on AWS platforms, infrastructure as code, governance, security and cost optimization.",
-      note:
-        "The goal is to publish technically relevant examples with clear context, architecture decisions and measurable outcomes.",
-      ctas: {
-        profile: "View Profile",
-        contact: "Get In Touch"
-      },
-      terminal: {
-        command: "cat projects/status.json",
-        state: 'state: "coming soon"',
-        focus: 'focus: ["AWS", "IaC", "platform", "security"]',
-        format: 'format: "technical case studies"',
-        timeline: 'timeline: "in preparation"'
-      }
+      heading: "Projects in cloud and platform engineering.",
+      copy: "Case studies on AWS platforms, release validation, automation, and operations.",
+      empty: "No projects are published yet."
     },
     contact: {
       title: "Contact",
@@ -296,6 +279,7 @@ export const localizedSite = {
     common: {
       detailView: "Detalhes",
       openEntry: "abrir artigo",
+      openProject: "Ver projeto",
       github: "GitHub",
       demo: "Demo",
       copy: "Copiar",
@@ -397,27 +381,9 @@ export const localizedSite = {
       title: "Projetos",
       description: "Estudos de caso de cloud, plataforma e DevOps por Lucas Bedatty.",
       eyebrow: "Projetos",
-      heading: "Estudos de caso em breve.",
-      copy:
-        "Materiais detalhados sobre arquitetura, automação e trabalho de engenharia de plataforma estão sendo preparados para publicação.",
-      status: "em andamento",
-      statusChip: "em breve",
-      lead: "As páginas de projetos selecionados estão sendo curadas.",
-      body:
-        "Esta seção vai reunir estudos de caso concisos sobre plataformas AWS, infraestrutura como código, governança, segurança e otimização de custos.",
-      note:
-        "O objetivo é publicar exemplos tecnicamente relevantes com contexto claro, decisões de arquitetura e resultados mensuráveis.",
-      ctas: {
-        profile: "Ver Perfil",
-        contact: "Entrar em Contato"
-      },
-      terminal: {
-        command: "cat projects/status.json",
-        state: 'state: "em breve"',
-        focus: 'focus: ["AWS", "IaC", "plataforma", "segurança"]',
-        format: 'format: "estudos de caso técnicos"',
-        timeline: 'timeline: "em preparação"'
-      }
+      heading: "Projetos de cloud e engenharia de plataforma.",
+      copy: "Estudos de caso sobre plataformas AWS, validação de releases, automação e operações.",
+      empty: "Ainda não há projetos publicados."
     },
     contact: {
       title: "Contato",
