@@ -9,7 +9,7 @@ Guidelines for AI agents working in this repository.
 
 ## Project Overview
 
-Static portfolio site for a Senior DevOps / Cloud Engineer. Built with **Astro v5**, **Tailwind CSS v3**, and markdown content collections. Deployed as static output served by a **Cloudflare Worker** for `https://bedatty.com`.
+Static portfolio site for a Senior DevOps / Cloud Engineer. Built with **Astro v7**, **Tailwind CSS v4**, and markdown content collections. Deployed as static output served by a **Cloudflare Worker** for `https://bedatty.com`.
 
 ---
 
@@ -41,7 +41,6 @@ src/
   content.config.ts  # Zod schemas for content collections
   env.d.ts         # Astro type references
 astro.config.mjs   # Astro config (site URL, integrations)
-tailwind.config.mjs # Tailwind theme (custom tokens + fonts)
 ```
 
 ---

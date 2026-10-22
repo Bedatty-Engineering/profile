@@ -27,7 +27,7 @@ const switchPath = localizePath("/projects", getOtherLocale(locale));
           {projects.map((project) => (
             <a
               href={localizePath(`/projects/${project.data.pathSlug}/`, locale)}
-              class="group flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.025] p-5 transition-colors hover:border-cloud/30 hover:bg-white/[0.04] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cloud sm:p-6"
+              class="group flex h-full flex-col rounded-2xl border border-white/10 bg-white/2.5 p-5 transition-colors hover:border-cloud/30 hover:bg-white/4 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-cloud sm:p-6"
             >
               <h2 class="text-lg font-semibold leading-snug tracking-tight text-white transition-colors group-hover:text-cloud sm:text-xl">
                 {project.data.title}
@@ -47,7 +47,7 @@ const switchPath = localizePath("/projects", getOtherLocale(locale));
                 <span class="button-secondary min-h-0 w-fit px-4 py-2 text-xs normal-case tracking-normal sm:text-xs">
                   {copy.common.openProject}
                 </span>
-                <span class="inline-flex items-center gap-2 rounded-full border border-cloud/20 bg-cloud/[0.06] px-3 py-1.5 text-xs text-cloud/90">
+                <span class="inline-flex items-center gap-2 rounded-full border border-cloud/20 bg-cloud/6 px-3 py-1.5 text-xs text-cloud/90">
                   <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" class="h-4 w-4 text-cloud/70">
                     <path d="M2.5 12s3.4-6 9.5-6 9.5 6 9.5 6-3.4 6-9.5 6-9.5-6-9.5-6Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
                     <circle cx="12" cy="12" r="2.5" stroke="currentColor" stroke-width="1.6" />
