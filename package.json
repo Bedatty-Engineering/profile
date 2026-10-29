@@ -22,6 +22,6 @@
   "devDependencies": {
     "@tailwindcss/vite": "^4.3.3",
     "sharp": "^0.35.5",
-    "wrangler": "^4.76.0"
+    "wrangler": "^4.155.0"
   }
 }
