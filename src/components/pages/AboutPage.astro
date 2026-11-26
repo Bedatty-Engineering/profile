@@ -14,6 +14,8 @@ const copy = getLocaleContent(locale);
 const switchPath = localizePath("/about", getOtherLocale(locale));
 const resumeFile = locale === "pt" ? "PT-Curriculum-Lucas-Bedatty.pdf" : "EN-Curriculum-Lucas-Bedatty.pdf";
 const dateLocale = locale === "pt" ? "pt-BR" : "en-US";
+const initialBadgeCount = 4;
+const badgePageSize = 4;
 const formatCredlyDate = (value: string) =>
   new Intl.DateTimeFormat(dateLocale, { dateStyle: "medium", timeZone: "UTC" }).format(new Date(`${value}T00:00:00Z`));
 const skillEvidence = new Map<string, { count: number; slug?: string }>();
@@ -193,16 +195,18 @@ const refreshedDate = new Intl.DateTimeFormat(dateLocale, { dateStyle: "medium",
 
         <div class="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <p class="text-sm text-mist">{copy.about.certifications.refreshed}: {refreshedDate}</p>
-          <a class="button-secondary" href={site.credly} target="_blank" rel="noreferrer">
+          <a class="button-secondary" href={site.credlyOther} target="_blank" rel="noreferrer">
             <span>{copy.about.certifications.viewAll}</span>
           </a>
         </div>
 
         {credlyData.badges.length > 0 ? (
-          <div class="mt-6 grid gap-4 md:grid-cols-2">
+          <div id="credly-badges" class="mt-6 grid gap-4 md:grid-cols-2">
             {credlyData.badges.map((badge, index) => (
               <a
                 class:list={["credly-badge-card reveal", index % 3 === 1 && "reveal-delay-1", index % 3 === 2 && "reveal-delay-2"]}
+                data-credly-badge
+                hidden={index >= initialBadgeCount}
                 href={badge.url}
                 target="_blank"
                 rel="noreferrer"
@@ -228,6 +232,27 @@ const refreshedDate = new Intl.DateTimeFormat(dateLocale, { dateStyle: "medium",
           </div>
         ) : (
           <p class="mt-6 text-sm text-mist">{copy.about.certifications.copy}</p>
+        )}
+
+        {credlyData.badges.length > initialBadgeCount && (
+          <div class="mt-5 flex flex-col items-start gap-2">
+            <button
+              class="button-secondary"
+              type="button"
+              data-credly-more
+              aria-controls="credly-badges"
+              data-page-size={badgePageSize}
+              data-showing-label={copy.about.certifications.showing}
+              data-of-label={copy.about.certifications.of}
+              data-badges-label={copy.about.certifications.evidenceCount}
+              hidden
+            >
+              {copy.about.certifications.showMore}
+            </button>
+            <p class="text-xs text-mist" data-credly-count aria-live="polite">
+              {copy.about.certifications.showing} {initialBadgeCount} {copy.about.certifications.of} {credlyData.badges.length} {copy.about.certifications.evidenceCount}
+            </p>
+          </div>
         )}
 
         {credlySkills.length > 0 && (
@@ -258,3 +283,29 @@ const refreshedDate = new Intl.DateTimeFormat(dateLocale, { dateStyle: "medium",
     </div>
   </section>
 </BaseLayout>
+
+<script>
+  const badgeCards = Array.from(document.querySelectorAll<HTMLElement>("[data-credly-badge]"));
+  const moreButton = document.querySelector<HTMLButtonElement>("[data-credly-more]");
+  const badgeCount = document.querySelector<HTMLElement>("[data-credly-count]");
+
+  if (moreButton && badgeCount && badgeCards.length > 0) {
+    let visibleCount = badgeCards.filter((badge) => !badge.hidden).length;
+    const pageSize = Number(moreButton.dataset.pageSize) || 4;
+    const updateCount = () => {
+      badgeCount.textContent = `${moreButton.dataset.showingLabel} ${visibleCount} ${moreButton.dataset.ofLabel} ${badgeCards.length} ${moreButton.dataset.badgesLabel}`;
+    };
+
+    moreButton.hidden = false;
+    updateCount();
+    moreButton.addEventListener("click", () => {
+      badgeCards.slice(visibleCount, visibleCount + pageSize).forEach((badge) => {
+        badge.hidden = false;
+      });
+      visibleCount = badgeCards.filter((badge) => !badge.hidden).length;
+      updateCount();
+
+      if (visibleCount >= badgeCards.length) moreButton.hidden = true;
+    });
+  }
+</script>
