@@ -5,6 +5,8 @@ import { site } from "../src/lib/site.ts";
 const profileUrl = new URL(site.credly);
 const profilePath = profileUrl.pathname.split("/").slice(0, 3).join("/");
 const walletUrl = new URL(`${profilePath}/badges?sort=rank`, profileUrl.origin);
+const profileSlug = profileUrl.pathname.split("/")[2];
+const otherBadgesUrl = new URL(`/api/v1/users/${profileSlug}/external_badges/open_badges/public?page=1&page_size=48&sort=rank`, profileUrl.origin);
 const outputPath = resolve("src/data/credly-badges.json");
 const headers = {
   Accept: "application/json, text/plain, */*",
@@ -54,10 +56,9 @@ function normalizeBadge(badge) {
   };
 }
 
-async function fetchPublicBadges() {
-  let nextUrl = walletUrl;
-  const rawBadges = [];
-
+async function fetchPages(startUrl, description, clearSnapshotWhenUnavailable = false) {
+  let nextUrl = startUrl;
+  const records = [];
   while (nextUrl) {
     if (nextUrl.origin !== "https://www.credly.com") {
       throw new Error("Credly returned a pagination URL outside its public site.");
@@ -65,23 +66,67 @@ async function fetchPublicBadges() {
 
     const response = await fetch(nextUrl, { headers });
     if (!response.ok) {
-      const error = new Error(`Credly returned HTTP ${response.status} while loading the public badge wallet.`);
+      const error = new Error(`Credly returned HTTP ${response.status} while loading ${description}.`);
       error.status = response.status;
+      error.clearSnapshotWhenUnavailable = clearSnapshotWhenUnavailable;
       throw error;
     }
 
     const payload = await response.json();
     if (!Array.isArray(payload.data)) {
-      throw new Error("Credly returned an unexpected response for the public badge wallet.");
+      throw new Error(`Credly returned an unexpected response for ${description}.`);
     }
 
-    rawBadges.push(...payload.data);
+    records.push(...payload.data);
     nextUrl = payload.metadata?.next_page_url ? new URL(payload.metadata.next_page_url, nextUrl) : null;
   }
 
-  return rawBadges
+  return records;
+}
+
+function normalizeOtherBadge(record) {
+  const badge = record.external_badge;
+  if (!/^[\da-f-]{36}$/i.test(record.id ?? "")) {
+    throw new Error("Credly returned an other badge without a valid public ID.");
+  }
+  if (!badge?.badge_name) throw new Error(`Credly other badge ${record.id} is missing its name.`);
+
+  const url = new URL(badge.badge_url);
+  if (url.protocol !== "https:") {
+    throw new Error(`Credly returned an unexpected other badge URL protocol: ${url.protocol}`);
+  }
+
+  return {
+    id: record.id,
+    name: badge.badge_name,
+    issuer: badge.issuer_name ?? "Credly",
+    description: badge.badge_description ?? "",
+    issuedAt: badge.issued_at_date ?? null,
+    expiresAt: badge.expires_at_date ?? null,
+    imageUrl: getImageUrl({ image_url: badge.image_url }),
+    url: url.toString(),
+    skills: (badge.skills ?? [])
+      .filter((skill) => skill?.name)
+      .map((skill) => ({ name: skill.name }))
+  };
+}
+
+async function fetchPublicBadges() {
+  const [rawBadges, rawOtherBadges] = await Promise.all([
+    fetchPages(walletUrl, "the public badge wallet", true),
+    fetchPages(otherBadgesUrl, "public other badges")
+  ]);
+
+  const credlyBadges = rawBadges
     .filter((badge) => badge.public === true && badge.is_private_badge !== true && badge.state === "accepted")
     .map(normalizeBadge);
+  const otherBadges = rawOtherBadges
+    .filter((badge) => badge.public === true && badge.external_badge)
+    .map(normalizeOtherBadge);
+
+  const uniqueBadges = new Map();
+  for (const badge of [...credlyBadges, ...otherBadges]) uniqueBadges.set(badge.id, badge);
+  return [...uniqueBadges.values()];
 }
 
 async function readCachedSnapshot() {
@@ -107,9 +152,9 @@ async function saveSnapshot(badges) {
 try {
   const badges = await fetchPublicBadges();
   await saveSnapshot(badges);
-  console.log(`Synced ${badges.length} public Credly badges.`);
+  console.log(`Synced ${badges.length} public Credly and other badges.`);
 } catch (error) {
-  if ([401, 403, 404].includes(error.status)) {
+  if (error.clearSnapshotWhenUnavailable && [401, 403, 404].includes(error.status)) {
     await saveSnapshot([]);
     console.warn("Credly profile is unavailable publicly; removed the saved badge data.");
     process.exit(0);
