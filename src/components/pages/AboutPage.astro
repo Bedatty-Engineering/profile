@@ -152,20 +152,20 @@ const refreshedDate = new Intl.DateTimeFormat(dateLocale, { dateStyle: "medium",
           <SectionIntro eyebrow={copy.about.education.eyebrow} title={copy.about.education.title} copy={copy.about.education.copy} />
         </div>
 
-        <div class="mt-10 grid gap-6">
+        <div class="timeline mt-10">
           {
             copy.educationItems.map((item, index) => (
-              <div class:list={["edu-card reveal", index === 1 && "reveal-delay-1"]}>
-                <div class="edu-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="h-7 w-7">
-                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
-                    <path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"></path>
-                  </svg>
+              <div class:list={["timeline-item reveal", index === 1 && "reveal-delay-1", index === 2 && "reveal-delay-2", index === 3 && "reveal-delay-3"]}>
+                <div class="timeline-card">
+                  <div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                    <div>
+                      <p class="font-mono text-xs uppercase tracking-[0.22em] text-cloud">{item.institution}</p>
+                      <p class="mt-2 text-lg font-semibold leading-7 text-white">{item.degree}</p>
+                    </div>
+                    <span class="timeline-period shrink-0">{item.period}</span>
+                  </div>
+                  {"focus" in item && <p class="mt-4 text-sm leading-7 text-mist">{item.focus}</p>}
                 </div>
-                <p class="text-xl font-semibold text-white">{item.institution}</p>
-                <p class="mt-2 text-sm leading-7 text-mist">{item.degree}</p>
-                {"focus" in item && <p class="mt-3 text-sm leading-7 text-mist">{item.focus}</p>}
-                <p class="mt-4 font-mono text-xs uppercase tracking-[0.22em] text-cloud">{item.period}</p>
               </div>
             ))
           }
@@ -215,16 +215,6 @@ const refreshedDate = new Intl.DateTimeFormat(dateLocale, { dateStyle: "medium",
         ) : (
           <p class="mt-6 text-sm text-mist">{copy.about.certifications.copy}</p>
         )}
-
-        <div class="mt-6 flex justify-center rounded-[1.5rem] border border-white/10 bg-white/[0.03] p-5">
-          <div
-            data-iframe-width="150"
-            data-iframe-height="270"
-            data-share-badge-id="d3757956-99dd-4b38-a403-35bc76a5dc53"
-            data-share-badge-host="https://www.credly.com"
-          ></div>
-        </div>
-        <script is:inline async src="https://cdn.credly.com/assets/utilities/embed.js"></script>
 
         {credlySkills.length > 0 && (
           <div class="mt-10 border-t border-white/10 pt-7">
