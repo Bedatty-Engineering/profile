@@ -256,6 +256,18 @@ export const localizedSite = {
     ],
     educationItems: [
       {
+        institution: "PUCPR",
+        degree: "Postgraduate Specialization in Software Architecture, Data Science and Cybersecurity",
+        period: "In progress",
+        focus: "In progress. A multidisciplinary program on designing scalable software architectures, applying data science to technology decisions, and embedding cybersecurity practices to build robust, secure solutions."
+      },
+      {
+        institution: "UNOPAR",
+        degree: "MBA in Software Engineering with Artificial Intelligence",
+        period: "In progress",
+        focus: "In progress. An applied MBA focused on combining modern software engineering with artificial intelligence, including machine learning, deep learning and generative AI to build efficient, innovative software solutions."
+      },
+      {
         institution: "UNOPAR",
         degree: "Postgraduate Specialization in DevOps Engineering",
         period: "Sep 2026 - Feb 2027",
@@ -529,6 +541,18 @@ export const localizedSite = {
       }
     ],
     educationItems: [
+      {
+        institution: "PUCPR",
+        degree: "Pós-Graduação em Arquitetura de Software, Ciência de Dados e Cybersecurity",
+        period: "Em andamento",
+        focus: "Em andamento. Formação multidisciplinar sobre como projetar arquiteturas de software escaláveis, aplicar ciência de dados às decisões tecnológicas e incorporar práticas de cybersecurity para criar soluções robustas e seguras."
+      },
+      {
+        institution: "UNOPAR",
+        degree: "MBA em Engenharia de Software com Inteligência Artificial",
+        period: "Em andamento",
+        focus: "Em andamento. MBA voltado à integração entre engenharia de software moderna e inteligência artificial, incluindo machine learning, deep learning e IA generativa para criar soluções de software eficientes e inovadoras."
+      },
       {
         institution: "UNOPAR",
         degree: "Pós-Graduação em Engenharia de DevOps",
