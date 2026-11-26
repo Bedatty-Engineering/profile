@@ -216,6 +216,16 @@ const refreshedDate = new Intl.DateTimeFormat(dateLocale, { dateStyle: "medium",
           <p class="mt-6 text-sm text-mist">{copy.about.certifications.copy}</p>
         )}
 
+        <div class="mt-6 flex justify-center rounded-[1.5rem] border border-white/10 bg-white/[0.03] p-5">
+          <div
+            data-iframe-width="150"
+            data-iframe-height="270"
+            data-share-badge-id="d3757956-99dd-4b38-a403-35bc76a5dc53"
+            data-share-badge-host="https://www.credly.com"
+          ></div>
+        </div>
+        <script is:inline async src="https://cdn.credly.com/assets/utilities/embed.js"></script>
+
         {credlySkills.length > 0 && (
           <div class="mt-10 border-t border-white/10 pt-7">
             <h3 class="text-sm font-semibold text-white">{copy.about.certifications.skills}</h3>
