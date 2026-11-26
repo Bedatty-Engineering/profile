@@ -263,13 +263,27 @@ export const localizedSite = {
       },
       {
         institution: "UNOPAR",
+        degree: "MBA in Software Engineering with Artificial Intelligence",
+        period: "In progress",
+        focus: "In progress. An applied MBA focused on combining modern software engineering with artificial intelligence, including machine learning, deep learning and generative AI to build efficient, innovative software solutions."
+      },
+      {
+        institution: "PUCPR",
+        degree: "Postgraduate Specialization in Software Architecture, Data Science and Cybersecurity",
+        period: "In progress",
+        focus: "In progress. A multidisciplinary program on designing scalable software architectures, applying data science to technology decisions, and embedding cybersecurity practices to build robust, secure solutions."
+      },
+      {
+        institution: "UNOPAR",
         degree: "Associate Degree in Systems Analysis and Development",
-        period: "Oct 2023 - Dec 2025"
+        period: "Oct 2023 - Dec 2025",
+        focus: "A hands-on degree covering software development, systems analysis, databases and the full lifecycle of information systems, from requirements and design to implementation and maintenance."
       },
       {
         institution: "IFSUL - Instituto Federal Sul-rio-grandense",
         degree: "Technical High School in Information Technology",
-        period: "Mar 2016 - Dec 2019"
+        period: "Mar 2016 - Dec 2019",
+        focus: "A technical high school program combining general education with practical foundations in computing, programming, computer networks and information technology support."
       }
     ]
   },
@@ -523,13 +537,27 @@ export const localizedSite = {
       },
       {
         institution: "UNOPAR",
+        degree: "MBA em Engenharia de Software com Inteligência Artificial",
+        period: "Em andamento",
+        focus: "Em andamento. MBA voltado à integração entre engenharia de software moderna e inteligência artificial, incluindo machine learning, deep learning e IA generativa para criar soluções de software eficientes e inovadoras."
+      },
+      {
+        institution: "PUCPR",
+        degree: "Pós-Graduação em Arquitetura de Software, Ciência de Dados e Cybersecurity",
+        period: "Em andamento",
+        focus: "Em andamento. Formação multidisciplinar sobre como projetar arquiteturas de software escaláveis, aplicar ciência de dados às decisões tecnológicas e incorporar práticas de cybersecurity para criar soluções robustas e seguras."
+      },
+      {
+        institution: "UNOPAR",
         degree: "Tecnólogo em Análise e Desenvolvimento de Sistemas",
-        period: "Out 2023 - Dez 2025"
+        period: "Out 2023 - Dez 2025",
+        focus: "Graduação tecnológica com formação prática em desenvolvimento de software, análise de sistemas, bancos de dados e ciclo de vida de sistemas de informação, da definição de requisitos à implementação e manutenção."
       },
       {
         institution: "IFSUL - Instituto Federal Sul-rio-grandense",
         degree: "Ensino Médio Técnico em Informática",
-        period: "Mar 2016 - Dez 2019"
+        period: "Mar 2016 - Dez 2019",
+        focus: "Formação integrada de ensino médio e técnico, com fundamentos práticos de computação, programação, redes de computadores e suporte em tecnologia da informação."
       }
     ]
   }
