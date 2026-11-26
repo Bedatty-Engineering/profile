@@ -125,7 +125,8 @@ export const localizedSite = {
         eyebrow: "Education",
         title: "Academic foundation aligned with infrastructure and systems work.",
         copy:
-          "Education supporting the practical work in cloud operations, automation and platform delivery."
+          "Education supporting the practical work in cloud operations, automation and platform delivery.",
+        visitLink: "Visit institution"
       },
       certifications: {
         eyebrow: "Certifications",
@@ -258,30 +259,35 @@ export const localizedSite = {
       {
         institution: "PUCPR",
         degree: "Postgraduate Specialization in Software Architecture, Data Science and Cybersecurity",
+        url: "https://posdigital.pucpr.br/pos-graduacao/tech-dados-cyber/ciencia-de-dados-arquitetura-de-software-e-cybersecurity/",
         period: "In progress",
         focus: "In progress. A multidisciplinary program on designing scalable software architectures, applying data science to technology decisions, and embedding cybersecurity practices to build robust, secure solutions."
       },
       {
         institution: "UNOPAR",
         degree: "MBA in Software Engineering with Artificial Intelligence",
+        url: "https://www.unopar.com.br/curso/pos-graduacao/engenharia-de-software-com-inteligencia-artificial/",
         period: "In progress",
         focus: "In progress. An applied MBA focused on combining modern software engineering with artificial intelligence, including machine learning, deep learning and generative AI to build efficient, innovative software solutions."
       },
       {
         institution: "UNOPAR",
         degree: "Postgraduate Specialization in DevOps Engineering",
+        url: "https://www.unopar.com.br/curso/pos-graduacao/engenharia-de-devops/",
         period: "Sep 2026 - Feb 2027",
         focus: "In progress. A practice-oriented program on integrating development and operations through DevOps, with a focus on delivery efficiency, quality, speed, information security and Brazil's LGPD data protection law."
       },
       {
         institution: "UNOPAR",
         degree: "Associate Degree in Systems Analysis and Development",
+        url: "https://www.unopar.com.br/curso/analise-e-desenvolvimento-de-sistemas-tecnologo/",
         period: "Oct 2023 - Dec 2025",
         focus: "A hands-on degree covering software development, systems analysis, databases and the full lifecycle of information systems, from requirements and design to implementation and maintenance."
       },
       {
         institution: "IFSUL - Instituto Federal Sul-rio-grandense",
         degree: "Technical High School in Information Technology",
+        url: "https://www.ifsul.edu.br/",
         period: "Mar 2016 - Dec 2019",
         focus: "A technical high school program combining general education with practical foundations in computing, programming, computer networks and information technology support."
       }
@@ -399,7 +405,8 @@ export const localizedSite = {
         eyebrow: "Formação",
         title: "Base acadêmica alinhada ao trabalho com infraestrutura e sistemas.",
         copy:
-          "Formação que sustenta o trabalho prático em operações cloud, automação e entrega de plataforma."
+          "Formação que sustenta o trabalho prático em operações cloud, automação e entrega de plataforma.",
+        visitLink: "Acessar instituição"
       },
       certifications: {
         eyebrow: "Certificações",
@@ -532,30 +539,35 @@ export const localizedSite = {
       {
         institution: "PUCPR",
         degree: "Pós-Graduação em Arquitetura de Software, Ciência de Dados e Cybersecurity",
+        url: "https://posdigital.pucpr.br/pos-graduacao/tech-dados-cyber/ciencia-de-dados-arquitetura-de-software-e-cybersecurity/",
         period: "Em andamento",
         focus: "Em andamento. Formação multidisciplinar sobre como projetar arquiteturas de software escaláveis, aplicar ciência de dados às decisões tecnológicas e incorporar práticas de cybersecurity para criar soluções robustas e seguras."
       },
       {
         institution: "UNOPAR",
         degree: "MBA em Engenharia de Software com Inteligência Artificial",
+        url: "https://www.unopar.com.br/curso/pos-graduacao/engenharia-de-software-com-inteligencia-artificial/",
         period: "Em andamento",
         focus: "Em andamento. MBA voltado à integração entre engenharia de software moderna e inteligência artificial, incluindo machine learning, deep learning e IA generativa para criar soluções de software eficientes e inovadoras."
       },
       {
         institution: "UNOPAR",
         degree: "Pós-Graduação em Engenharia de DevOps",
+        url: "https://www.unopar.com.br/curso/pos-graduacao/engenharia-de-devops/",
         period: "Set 2026 - Fev 2027",
         focus: "Em andamento. Formação que conecta teoria e prática na integração entre desenvolvimento e operações por meio de DevOps, com foco em eficiência, qualidade, velocidade de entrega, segurança da informação e LGPD."
       },
       {
         institution: "UNOPAR",
         degree: "Tecnólogo em Análise e Desenvolvimento de Sistemas",
+        url: "https://www.unopar.com.br/curso/analise-e-desenvolvimento-de-sistemas-tecnologo/",
         period: "Out 2023 - Dez 2025",
         focus: "Graduação tecnológica com formação prática em desenvolvimento de software, análise de sistemas, bancos de dados e ciclo de vida de sistemas de informação, da definição de requisitos à implementação e manutenção."
       },
       {
         institution: "IFSUL - Instituto Federal Sul-rio-grandense",
         degree: "Ensino Médio Técnico em Informática",
+        url: "https://www.ifsul.edu.br/",
         period: "Mar 2016 - Dez 2019",
         focus: "Formação integrada de ensino médio e técnico, com fundamentos práticos de computação, programação, redes de computadores e suporte em tecnologia da informação."
       }
