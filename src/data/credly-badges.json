@@ -1,6 +1,6 @@
 {
   "profileUrl": "https://www.credly.com/users/lucas-bedatty/badges/credly",
-  "fetchedAt": "2026-11-26T18:46:02.683Z",
+  "fetchedAt": "2026-11-26T21:05:14.711Z",
   "badges": [
     {
       "id": "d3757956-99dd-4b38-a403-35bc76a5dc53",
@@ -442,6 +442,105 @@
         {
           "name": "Threat Detection",
           "slug": "threat-detection"
+        }
+      ]
+    },
+    {
+      "id": "7de30ca9-9c17-4718-a4c3-b57055750033",
+      "name": "Iniciativa DevOps - CI/CD",
+      "issuer": "Iniciativa DevOps",
+      "description": "CONHEÇA UM MÉTODO PRÁTICO PARA SE TORNAR UM ESPECIALISTA NA CULTURA DEVOPS E ALAVANCAR SUA CARREIRA COM UM PERFIL BASTANTE DISPUTADO E BEM PAGO NO MERCADO DE TI",
+      "issuedAt": "2022-08-08",
+      "expiresAt": null,
+      "imageUrl": "https://images.credly.com/images/7334e107-f4fb-4028-80df-c02f69a7da91/assertion-sosffgo3RUu9KnHA43NsIA_cached_image_20261114-31-ksqvky.png",
+      "url": "https://api.badgr.io/public/assertions/sosffgo3RUu9KnHA43NsIA",
+      "skills": [
+        {
+          "name": "Continuous Integration (CI)"
+        },
+        {
+          "name": "GitHub"
+        }
+      ]
+    },
+    {
+      "id": "1d6cf2a9-c9a4-4f45-8cf1-c5a63d2b131b",
+      "name": "Iniciativa DevOps - Docker",
+      "issuer": "Iniciativa DevOps",
+      "description": "CONHEÇA UM MÉTODO PRÁTICO PARA SE TORNAR UM ESPECIALISTA NA CULTURA DEVOPS E ALAVANCAR SUA CARREIRA COM UM PERFIL BASTANTE DISPUTADO E BEM PAGO NO MERCADO DE TI",
+      "issuedAt": "2022-08-03",
+      "expiresAt": null,
+      "imageUrl": "https://images.credly.com/images/3b621120-349c-4beb-a280-513d4b337e6e/assertion-AgI61mOfQoutgwFGKuuRqA_cached_image_20261114-34-m3oyjm.png",
+      "url": "https://api.badgr.io/public/assertions/AgI61mOfQoutgwFGKuuRqA",
+      "skills": [
+        {
+          "name": "Docker"
+        }
+      ]
+    },
+    {
+      "id": "e37ebb74-7eee-4b97-92bf-35f5eadcce6b",
+      "name": "Iniciativa DevOps - Terrafom",
+      "issuer": "Iniciativa DevOps",
+      "description": "CONHEÇA UM MÉTODO PRÁTICO PARA SE TORNAR UM ESPECIALISTA NA CULTURA DEVOPS E ALAVANCAR SUA CARREIRA COM UM PERFIL BASTANTE DISPUTADO E BEM PAGO NO MERCADO DE TI",
+      "issuedAt": "2022-08-05",
+      "expiresAt": null,
+      "imageUrl": "https://images.credly.com/images/563aab60-aed0-49db-a06b-7bdb1ed2a532/assertion-PEjzimyfSeqkHEPf2dzZgA_cached_image_20261022-8-nfpso1.png",
+      "url": "https://api.badgr.io/public/assertions/PEjzimyfSeqkHEPf2dzZgA",
+      "skills": [
+        {
+          "name": "HashiCorp Terraform"
+        },
+        {
+          "name": "Kubernetes"
+        }
+      ]
+    },
+    {
+      "id": "f55ad743-4b6c-4b27-98b1-f54da03f72bb",
+      "name": "Iniciativa DevOps - Kubernetes",
+      "issuer": "Iniciativa DevOps",
+      "description": "CONHEÇA UM MÉTODO PRÁTICO PARA SE TORNAR UM ESPECIALISTA NA CULTURA DEVOPS E ALAVANCAR SUA CARREIRA COM UM PERFIL BASTANTE DISPUTADO E BEM PAGO NO MERCADO DE TI",
+      "issuedAt": "2022-08-04",
+      "expiresAt": null,
+      "imageUrl": "https://images.credly.com/images/543d8bdf-3c6d-4128-87a8-7ec21ed7aeef/assertion-aVFyKs6qQ4CM1EGzMqlPVQ_cached_image_20261022-33-tu87j2.png",
+      "url": "https://api.badgr.io/public/assertions/aVFyKs6qQ4CM1EGzMqlPVQ",
+      "skills": [
+        {
+          "name": "Kubernetes"
+        },
+        {
+          "name": "Node.js"
+        }
+      ]
+    },
+    {
+      "id": "04be1d0b-4c96-4f44-8ff7-dae909f839c1",
+      "name": "Containers e Docker",
+      "issuer": "Iniciativa Kubernetes",
+      "description": "A Iniciativa Kubernetes é o evento de imersão dedicado a tecnologias de containers, Docker, Kubernetes e práticas de automação com pipelines de CI/CD. Os premiados com os badges da Iniciativa Kubernetes mostram as habilidades essenciais para atuar com essas tecnologias.",
+      "issuedAt": "2022-03-31",
+      "expiresAt": null,
+      "imageUrl": "https://images.credly.com/images/161b655c-2d27-4dd2-9d48-cf9e3ce23775/assertion-9FvxuPgIRj2n_izHpgt4FA_cached_image_20261022-33-ebqzmo.png",
+      "url": "https://api.badgr.io/public/assertions/9FvxuPgIRj2n_izHpgt4FA",
+      "skills": [
+        {
+          "name": "Docker"
+        }
+      ]
+    },
+    {
+      "id": "65e380e9-bc13-4d85-b5bf-7016041fea3f",
+      "name": "AWS Expert",
+      "issuer": "LINUXtips",
+      "description": "After intensive training, this person owns abilities to Cloud Adoption and maintain workloads running on Amazon Web Services with excellence.",
+      "issuedAt": "2022-09-01",
+      "expiresAt": null,
+      "imageUrl": "https://images.credly.com/images/80071988-a128-4d96-a529-e159748b7874/5d139992333d9108ca413d0ca97499e5_cached_image_20261022-8-22hr7.png",
+      "url": "https://api.accredible.com/v1/obi/badge_assertions/623df252-16ba-46be-b59e-24c525e5b440",
+      "skills": [
+        {
+          "name": "Amazon Web Services (AWS)"
         }
       ]
     }
