@@ -259,28 +259,28 @@ export const localizedSite = {
       {
         institution: "PUCPR",
         degree: "Postgraduate Specialization in Software Architecture, Data Science and Cybersecurity",
-        url: "https://posdigital.pucpr.br/pos-graduacao/tech-dados-cyber/ciencia-de-dados-arquitetura-de-software-e-cybersecurity/",
+        url: "https://www.pucpr.br/a-universidade/",
         period: "In progress",
         focus: "In progress. A multidisciplinary program on designing scalable software architectures, applying data science to technology decisions, and embedding cybersecurity practices to build robust, secure solutions."
       },
       {
         institution: "UNOPAR",
         degree: "MBA in Software Engineering with Artificial Intelligence",
-        url: "https://www.unopar.com.br/curso/pos-graduacao/engenharia-de-software-com-inteligencia-artificial/",
+        url: "https://www.unopar.com.br/institucional/nossa-historia/",
         period: "In progress",
         focus: "In progress. An applied MBA focused on combining modern software engineering with artificial intelligence, including machine learning, deep learning and generative AI to build efficient, innovative software solutions."
       },
       {
         institution: "UNOPAR",
         degree: "Postgraduate Specialization in DevOps Engineering",
-        url: "https://www.unopar.com.br/curso/pos-graduacao/engenharia-de-devops/",
+        url: "https://www.unopar.com.br/institucional/nossa-historia/",
         period: "Sep 2026 - Feb 2027",
         focus: "In progress. A practice-oriented program on integrating development and operations through DevOps, with a focus on delivery efficiency, quality, speed, information security and Brazil's LGPD data protection law."
       },
       {
         institution: "UNOPAR",
         degree: "Associate Degree in Systems Analysis and Development",
-        url: "https://www.unopar.com.br/curso/analise-e-desenvolvimento-de-sistemas-tecnologo/",
+        url: "https://www.unopar.com.br/institucional/nossa-historia/",
         period: "Oct 2023 - Dec 2025",
         focus: "A hands-on degree covering software development, systems analysis, databases and the full lifecycle of information systems, from requirements and design to implementation and maintenance."
       },
@@ -539,28 +539,28 @@ export const localizedSite = {
       {
         institution: "PUCPR",
         degree: "Pós-Graduação em Arquitetura de Software, Ciência de Dados e Cybersecurity",
-        url: "https://posdigital.pucpr.br/pos-graduacao/tech-dados-cyber/ciencia-de-dados-arquitetura-de-software-e-cybersecurity/",
+        url: "https://www.pucpr.br/a-universidade/",
         period: "Em andamento",
         focus: "Em andamento. Formação multidisciplinar sobre como projetar arquiteturas de software escaláveis, aplicar ciência de dados às decisões tecnológicas e incorporar práticas de cybersecurity para criar soluções robustas e seguras."
       },
       {
         institution: "UNOPAR",
         degree: "MBA em Engenharia de Software com Inteligência Artificial",
-        url: "https://www.unopar.com.br/curso/pos-graduacao/engenharia-de-software-com-inteligencia-artificial/",
+        url: "https://www.unopar.com.br/institucional/nossa-historia/",
         period: "Em andamento",
         focus: "Em andamento. MBA voltado à integração entre engenharia de software moderna e inteligência artificial, incluindo machine learning, deep learning e IA generativa para criar soluções de software eficientes e inovadoras."
       },
       {
         institution: "UNOPAR",
         degree: "Pós-Graduação em Engenharia de DevOps",
-        url: "https://www.unopar.com.br/curso/pos-graduacao/engenharia-de-devops/",
+        url: "https://www.unopar.com.br/institucional/nossa-historia/",
         period: "Set 2026 - Fev 2027",
         focus: "Em andamento. Formação que conecta teoria e prática na integração entre desenvolvimento e operações por meio de DevOps, com foco em eficiência, qualidade, velocidade de entrega, segurança da informação e LGPD."
       },
       {
         institution: "UNOPAR",
         degree: "Tecnólogo em Análise e Desenvolvimento de Sistemas",
-        url: "https://www.unopar.com.br/curso/analise-e-desenvolvimento-de-sistemas-tecnologo/",
+        url: "https://www.unopar.com.br/institucional/nossa-historia/",
         period: "Out 2023 - Dez 2025",
         focus: "Graduação tecnológica com formação prática em desenvolvimento de software, análise de sistemas, bancos de dados e ciclo de vida de sistemas de informação, da definição de requisitos à implementação e manutenção."
       },
