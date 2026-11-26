@@ -736,6 +736,10 @@
     @apply flex min-w-0 items-center gap-4 rounded-[1.5rem] border border-white/10 bg-white/[0.03] p-4 transition duration-300 hover:-translate-y-1 hover:border-cloud/30 hover:bg-white/[0.05] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-cloud sm:p-5;
   }
 
+  .credly-badge-card[hidden] {
+    display: none;
+  }
+
   .credly-badge-image {
     @apply flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-cloud/15 bg-cloud/[0.04] p-2;
   }
